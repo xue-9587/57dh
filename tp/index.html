@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>林熙图片在线生成圆角工具丨免费在线图片合成工具！</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 拟态核心背景 - 浅色系拟态基础色 */
+        body {
+            background: #f0f4f8;
+            color: #1e293b;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 移除玻璃拟态的背景伪元素，替换为拟态轻微纹理 */
+        body::before, body::after {
+            display: none;
+        }
+        
+        /* 导航菜单样式 - 拟态凸起效果（浅色版） */
+        .navbar {
+            background: #f0f4f8;
+            box-shadow: 
+                5px 5px 10px rgba(160, 174, 192, 0.4),
+                -5px -5px 10px rgba(255, 255, 255, 0.8);
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+            border-radius: 0 0 16px 16px;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #1e293b;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo i {
+            color: #3b82f6;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: #3b82f6;
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* 汉堡菜单按钮 - 拟态样式（电脑端默认隐藏） */
+        .menu-toggle {
+            display: none; /* 核心修改：电脑端完全隐藏 */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #475569;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                3px 3px 6px rgba(160, 174, 192, 0.4),
+                -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 网址分类说明 - 拟态凹陷卡片（浅色版） */
+        .url-category-info {
+            background: #f0f4f8;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-left: 4px solid #3b82f6;
+            width: 100%;
+            box-shadow: 
+                inset 3px 3px 6px rgba(160, 174, 192, 0.4),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+        
+        .url-category-info h2 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .url-category-info p {
+            color: #64748b;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 拟态凸起效果（浅色版） */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 15px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #f0f4f8;
+            border-radius: 12px;
+            box-shadow: 
+                5px 5px 10px rgba(160, 174, 192, 0.4),
+                -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 15px;
+            width: 100%;
+        }
+        
+        /* 拟态按钮（浅色版） */
+        .url-button {
+            display: inline-block;
+            background: #f0f4f8;
+            border-radius: 10px;
+            color: #475569;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 
+                3px 3px 6px rgba(160, 174, 192, 0.4),
+                -3px -3px 6px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            box-shadow: 
+                inset 3px 3px 6px rgba(160, 174, 192, 0.4),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+            transform: translateY(0);
+            color: #3b82f6;
+        }
+        
+        /* 图片圆角生成器样式 - 拟态凸起卡片（浅色版） */
+        .rounded-image-generator {
+            background: #f0f4f8;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px auto;
+            box-shadow: 
+                8px 8px 16px rgba(160, 174, 192, 0.4),
+                -8px -8px 16px rgba(255, 255, 255, 0.8);
+        }
+        
+        .generator-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .generator-header h2 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .generator-header p {
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .generator-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .generator-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 上传/预览区域 - 拟态凹陷效果（浅色版） */
+        .upload-section, .preview-section {
+            background: #f0f4f8;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 
+                inset 3px 3px 6px rgba(160, 174, 192, 0.4),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+        
+        .upload-section h3, .preview-section h3 {
+            color: #3b82f6;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* 上传区域 - 拟态边框效果（浅色版） */
+        .upload-area {
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 
+                3px 3px 6px rgba(160, 174, 192, 0.4),
+                -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+        
+        .upload-area:hover {
+            box-shadow: 
+                inset 3px 3px 6px rgba(160, 174, 192, 0.4),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+            color: #3b82f6;
+        }
+        
+        .upload-area i {
+            font-size: 2.5rem;
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+        
+        .upload-area p {
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        .settings-group {
+            margin-bottom: 20px;
+        }
+        
+        .settings-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #475569;
+            font-weight: 500;
+        }
+        
+        .radius-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* 滑块拟态样式（浅色版） */
+        #radius-slider {
+            flex-grow: 1;
+            height: 6px;
+            background: #f0f4f8;
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+            box-shadow: 
+                inset 2px 2px 4px rgba(160, 174, 192, 0.4),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+        }
+        
+        #radius-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3b82f6;
+            cursor: pointer;
+            border: none;
+            box-shadow: 
+                2px 2px 4px rgba(160, 174, 192, 0.4),
+                -2px -2px 4px rgba(255, 255, 255, 0.8);
+        }
+        
+        #radius-value {
+            min-width: 50px;
+            text-align: center;
+            background: #f0f4f8;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 
+                inset 2px 2px 4px rgba(160, 174, 192, 0.4),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        /* 功能按钮 - 拟态样式（浅色版） */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f4f8;
+            color: #3b82f6;
+            box-shadow: 
+                3px 3px 6px rgba(160, 174, 192, 0.4),
+                -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 
+                inset 3px 3px 6px rgba(160, 174, 192, 0.4),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+            color: #1d4ed8;
+            transform: translateY(0);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            box-shadow: none;
+            background: #e2e8f0;
+        }
+        
+        /* 预览容器 - 拟态凹陷（浅色版） */
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+            background: #f0f4f8;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 
+                inset 2px 2px 4px rgba(160, 174, 192, 0.4),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+        }
+        
+        .preview-placeholder {
+            text-align: center;
+            color: #64748b;
+        }
+        
+        .preview-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: rgba(100, 116, 139, 0.3);
+        }
+        
+        #preview-image {
+            max-width: 100%;
+            max-height: 400px;
+            transition: border-radius 0.3s ease;
+        }
+        
+        /* 返回顶部按钮 - 拟态样式（浅色版） */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #f0f4f8;
+            color: #3b82f6;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 
+                4px 4px 8px rgba(160, 174, 192, 0.4),
+                -4px -4px 8px rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top:hover {
+            box-shadow: 
+                inset 4px 4px 8px rgba(160, 174, 192, 0.4),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            color: #1d4ed8;
+            transform: translateY(0);
+        }
+        
+        /* 底部版权信息 - 拟态凸起（浅色版） */
+        footer {
+            background: #f0f4f8;
+            margin-top: auto;
+            padding: 20px 0;
+            border-radius: 16px 16px 0 0;
+            box-shadow: 
+                0 -5px 10px rgba(160, 174, 192, 0.4),
+                0 5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #3b82f6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端导航菜单 - 仅在移动端显示汉堡按钮 */
+            .menu-toggle {
+                display: flex; /* 移动端显示汉堡图标 */
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #f0f4f8;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: 
+                    0 5px 10px rgba(160, 174, 192, 0.4),
+                    0 -5px 10px rgba(255, 255, 255, 0.8);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+                border-radius: 0 0 16px 16px;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            /* 移动端网址按钮 - 每行两个 */
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+            
+            // 图片圆角生成器功能
+            const fileInput = document.getElementById('file-input');
+            const uploadArea = document.querySelector('.upload-area');
+            const previewImage = document.getElementById('preview-image');
+            const previewPlaceholder = document.querySelector('.preview-placeholder');
+            const radiusSlider = document.getElementById('radius-slider');
+            const radiusValue = document.getElementById('radius-value');
+            const resetButton = document.getElementById('reset-button');
+            const downloadButton = document.getElementById('download-button');
+            
+            // 上传区域点击触发文件选择
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // 处理文件选择
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        previewImage.src = event.target.result;
+                        previewImage.style.borderRadius = `${radiusSlider.value}px`;
+                        previewPlaceholder.style.display = 'none';
+                        previewImage.style.display = 'block';
+                        downloadButton.disabled = false;
+                        downloadButton.classList.remove('disabled');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // 拖拽功能
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.boxShadow = 'inset 3px 3px 6px rgba(160, 174, 192, 0.4), inset -3px -3px 6px rgba(255, 255, 255, 0.8)';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.boxShadow = '3px 3px 6px rgba(160, 174, 192, 0.4), -3px -3px 6px rgba(255, 255, 255, 0.8)';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.boxShadow = '3px 3px 6px rgba(160, 174, 192, 0.4), -3px -3px 6px rgba(255, 255, 255, 0.8)';
+                
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        previewImage.src = event.target.result;
+                        previewImage.style.borderRadius = `${radiusSlider.value}px`;
+                        previewPlaceholder.style.display = 'none';
+                        previewImage.style.display = 'block';
+                        downloadButton.disabled = false;
+                        downloadButton.classList.remove('disabled');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // 圆角调整
+            radiusSlider.addEventListener('input', () => {
+                radiusValue.textContent = `${radiusSlider.value}px`;
+                if (previewImage.src) {
+                    previewImage.style.borderRadius = `${radiusSlider.value}px`;
+                }
+            });
+            
+            // 重置功能
+            resetButton.addEventListener('click', () => {
+                fileInput.value = '';
+                previewImage.src = '';
+                previewImage.style.display = 'none';
+                previewPlaceholder.style.display = 'block';
+                radiusSlider.value = 10;
+                radiusValue.textContent = '10px';
+                downloadButton.disabled = true;
+                downloadButton.classList.add('disabled');
+            });
+            
+            // 下载功能
+            downloadButton.addEventListener('click', () => {
+                if (!previewImage.src) return;
+                
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                
+                img.onload = () => {
+                    // 设置canvas尺寸
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    // 创建圆角路径
+                    const radius = parseInt(radiusSlider.value);
+                    ctx.beginPath();
+                    ctx.moveTo(radius, 0);
+                    ctx.arcTo(canvas.width, 0, canvas.width, canvas.height, radius);
+                    ctx.arcTo(canvas.width, canvas.height, 0, canvas.height, radius);
+                    ctx.arcTo(0, canvas.height, 0, 0, radius);
+                    ctx.arcTo(0, 0, canvas.width, 0, radius);
+                    ctx.closePath();
+                    
+                    ctx.clip();
+                    ctx.drawImage(img, 0, 0);
+                    
+                    // 创建下载链接
+                    const link = document.createElement('a');
+                    link.download = 'rounded-image.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                };
+                
+                img.src = previewImage.src;
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html" class="active"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 图片在线生成圆角功能 -->
+    <div class="container">
+        <div class="rounded-image-generator">
+            <div class="generator-header">
+                <h2><i class="fa-solid fa-image"></i> 图片在线生成圆角工具</h2>
+                <p>上传图片并调整圆角半径，一键生成带圆角的图片，支持拖拽上传和自定义圆角大小</p>
+            </div>
+            
+            <div class="generator-content">
+                <div class="upload-section">
+                    <h3><i class="fa-solid fa-upload"></i> 上传图片</h3>
+                    <div class="upload-area">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>点击或拖拽图片到此处上传</p>
+                        <p class="small">支持 JPG、PNG、WEBP 格式</p>
+                        <input type="file" id="file-input" accept="image/*">
+                    </div>
+                    
+                    <div class="settings-group">
+                        <label for="radius-slider">圆角半径调整</label>
+                        <div class="radius-control">
+                            <input type="range" id="radius-slider" min="0" max="100" value="10">
+                            <span id="radius-value">10px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="reset-button" class="btn btn-primary">
+                            <i class="fa-solid fa-refresh"></i> 重置
+                        </button>
+                        <button id="download-button" class="btn btn-primary" disabled>
+                            <i class="fa-solid fa-download"></i> 下载图片
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="preview-section">
+                    <h3><i class="fa-solid fa-eye"></i> 预览效果</h3>
+                    <div class="preview-container">
+                        <div class="preview-placeholder">
+                            <i class="fa-solid fa-image"></i>
+                            <p>图片预览将显示在这里</p>
+                        </div>
+                        <img id="preview-image" src="" alt="预览图" style="display: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="http://linxi9528.hkfree.work/" target="_blank">林熙图片圆角生成工具</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #a79552;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
+</body>
+</html>
