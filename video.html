@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙影院,林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>⎛⎝ 林熙影院 ⎠⎞丨全网最新电影推荐在线观看！</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 拟态核心背景 */
+        body {
+            background: #e0e5ec;
+            color: #4a5568;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 拟态设计 */
+        .navbar {
+            background: #e0e5ec;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+            box-shadow: 
+                8px 8px 16px #b8c0ca,
+                -8px -8px 16px #ffffff;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #4a5568;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: #5a67d8;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #5a67d8;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #5a67d8;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: #5a67d8;
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* 汉堡菜单按钮 - 核心修改：默认隐藏（电脑端不显示） */
+        .menu-toggle {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #4a5568;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: none; /* 电脑端默认隐藏 */
+            align-items: center;
+            justify-content: center;
+            background: #e0e5ec;
+            box-shadow: 
+                4px 4px 8px #b8c0ca,
+                -4px -4px 8px #ffffff;
+            margin-left: auto;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 视频播放器容器样式 - 拟态 */
+        .video-container {
+            background: #e0e5ec;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 
+                8px 8px 16px #b8c0ca,
+                -8px -8px 16px #ffffff;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 比例 */
+            border-radius: 12px;
+            overflow: hidden;
+            background: #e0e5ec;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0ca,
+                inset -4px -4px 8px #ffffff;
+        }
+        
+        #videoPlayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+        
+        /* 视频简介区域样式 - 拟态 */
+        .video-description {
+            background: #e0e5ec;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            box-shadow: 
+                inset 3px 3px 6px #b8c0ca,
+                inset -3px -3px 6px #ffffff;
+            transition: all 0.3s ease;
+        }
+        
+        .video-description h3 {
+            color: #5a67d8;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .video-description p {
+            color: #4a5568;
+            margin: 0;
+            line-height: 1.7;
+        }
+        
+        /* 视频链接按钮区域 - 四个按钮一行 */
+        .video-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        /* 视频链接按钮样式 - 拟态 */
+        .video-btn {
+            background: #e0e5ec;
+            border-radius: 12px;
+            color: #4a5568;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            border: none;
+            box-shadow: 
+                6px 6px 12px #b8c0ca,
+                -6px -6px 12px #ffffff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .video-btn:hover {
+            box-shadow: 
+                4px 4px 8px #b8c0ca,
+                -4px -4px 8px #ffffff;
+            transform: translateY(-2px);
+            color: #5a67d8;
+        }
+        
+        .video-btn.active {
+            box-shadow: 
+                inset 4px 4px 8px #b8c0ca,
+                inset -4px -4px 8px #ffffff;
+            color: #5a67d8;
+        }
+        
+        /* 网址分类说明 - 拟态卡片 */
+        .url-category-info {
+            background: #e0e5ec;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 
+                6px 6px 12px #b8c0ca,
+                -6px -6px 12px #ffffff;
+            width: 100%;
+        }
+        
+        .url-category-info h2 {
+            color: #4a5568;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .url-category-info p {
+            color: #718096;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 固定四个按钮布局 */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 15px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #e0e5ec;
+            border-radius: 12px;
+            box-shadow: 
+                6px 6px 12px #b8c0ca,
+                -6px -6px 12px #ffffff;
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 15px;
+            width: 100%;
+        }
+        
+        /* 拟态按钮 */
+        .url-button {
+            display: inline-block;
+            background: #e0e5ec;
+            border-radius: 12px;
+            color: #4a5568;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 
+                6px 6px 12px #b8c0ca,
+                -6px -6px 12px #ffffff;
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            box-shadow: 
+                4px 4px 8px #b8c0ca,
+                -4px -4px 8px #ffffff;
+            transform: translateY(-2px);
+            color: #5a67d8;
+        }
+        
+        /* 返回顶部按钮 - 拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e0e5ec;
+            color: #5a67d8;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 
+                6px 6px 12px #b8c0ca,
+                -6px -6px 12px #ffffff;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top:hover {
+            box-shadow: 
+                4px 4px 8px #b8c0ca,
+                -4px -4px 8px #ffffff;
+            color: #434190;
+            transform: translateY(-3px);
+        }
+        
+        /* 底部版权信息 - 拟态 */
+        footer {
+            background: #e0e5ec;
+            margin-top: auto;
+            padding: 20px 0;
+            box-shadow: 
+                0 -4px 12px #b8c0ca,
+                0 4px 12px #ffffff;
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #5a67d8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #434190;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端导航菜单 */
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #e0e5ec;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: 
+                    0 8px 16px #b8c0ca,
+                    0 -8px 16px #ffffff;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            /* 核心修改：移动端显示汉堡按钮 */
+            .menu-toggle {
+                display: flex;
+            }
+            
+            /* 移动端按钮布局 - 每行两个 */
+            .video-buttons, .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+            
+            /* 移动端视频容器 */
+            .video-container {
+                padding: 15px;
+                margin: 15px auto;
+            }
+            
+            /* 移动端视频简介 */
+            .video-description h3 {
+                font-size: 1.1rem;
+            }
+            
+            .video-description p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // 增加容错处理：避免移动端以外访问时的报错
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    // 切换图标样式（汉堡/叉号）
+                    const icon = this.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+            
+            // 视频切换和简介显示功能
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoButtons = document.querySelectorAll('.video-btn');
+            const videoDescription = document.querySelector('.video-description');
+            const descriptionTitle = videoDescription.querySelector('h3');
+            const descriptionContent = videoDescription.querySelector('p');
+            
+            // 默认视频地址
+            const defaultVideoUrl = 'https://jx.xmflv.com/?url=https://www.iqiyi.com/v_19rrkgxa04.html?vfm=m_332_bing&fv=8c0aeeff542d8c03';
+            
+            // 设置默认视频和简介
+            videoPlayer.src = defaultVideoUrl;
+            const defaultButton = document.querySelector(`.video-btn[data-video-url="${defaultVideoUrl}"]`);
+            if (defaultButton) {
+                defaultButton.classList.add('active');
+                // 显示默认视频简介
+                descriptionTitle.textContent = defaultButton.getAttribute('data-title');
+                descriptionContent.textContent = defaultButton.getAttribute('data-description');
+            }
+            
+            // 为每个视频按钮添加点击事件
+            videoButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 获取按钮对应的视频链接、标题和简介
+                    const videoUrl = this.getAttribute('data-video-url');
+                    const title = this.getAttribute('data-title');
+                    const description = this.getAttribute('data-description');
+                    
+                    // 更新视频播放器
+                    videoPlayer.src = videoUrl;
+                    
+                    // 更新简介内容
+                    descriptionTitle.textContent = title;
+                    descriptionContent.textContent = description;
+                    
+                    // 添加过渡动画效果
+                    videoDescription.style.opacity = '0.5';
+                    setTimeout(() => {
+                        videoDescription.style.opacity = '1';
+                    }, 300);
+                    
+                    // 播放视频
+                    videoPlayer.play().catch(e => console.log('自动播放被浏览器阻止:', e));
+                    
+                    // 更新按钮状态 - 高亮当前选中的按钮
+                    videoButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html" class="active"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 视频播放器区域 -->
+    <div class="container">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- 内嵌视频播放器 -->
+                <iframe id="videoPlayer" 
+                        allowfullscreen 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                </iframe>
+            </div>
+            
+            <!-- 视频简介区域 -->
+            <div class="video-description">
+                <h3>推荐动漫《秦时明月之龙腾万里》</h3>
+                <p>荆天明、项少羽在机缘巧合之下，一起被卷入了秦始皇夺取远古神秘力量的阴谋行动之中，传说中的仙境即将再次陷入千年未遇的劫难。来自茫茫沙海的陌生少女小黎，美丽而又神秘，荆天明和项少羽与她的相遇仿佛是命运的指引，跨越千年的时空，冥冥之中早已注定。秦军战旗环伺之下，来自上古的可怕力量正在苏醒，面对这场浩劫，他们成功扭转乾坤，拯救天下苍生。</p>
+            </div>
+            
+            <!-- 视频链接按钮区域 - 四个按钮一行 -->
+            <div class="video-buttons">
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://vip.lz-cdn10.com/20220417/1422_52eaf69b/index.m3u8"
+                        data-title="《寻龙传说》"
+                        data-description="很久以前，在充满奇幻色彩的龙佑之邦，人类和龙和谐地生活在一起。但当一股邪恶的力量袭来，龙牺牲了自己来拯救人类。国外口碑爆棚，国内票房惨淡，《寻龙传说》是佳作还是庸作？五百年后，同样的邪恶力量卷土重来，只有一个孤独的勇士拉雅承担重任，追踪传说中的最后一条龙，以修复这块破碎的土地，团结分裂的人民。而在她的旅程中，她也会逐渐了解到拯救世界不仅仅需要一条龙，还需要信任和团队合作。">
+                    <i class="fa-solid fa-play"></i> 寻龙传说
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://v16.toutiao50.com/c14030504a358c50801965e3ffc01582/68da6118/video/tos/alisg/tos-alisg-v-0000/osdBd6nI8gdWsekyZNDeABiDIPCQoQ3bgjnAVD/"
+                        data-title="《风雨咒》"
+                        data-description="数千年前，上古四大凶兽为祸人间，被上古侠岚用秘术“风语咒”封印，如今四大凶兽之一“饕餮”即将在千年的沉寂后复苏，然而“风语咒”秘术却早已失传。双目失明但乐观开朗的少年郎明与母亲相依为命，母子二人平日里插科打诨，感情至深。虽然父亲多年前失踪，但郎明始终铭记着父亲传授给自己的一句秘诀，那是传说中的失传秘术“风语咒” 。">
+                    <i class="fa-solid fa-play"></i> 风雨咒
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://v16-tiktokcdn-com.akamaized.net/609f85b11a678c458a68793b313bed5c/68da55a2/video/tos/alisg/tos-alisg-ve-0051c001-sg/okxjMAGYPeDv7FIdCVLIAoGrGnAbnf7SgJeTgX/?a=1233&bti=Nzg3NWYzLTQ6&ch=0&cr=0&dr=0&er=0&lr=default&cd=0%7C0%7C0%7C0&br=4800&bt=2400&cs=0&ds=4&ft=.bvrXInz7ThJ-BFKXq8Zmo&mime_type=video_mp4&qs=0&rc=OWQ7NGY1NjlpZWQ7OTdoZ0BpM2s7Om85cjhleTMzODYzNEAtY2NjXzUzXjIxMWFhL2JfYSNfNi82MmRjbjRgLS1kMC1zcw%3D%3D&vvpl=1&l=2025092816061440519163D53F1DC37263&btag=e000a8000?filename=1.mp4"
+                        data-title="《画江湖之天罡》"
+                        data-description="大唐年间，时局动荡，奸臣当道。直属帝王的秘密暗杀组织不良人一夜之间突然群龙无首，不良帅袁天罡（孟宇 配音）留下一纸书信辞官而去。失去人生方向的袁天罡，在好友李淳风（高枫 配音）留下的锦囊指引下，来到长安安乐阁，却不曾想到此地竟是风月之所。而接下来发生的一切，随着寻求自由之人、寻求不死之人、寻求权力之人的逐一登场，为袁天罡的旅途拉开新的序幕。">
+                    <i class="fa-solid fa-play"></i> 画江湖之天罡
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://v16.toutiao50.com/c599b9c1bdb4bacfd87fc50432880971/68da53e5/video/tos/alisg/tos-alisg-ve-0051c001-sg/ogfLVMB8L0mOIwinbaci6BBBAQC1HEm5DwoAgA/"
+                        data-title="《仙逆剧场版：神临之战》"
+                        data-description="古神之地事件后，修魔内海的永夜魔城骤然崛起，为扩张势力不断侵袭周边宗门，李慕婉（张惠霖配音）所在的云天宗亦遭劫难。李慕婉在宗门守卫战中身中剧毒命悬一线，王林（史泽鲲配音）闻讯后毅然携其再入修魔海，以化神初期修为独战三大城主威震四方，虽夺回解药救下李慕婉，却发觉背后暗藏千年阴谋。最终二人以情意为引，借王林化神后首次与古神之躯融合之力，共同诛灭幕后魔尊。">
+                    <i class="fa-solid fa-play"></i> 仙逆剧场版：神临之战
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://dalv.dlidli.cc/2025/movie/%E3%80%8A%E7%99%BD%E8%9B%872%EF%BC%9A%E9%9D%92%E8%9B%87%E5%8A%AB%E8%B5%B7%E3%80%8B%E9%AB%98%E6%B8%85%E5%85%A8%E9%9B%86%E5%9C%A8%E7%BA%BF%E8%A7%82%E7%9C%8B-%E6%A8%B1%E8%8A%B1%E5%8A%A8%E6%BC%AB.mp4"
+                        data-title="《白蛇2：青蛇劫起》"
+                        data-description="南宋末年，小白为救许仙水漫金山，终被法海压在雷峰塔下。小青心生救姐执念死死纠缠法海，被法海打入诡异的修罗城幻境。几次危机中小青被神秘蒙面少年所救，小青带着出去救小白的执念，一心想着打败法海，推倒雷峰塔，历经劫难与成长同蒙面少年一起寻找离开的办法。">
+                    <i class="fa-solid fa-play"></i> 白蛇2：青蛇劫起
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://vip.dytt-cine.com/20250910/55483_76e600a5/index.m3u8"
+                        data-title="《聊斋：兰若寺》"
+                        data-description="书生蒲松龄（卢力峰 饰）行路遇险，不得已只能夜宿兰若寺，结果被蛤蟆精灵蟾上人（林强 饰）和乌龟精玄龟子（张赫 饰）带到了一口古井底下，以评判者视角见证五个跨越时空的奇幻事件。在井底，蒲松龄以评判者视角亲眼见证了五个发生在不同时代的奇幻事件。">
+                    <i class="fa-solid fa-play"></i> 聊斋：兰若寺
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://vip.dytt-hot.com/20250206/40449_b57cd622/3000k/hls/mixed.m3u8"
+                        data-title="《天书奇谭》"
+                        data-description="天宫“秘书阁”执事人员袁公乘玉帝赴瑶池聚会之际，击开石龛门，私取天书下凡，将天书文字刻在云梦山白云洞的石壁上。袁公因泄露天机，触犯了天条，玉帝罚他终身看守石壁天书。一天，袁公踏云巡山，路遇一群天鹅，天鹅生下一个蛋，袁公用法术将天鹅蛋化为人形，取名蛋生。为了将天书传于人间，他嘱咐蛋生等白云洞口香炉升起彩烟，带上白纸，拓下洞中石壁上的天书。蛋生按袁公嘱咐拓下了天书。袁公又指点蛋生勤学苦练，运用天书为民造福。蛋生攻读天书，治蝗救灾，为民除害。三只狐狸精恨蛋生妨碍其作恶，耍阴谋窃去天书，勾结官府，祸害百姓。蛋生追索天书，与狐狸精多次斗法。当蛋生与狐狸精争夺天书时，袁公到来，他收回了天书，从怀中掏出白色石镜，将狐狸精压死在云梦山下。袁公自料难逃天庭法网，把天书交给蛋生，嘱他赶快把天书文字记在心里。然后袁公用一把神火将天书烧尽。霎时雷电交加，玉帝圣旨下达，将袁公擒归天庭问罪。">
+                    <i class="fa-solid fa-play"></i> 天书奇谭
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://tyyszywvod5.com/videos/202508/03/687bf1f05a304839adde48e7/a75a50/index.m3u8"
+                        data-title="《新神榜：哪吒重生》"
+                        data-description="三千年前，天下动荡，人神共遇大劫，不想哪吒的一缕魂魄逃脱天罗地网，世世转世投胎，这一世的他与东海市酷爱机车的热血青年李云祥（杨天翔 配音）人神共生。然而龙族对哪吒恩怨并未善罢甘休，有着哪吒元神的李云祥，亦无法逃脱被龙族赶尽杀绝的宿命。此后，东海危在旦夕，而李云祥则最终与哪吒元神并肩作战，拯救了东海市的子民，并成为了抵抗龙族的英雄。">
+                    <i class="fa-solid fa-play"></i> 新神榜：哪吒重生
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://vip.dytt-kan.com/20250823/4480_34f9a343/index.m3u8"
+                        data-title="《济公斗蟋蟀》"
+                        data-description="《济公斗蟋蟀》讲述的都是济公搞的鬼，蟋蟀斗败大公鸡，张狂公子遭报应，赔了屋子又短命。中国美术独创的剪纸动画。大快人心的因果报故事。 南宋时，在罗丞相府内做木匠的张煜，得知罗公子斗蟋蟀赢了许多银子，好奇地去偷看罗公子的那只蟋蟀。不料刚揭开盆盖，蟋蟀就逃掉了。罗公子大怒，打了张煜一顿，还要他三天之内赔偿蟋蟀，否则就要他的命。张煜走投无路，被迫投河自杀，恰巧被济公救起。济公佛法无边，他知道张煜口袋里还剩三文钱，拿去买了一只半死的蟋蟀，便去找罗公子，扬言他的蟋蟀能斗大公鸡。罗公子就命家丁抱来一只大公鸡与他打赌，结果小蟋蟀斗败了大公鸡。罗公子愿化五百两银子将他的蟋蟀买下。济公就将银子周济张煜，让他自谋生路。罗公子得到了这只神奇的小蟋蟀后十分得意，视若珍宝。一次蟋蟀跳出盆外，他急忙追扑，蟋蟀却钻到地下。罗公子命人把地砖全部掘起，而蟋蟀的叫声又从墙根传来，罗公子又命人挖墙拆屋。蟋蟀叫声在哪里，他就拆到哪里，结果整个丞相府倒塌了。作恶多端的罗公子被压在里面，受到济公的惩罚。">
+                    <i class="fa-solid fa-play"></i> 济公斗蟋蟀
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://m3u8.dlidli.cc/mmmm/vYhI1754021335.m3u8"
+                        data-title="《哪吒之魔童闹海》"
+                        data-description="天劫之后，哪吒（吕艳婷配音）、敖丙（瀚墨配音）的灵魂虽保住了，但没有肉身很快会魂飞魄散。太乙真人（张珈铭配音）打算用七色宝莲给二人重塑肉身。但是在重塑肉身的过程中却遇到重重困难，哪吒、敖丙的命运将迎来更多挑战。申公豹（杨卫配音）放出被囚的四龙王，东海龙王敖光显出人形，并表示“我若出战，就让陈塘关鸡犬不留”，哪吒为了守卫陈塘关将与四海龙王大打出手。">
+                    <i class="fa-solid fa-play"></i> 哪吒之魔童闹海
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://tyyszywvod5.com/videos/202508/05/687bded95a304839adddb4d8/70eg9d/index.m3u8"
+                        data-title="《济公之降龙降世》"
+                        data-description="赤城山脚下永宁村，为了让久病缠身的娘病愈，顽童李修缘一心想成为大英雄，却总是好心办坏事，让村庄鸡飞狗跳。在遭遇了一场场险遇后，李修缘得知自己就是大英雄降龙罗汉转世。其父李茂春受金翎蛊惑，为保护李修缘而抢夺金身，欲替儿子承担拯救世人的使命。却被金翎抢走金身献给金翅大鹏，金翅大鹏因此提前复活，欲毁灭人间。最后，李修缘父子为了大爱牺牲小爱，携手以肉身抵抗金翅大鹏，却终究以卵击石。濒死的李修缘，终于顿悟比金身更重要的是爱，最终化身降龙罗汉。经历人间疾苦后，降龙罗汉最终放弃果位。从此，天上少了一名降龙罗汉，世间多了一个云游天下，济世救人的活佛。">
+                    <i class="fa-solid fa-play"></i> 济公之降龙降世
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://tyyszywvod5.com/videos/202507/29/687c28a69f34643a463a157a/de62c2/index.m3u8"
+                        data-title="《木兰：横空出世》"
+                        data-description="该片是全球首次以三维动画形式讲述花木兰故事。故事基于原著但作了合理改编，木兰作为军中出了名的“刺头”，比身边的男人更蛮更横，虽然武艺高强，但从军时“当大官，替老花家争脸”的愿望却迟迟未能实现。在一次孤身潜入敌营的任务中，她身陷重围，险象环生。这时，一个更大的阴谋正浮出水面：谁是敌人，谁是朋友……">
+                    <i class="fa-solid fa-play"></i> 木兰：横空出世
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://ugc-svp.wegame.com.cn/1098_0bc37yfciaaknmakrrx2ozsyx7wdet7aujca.f102000.mp4?dis_k=d51f7bfa8815e7695767f328d1d1c31d&dis_t=1759045389"
+                        data-title="《茶啊二中》"
+                        data-description="《茶啊二中》是由北京光线影业有限公司、吉林省凝羽动画有限公司制作，夏铭泽、阎凯执导，邢原源、王博文、高禹恒、黄恒等配音的喜剧动画电影，于2023年7月14日在中国大陆上映。该片讲述了一群中学生在成长中面临的困惑和挑战，通过克服困难，最终实现了自我成长和突破的故事。">
+                    <i class="fa-solid fa-play"></i> 茶啊二中
+                </button>
+                <button class="video-btn" 
+                        data-video-url="https://www.ikdmjx.com/?url=https://play.gotomymv.life/m3/9c7f2071759094598/26NjhkOGZlODYyYjc0ZCQyNzckMSQxNzU5MDUxMzk468d8fe862b74a.m3u8"
+                        data-title="《西游记之大圣归来》"
+                        data-description="大闹天宫后四百多年，齐天大圣成了一个传说，在山妖横行的长安城，孤儿江流儿与行脚僧法明相依为命，小小少年常常神往大闹天宫的孙悟空。有一天，山妖来劫掠童男童女，江流儿救了一个小女孩，惹得山妖追杀，他一路逃跑，跑进了五行山，盲打误撞地解除了孙悟空的封印。悟空自由之后只想回花果山，却无奈腕上封印未解，又欠江流儿人情，勉强地护送他回长安城。一路上八戒和白龙马也因缘际化地现身，但或落魄或魔性大发，英雄不再。妖王为抢女童，布下夜店迷局，却发现悟空法力尽失，轻而易举地抓走了女童。悟空不愿再去救女童，江流儿决定自己去救。日全食之日，在悬空寺，妖王准备将童男童女投入丹炉中，江流儿却冲进了道场，最后一战开始了。">
+                    <i class="fa-solid fa-play"></i> 西游记之大圣归来
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copyright">
+            <p>© 2026 林熙导航网 版权所有</p>
+            <p>本站仅提供网址收录服务，所有内容均来自互联网，如有侵权请联系删除</p>
+        </div>
+    </footer>
+</body>
+</html>

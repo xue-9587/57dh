@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支持泽诚工作室 - 捐赠打赏</title>
+  <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具,林熙资源网,林熙blog,林熙影院,林熙在线工具,林熙图库,林熙音乐试听网,林熙博客"/>
+  <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+  <link href="/favicon.ico" rel="icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义颜色和字体（适配拟态风格） -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neumo: {
+              bg: '#e0e5ec', // 拟态主背景色
+              darkBg: '#d1d9e6', // 深色拟态背景
+              shadow: '#b8c0ca', // 拟态阴影色
+              highlight: '#ffffff', // 拟态高光色
+              primary: '#165DFF', // 主色保留
+              secondary: '#FF7D9C', // 辅助色保留
+            },
+            neutral: {
+              100: '#F5F7FA',
+              200: '#E5E6EB',
+              300: '#C9CDD4',
+              400: '#86909C',
+              500: '#4E5969',
+              600: '#272E3B',
+              700: '#1D2129',
+            }
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义工具类（核心拟态样式） -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      /* 拟态基础样式 - 凸起效果 */
+      .neumo {
+        background: #e0e5ec;
+        box-shadow:  8px 8px 16px #b8c0ca,
+                     -8px -8px 16px #ffffff;
+      }
+      /* 拟态凹陷效果 */
+      .neumo-inset {
+        background: #e0e5ec;
+        box-shadow: inset 5px 5px 10px #b8c0ca,
+                    inset -5px -5px 10px #ffffff;
+      }
+      /* 拟态按钮 - 凸起 */
+      .neumo-btn {
+        background: #e0e5ec;
+        box-shadow:  5px 5px 10px #b8c0ca,
+                     -5px -5px 10px #ffffff;
+        transition: all 0.3s ease;
+      }
+      .neumo-btn:hover {
+        box-shadow:  7px 7px 14px #b8c0ca,
+                     -7px -7px 14px #ffffff;
+        transform: translateY(-2px);
+      }
+      .neumo-btn:active {
+        box-shadow: inset 5px 5px 10px #b8c0ca,
+                    inset -5px -5px 10px #ffffff;
+        transform: translateY(0);
+      }
+      /* 拟态卡片 */
+      .neumo-card {
+        background: #e0e5ec;
+        box-shadow:  10px 10px 20px #b8c0ca,
+                     -10px -10px 20px #ffffff;
+      }
+      /* 拟态圆形 */
+      .neumo-circle {
+        background: #e0e5ec;
+        box-shadow:  6px 6px 12px #b8c0ca,
+                     -6px -6px 12px #ffffff;
+      }
+      /* 拟态输入/容器 - 凹陷 */
+      .neumo-container {
+        background: #e0e5ec;
+        box-shadow: inset 4px 4px 8px #b8c0ca,
+                    inset -4px -4px 8px #ffffff;
+      }
+      /* 选中状态 */
+      .neumo-active {
+        box-shadow: inset 5px 5px 10px #b8c0ca,
+                    inset -5px -5px 10px #ffffff !important;
+        color: #165DFF;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+      .hover-scale:hover {
+        transform: scale(1.02);
+      }
+    }
+  </style>
+  
+  <!-- 基础样式 -->
+  <style>       
+    body {
+      background-color: #e0e5ec; /* 拟态主背景 */
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #4E5969; /* 拟态风格文字主色 */
+    }
+    
+    /* 动画效果 */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .floating-delay {
+      animation: float 4s ease-in-out 1s infinite;
+    }
+    
+    /* 自定义滚动条（适配拟态） */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #e0e5ec;
+      box-shadow: inset 2px 2px 4px #b8c0ca,
+                  inset -2px -2px 4px #ffffff;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #d1d9e6;
+      box-shadow:  2px 2px 4px #b8c0ca,
+                   -2px -2px 4px #ffffff;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c9cdd4;
+    }
+  </style>
+</head>
+
+<body class="bg-neumo text-neutral-500">
+  <!-- 背景装饰（适配拟态） -->
+  <div class="fixed inset-0 overflow-hidden -z-10">
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5"></div>
+    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/8 rounded-full blur-3xl opacity-10"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-secondary/8 rounded-full blur-3xl opacity-10"></div>
+  </div>
+
+  <!-- 主容器 -->
+  <div class="container mx-auto px-4 py-12 max-w-4xl">
+    <!-- 页面标题（拟态卡片） -->
+    <header class="text-center mb-16 neumo-card rounded-2xl p-8">
+      <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-4 text-shadow">
+        <span style="color:#E53333;">支持我的创作</span>
+      </h1>
+      <p class="text-neutral-500 text-lg max-w-2xl mx-auto">
+        您的支持是我持续创作的动力！选择下方任意方式进行打赏，感谢您的慷慨与鼓励。
+      </p>
+    </header>
+
+    <!-- 打赏选项 - 只保留奶茶打赏（拟态卡片） -->
+    <main class="grid grid-cols-1 gap-8 mb-16">
+      <!-- 奶茶打赏 -->
+      <div id="item-milk-tea" class="neumo-card rounded-2xl p-6 hover-scale cursor-pointer relative overflow-hidden group">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary/10 rounded-full blur-2xl group-hover:scale-150 transition-all duration-500"></div>
+        <div class="flex items-center mb-4 relative z-10">
+          <div class="w-16 h-16 rounded-full neumo-circle flex items-center justify-center mr-4 floating">
+            <i class="fa fa-coffee text-3xl text-secondary"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-neutral-600">请我喝奶茶</h2>
+            <p class="text-neutral-500">温暖我的编程时光</p>
+          </div>
+        </div>
+        <div class="relative z-10">
+          <div class="grid grid-cols-3 gap-3 mb-4">
+            <button class="amount-btn neumo-btn rounded-lg py-2 transition-colors" data-amount="5">
+              <span class="block text-sm">5元</span>
+              <span class="text-xs text-neutral-400">小杯</span>
+            </button>
+            <button class="amount-btn neumo-btn rounded-lg py-2 transition-colors" data-amount="10">
+              <span class="block text-sm">10元</span>
+              <span class="text-xs text-neutral-400">中杯</span>
+            </button>
+            <button class="amount-btn neumo-btn rounded-lg py-2 transition-colors" data-amount="15">
+              <span class="block text-sm">15元</span>
+              <span class="text-xs text-neutral-400">大杯</span>
+            </button>
+          </div>
+          
+          <!-- 修改部分：按钮居中展示并加大加宽（拟态按钮） -->
+          <div class="flex flex-col items-center gap-3 mt-6">
+            <span class="text-sm text-neutral-500 w-full text-center mb-2">已收到 <span class="font-semibold">128</span> 杯奶茶</span>
+            <div class="flex gap-4 w-full max-w-xs">
+              <button class="open-modal-btn neumo-btn rounded-full px-6 py-3 text-base flex-1 flex items-center justify-center">
+                <i class="fa fa-qrcode mr-2 text-primary"></i> 点击打赏
+              </button>
+              <a href="http://linxi9528.hkfree.work/" class="neumo-btn rounded-full px-6 py-3 text-base flex-1 flex items-center justify-center hover:shadow-lg transition-all" target="_blank">
+                <i class="fa fa-link mr-2 text-primary"></i> 返回主站
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 捐赠说明（拟态卡片） -->
+    <section class="neumo-card rounded-2xl p-6 mb-12">
+      <h2 class="text-xl font-bold mb-4 text-neutral-600">捐赠说明</h2>
+      <div class="space-y-3 text-neutral-500">
+        <p>您的每一份支持都将用于：</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>持续创作高质量技术内容</li>
+          <li>购买开发所需的软件和服务</li>
+          <li>参加技术社区和培训课程</li>
+          <li>改善创作环境和设备</li>
+        </ul>
+        <p class="text-sm text-neutral-400 mt-2">所有捐赠将用于技术创作相关支出，感谢您的慷慨支持！</p>
+      </div>
+    </section>
+
+  <!-- 打赏弹窗（拟态风格） -->
+  <div id="donation-modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <!-- 遮罩层（适配拟态） -->
+    <div class="absolute inset-0 bg-black/20 backdrop-blur-sm" id="modal-overlay"></div>
+    
+    <!-- 弹窗内容（拟态卡片） -->
+    <div class="neumo-card rounded-2xl p-8 max-w-md w-full mx-4 relative z-10 transform transition-all duration-300 scale-95 opacity-0" id="modal-content">
+      <button id="close-modal" class="absolute top-4 right-4 text-neutral-400 hover:text-neutral-600 transition-colors">
+        <i class="fa fa-times text-xl"></i>
+      </button>
+      
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-neutral-600 mb-2" id="modal-title">请我喝奶茶</h2>
+        <p class="text-neutral-500" id="modal-amount">金额: ¥5</p>
+      </div>
+      
+      <div class="flex justify-center mb-6">
+        <div class="w-48 h-48 neumo-container rounded-lg p-2">
+          <img src="http://57zy.sylu.cc/img/wx.jpg" alt="微信收款二维码" id="qrcode-image" class="w-full h-full object-cover rounded">
+        </div>
+      </div>
+      
+      <div class="text-center mb-6">
+        <p class="text-sm text-neutral-500 mb-2">请选择支付方式并扫码支付</p>
+        <div class="flex justify-center space-x-4">
+          <button id="wechat-pay" class="pay-btn neumo-btn rounded-full px-4 py-2 text-sm neumo-active">
+            <i class="fa fa-weixin mr-1 text-green-600"></i> 微信
+          </button>
+          <button id="alipay-pay" class="pay-btn neumo-btn rounded-full px-4 py-2 text-sm">
+            <i class="fa fa-credit-card mr-1 text-blue-600"></i> 支付宝
+          </button>
+        </div>
+      </div>
+      
+      <div class="border-t border-neutral-200 pt-4">
+        <p class="text-sm text-neutral-500">
+          <i class="fa fa-info-circle mr-1 text-primary"></i> 
+          <span id="modal-description">
+            您的支持是我持续创作的动力，感谢您的慷慨！
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 模态框操作
+    const modal = document.getElementById('donation-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const closeModalBtn = document.getElementById('close-modal');
+    const openModalBtns = document.querySelectorAll('.open-modal-btn');
+    const modalTitle = document.getElementById('modal-title');
+    const modalAmount = document.getElementById('modal-amount');
+    const modalDescription = document.getElementById('modal-description');
+    const qrcodeImage = document.getElementById('qrcode-image');
+    const wechatPayBtn = document.getElementById('wechat-pay');
+    const alipayPayBtn = document.getElementById('alipay-pay');
+    
+    // 记录当前选择的金额和支付方式
+    let selectedAmount = 5;
+    let selectedPayment = 'wechat';
+    
+    // 金额选择按钮（拟态选中效果）
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // 移除同一组中其他按钮的选中状态
+        const buttonGroup = this.closest('.grid');
+        buttonGroup.querySelectorAll('.amount-btn').forEach(b => {
+          b.classList.remove('neumo-active');
+        });
+        
+        // 添加当前按钮的选中状态
+        this.classList.add('neumo-active');
+        
+        // 更新选中金额
+        selectedAmount = parseInt(this.getAttribute('data-amount'));
+      });
+    });
+    
+    // 支付方式选择（拟态选中效果）
+    wechatPayBtn.addEventListener('click', function() {
+      wechatPayBtn.classList.add('neumo-active');
+      alipayPayBtn.classList.remove('neumo-active');
+      selectedPayment = 'wechat';
+      qrcodeImage.src = 'http://57zy.sylu.cc/img/wx.jpg';
+      qrcodeImage.alt = '微信收款二维码';
+    });
+    
+    alipayPayBtn.addEventListener('click', function() {
+      alipayPayBtn.classList.add('neumo-active');
+      wechatPayBtn.classList.remove('neumo-active');
+      selectedPayment = 'alipay';
+      qrcodeImage.src = 'http://57zy.sylu.cc/img/zfb.jpg';
+      qrcodeImage.alt = '支付宝收款二维码';
+    });
+    
+    // 打开模态框
+    openModalBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        modalTitle.textContent = '请我喝奶茶';
+        modalDescription.textContent = '一杯温暖的奶茶，一份持续创作的动力！感谢您的支持！';
+        modalAmount.textContent = `金额: ¥${selectedAmount}`;
+        
+        wechatPayBtn.click();
+        
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modalContent.classList.remove('scale-95', 'opacity-0');
+          modalContent.classList.add('scale-100', 'opacity-100');
+        }, 10);
+      });
+    });
+    
+    // 关闭模态框
+    function closeModal() {
+      modalContent.classList.remove('scale-100', 'opacity-100');
+      modalContent.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+    
+    closeModalBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+    
+    // 键盘ESC关闭
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+    
+    // 初始选中第一个金额
+    document.querySelectorAll('.amount-btn')[0].click();
+  </script>
+</body>
+</html>

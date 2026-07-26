@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>⎛⎝ 林熙导航网 ⎠⎞丨在线留言</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 拟态核心背景：浅灰色基调，统一拟态视觉基础 */
+        body {
+            background: #e0e5ec;
+            color: #4a5568;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 拟态风格 */
+        .navbar {
+            background: #e0e5ec;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #4a5568;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* 拟态文字轻微阴影 */
+            text-shadow: 1px 1px 2px rgba(163, 177, 198, 0.6),
+                        -1px -1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .logo i {
+            color: #6b7280;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            position: relative;
+            /* 拟态基础按钮样式 */
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(163, 177, 198, 0.6),
+                        -2px -2px 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        .nav-links a:hover {
+            color: #2d3748;
+            /* 拟态按压效果 */
+            box-shadow: inset 2px 2px 5px rgba(163, 177, 198, 0.6),
+                        inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        .nav-links a.active {
+            color: #2d3748;
+            /* 激活态拟态按压 */
+            box-shadow: inset 2px 2px 5px rgba(163, 177, 198, 0.6),
+                        inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* 汉堡菜单按钮 - 拟态（核心修复：默认隐藏） */
+        .menu-toggle {
+            display: none; /* 电脑端默认隐藏，仅移动端显示 */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #4a5568;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 5px rgba(163, 177, 198, 0.6),
+                        -2px -2px 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 网址分类说明 - 拟态卡片 */
+        .url-category-info {
+            background: #e0e5ec;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            width: 100%;
+            /* 拟态外阴影 */
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6),
+                        -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .url-category-info h2 {
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(163, 177, 198, 0.6);
+        }
+        
+        .url-category-info p {
+            color: #718096;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 拟态 */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 15px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #e0e5ec;
+            border-radius: 12px;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6),
+                        -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 15px;
+            width: 100%;
+        }
+        
+        /* 拟态按钮核心样式 */
+        .url-button {
+            display: inline-block;
+            background: #e0e5ec;
+            border-radius: 10px;
+            color: #4a5568;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            /* 拟态外阴影 */
+            box-shadow: 3px 3px 8px rgba(163, 177, 198, 0.6),
+                        -3px -3px 8px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            /* 拟态按压效果（内阴影） */
+            box-shadow: inset 3px 3px 8px rgba(163, 177, 198, 0.6),
+                        inset -3px -3px 8px rgba(255, 255, 255, 0.8);
+            color: #2d3748;
+            transform: translateY(0); /* 取消原有位移，适配拟态风格 */
+        }
+        
+        /* 返回顶部按钮 - 拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e0e5ec;
+            color: #4a5568;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            /* 拟态外阴影 */
+            box-shadow: 4px 4px 10px rgba(163, 177, 198, 0.6),
+                        -4px -4px 10px rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top:hover {
+            /* 拟态按压 */
+            box-shadow: inset 4px 4px 10px rgba(163, 177, 198, 0.6),
+                        inset -4px -4px 10px rgba(255, 255, 255, 0.8);
+            color: #2d3748;
+            transform: translateY(0);
+        }
+        
+        /* 底部版权信息 - 拟态 */
+        footer {
+            background: #e0e5ec;
+            margin-top: auto;
+            padding: 20px 0;
+            /* 拟态上阴影 */
+            box-shadow: 0 -5px 10px rgba(163, 177, 198, 0.3);
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #4a5568;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+            box-shadow: 1px 1px 3px rgba(163, 177, 198, 0.6),
+                        -1px -1px 3px rgba(255, 255, 255, 0.8);
+        }
+        
+        .copyright a:hover {
+            color: #2d3748;
+            box-shadow: inset 1px 1px 3px rgba(163, 177, 198, 0.6),
+                        inset -1px -1px 3px rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        /* 响应式适配 */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端仅在这里显示汉堡菜单 */
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #e0e5ec;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 20px 0;
+                box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.6);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            /* 移动端网址按钮 - 每行两个 */
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能（增加容错，避免电脑端报错）
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html" class="active"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+<!--PC和WAP自适应版-->
+<div id="SOHUCS" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytsD2A7H'; 
+var conf = 'prod_918ad2e2092ba6ee3ee329449770a839'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 1000) {
+var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.charset = 'utf-8';
+script.id = 'changyan_mobile_js';
+script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+head.appendChild(script);
+} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+        
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="http://linxi9528.hkfree.work/" target="_blank">在线留言</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #6b7280;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
+</body>
+</html>

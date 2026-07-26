@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具,林熙资源网,林熙blog,林熙博客,林熙资源网"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>⎛⎝ 林熙blog ⎠⎞丨个人资源博客！</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 拟态核心背景 - 浅灰主色调，统一拟态基础色 */
+        body {
+            background: #e0e5ec;
+            color: #4a5568;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 拟态风格 */
+        .navbar {
+            background: #e0e5ec;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+            box-shadow: 
+                8px 8px 16px rgba(163, 177, 198, 0.6),
+                -8px -8px 16px rgba(255, 255, 255, 0.8);
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #4a5568;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: #5a67d8;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #5a67d8;
+            background: #e0e5ec;
+            box-shadow: 
+                5px 5px 10px rgba(163, 177, 198, 0.6),
+                -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .nav-links a.active {
+            color: #5a67d8;
+            background: #e0e5ec;
+            box-shadow: 
+                inset 5px 5px 10px rgba(163, 177, 198, 0.6),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* 汉堡菜单按钮 - 拟态 (核心修复：桌面端默认隐藏) */
+        .menu-toggle {
+            display: none; /* 桌面端默认隐藏 */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #4a5568;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: #e0e5ec;
+            box-shadow: 
+                5px 5px 10px rgba(163, 177, 198, 0.6),
+                -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            width: 100%;
+        }
+        
+        /* 图文列表样式 - 拟态风格 */
+        .gallery-section {
+            margin: 40px 0;
+        }
+        
+        .gallery-title {
+            margin-bottom: 30px;
+            color: #4a5568;
+            font-size: 1.8rem;
+            padding: 12px 20px;
+            border-radius: 15px;
+            background: #e0e5ec;
+            box-shadow: 
+                5px 5px 10px rgba(163, 177, 198, 0.6),
+                -5px -5px 10px rgba(255, 255, 255, 0.8);
+            display: inline-block;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            background: #e0e5ec;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                8px 8px 16px rgba(163, 177, 198, 0.6),
+                -8px -8px 16px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                12px 12px 24px rgba(163, 177, 198, 0.7),
+                -12px -12px 24px rgba(255, 255, 255, 0.9);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.03);
+        }
+        
+        .gallery-info {
+            padding: 20px;
+        }
+        
+        .gallery-title-text {
+            color: #4a5568;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-desc {
+            color: #718096;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* 弹窗样式 - 拟态风格 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(224, 229, 236, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: #e0e5ec;
+            border-radius: 25px;
+            max-width: 1200px;
+            width: 92%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 
+                15px 15px 30px rgba(163, 177, 198, 0.7),
+                -15px -15px 30px rgba(255, 255, 255, 0.9);
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
+            
+            /* 隐藏滚动条 */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .modal-content::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(163, 177, 198, 0.2);
+        }
+        
+        .modal-title {
+            color: #4a5568;
+            font-size: 2rem;
+            margin: 0;
+        }
+        
+        /* 关闭按钮 - 拟态 */
+        .close-modal {
+            background: #e0e5ec;
+            border: none;
+            color: #718096;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 
+                5px 5px 10px rgba(163, 177, 198, 0.6),
+                -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .close-modal:hover {
+            color: #5a67d8;
+            box-shadow: 
+                inset 5px 5px 10px rgba(163, 177, 198, 0.6),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .modal-body {
+            margin-bottom: 25px;
+        }
+        
+        .modal-image {
+            width: 100%;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            max-height: 600px;
+            object-fit: cover;
+            box-shadow: 
+                8px 8px 16px rgba(163, 177, 198, 0.6),
+                -8px -8px 16px rgba(255, 255, 255, 0.8);
+        }
+        
+        .modal-description {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 15px;
+            background: #e0e5ec;
+            box-shadow: 
+                inset 5px 5px 10px rgba(163, 177, 198, 0.4),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.6);
+        }
+        
+        /* 弹窗按钮 - 拟态风格 */
+        .modal-link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e0e5ec;
+            color: #5a67d8;
+            border: none;
+            border-radius: 15px;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 
+                5px 5px 10px rgba(163, 177, 198, 0.6),
+                -5px -5px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .modal-link-button:hover {
+            color: #4a5568;
+            box-shadow: 
+                inset 5px 5px 10px rgba(163, 177, 198, 0.6),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .modal-link-button i {
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-link-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* 返回顶部按钮 - 拟态风格 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e0e5ec;
+            color: #5a67d8;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 
+                8px 8px 16px rgba(163, 177, 198, 0.6),
+                -8px -8px 16px rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top:hover {
+            box-shadow: 
+                inset 5px 5px 10px rgba(163, 177, 198, 0.6),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+            color: #4a5568;
+            transform: translateY(-3px);
+        }
+        
+        /* 底部版权信息 - 拟态风格 */
+        footer {
+            background: #e0e5ec;
+            margin-top: auto;
+            padding: 30px 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 
+                inset 8px 8px 16px rgba(163, 177, 198, 0.6),
+                inset -8px -8px 16px rgba(255, 255, 255, 0.8);
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 8px 0;
+        }
+        
+        .copyright a {
+            color: #5a67d8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+        
+        .copyright a:hover {
+            color: #4a5568;
+            background: #e0e5ec;
+            box-shadow: 
+                inset 3px 3px 6px rgba(163, 177, 198, 0.6),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* 响应式适配 */
+        @media (max-width: 1400px) {
+            .modal-content {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .modal-image {
+                max-height: 500px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .modal-content {
+                max-width: 800px;
+            }
+            
+            .modal-image {
+                max-height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端导航菜单 - 核心修复：正确显示汉堡按钮 */
+            .menu-toggle {
+                display: flex; /* 移动端显示汉堡按钮 */
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #e0e5ec;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: 
+                    8px 8px 16px rgba(163, 177, 198, 0.6),
+                    -8px -8px 16px rgba(255, 255, 255, 0.8);
+                border-radius: 0 0 20px 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            /* 移动端图文列表 */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-image {
+                height: 200px;
+            }
+            
+            /* 移动端弹窗调整 */
+            .modal-content {
+                padding: 20px 15px;
+                max-height: 92vh;
+            }
+            
+            .modal-title {
+                font-size: 1.6rem;
+            }
+            
+            .modal-image {
+                max-height: 300px;
+            }
+            
+            .modal-description {
+                font-size: 1rem;
+            }
+            
+            .modal-link-button {
+                width: 100%;
+                justify-content: center;
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // 修复：增加判空，避免找不到元素时报错
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    // 切换汉堡/关闭图标
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        if (icon.classList.contains('fa-bars')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+            
+            // 图文弹窗功能
+            const modal = document.getElementById('gallery-modal');
+            const modalTitle = document.querySelector('.modal-title');
+            const modalImage = document.querySelector('.modal-image');
+            const modalDescription = document.querySelector('.modal-description');
+            const modalLink = document.querySelector('.modal-link-button');
+            const closeModal = document.querySelector('.close-modal');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            // 打开弹窗
+            if (modal && modalTitle && modalImage && modalDescription && modalLink && closeModal) {
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        // 获取数据属性
+                        const title = this.getAttribute('data-title');
+                        const image = this.getAttribute('data-image');
+                        const description = this.getAttribute('data-description');
+                        const link = this.getAttribute('data-link');
+                        const linkText = this.getAttribute('data-link-text') || '查看详情';
+                        
+                        // 更新弹窗内容
+                        modalTitle.textContent = title;
+                        modalImage.src = image;
+                        modalImage.alt = title;
+                        modalDescription.textContent = description;
+                        modalLink.href = link;
+                        modalLink.innerHTML = `${linkText} <i class="fa-solid fa-arrow-right"></i>`;
+                        
+                        // 显示弹窗
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // 防止背景滚动
+                    });
+                });
+                
+                // 关闭弹窗
+                closeModal.addEventListener('click', function() {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = ''; // 恢复背景滚动
+                });
+                
+                // 点击弹窗外部关闭
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // 按ESC键关闭弹窗
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">
+                <img src="/logo.png" width="250" height="50" alt="林熙博客logo" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html" class="active"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <!-- 汉堡菜单按钮 - 增加语义化class和图标 -->
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 图文列表区域 -->
+    <div class="container">
+        <section class="gallery-section">
+            <h2 class="gallery-title">精选内容</h2>
+            <div class="gallery-grid">
+            <!-- 推荐软件 -->
+                <div class="gallery-item" 
+                     data-title="泽诚AI视觉自瞄" 
+                     data-image="/img/ai.png" 
+                     data-description="泽诚AI视觉自瞄：基于深度学习的AI自瞄技术，通过图像识别实时检测游戏画面中的敌人目标，无需读取游戏内存，更安全、更稳定、更智能。支持PUBG、Valorant、三角洲行动、APEX、CS2、守望先锋2、RUST等多款热门射击游戏。"
+                     data-link="https://share.weiyun.com/NqPdk3nV"
+                     data-link-text="下载软件">
+                    <img src="/img/ai.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">泽诚AI视觉自瞄</h3>
+                        <p class="gallery-desc">PC软件</p>
+                    </div>
+                </div>
+
+            <!-- 推荐软件 -->
+                <div class="gallery-item" 
+                     data-title="泽诚资源工具盒" 
+                     data-image="/img/gj.png" 
+                     data-description="林熙宏指令助手：是一款专为方便山山客SK投屏软件制作的宏按键指令助手。本软件可以一键套用编辑好的宏按键指令，亦可添加单个宏命令；指令点击自动复制，直接粘贴至SK投屏内，简单实用，方便快捷。"
+                     data-link="https://57zy.lanzout.com/i0I2536fpsdg"
+                     data-link-text="下载软件">
+                    <img src="/img/gj.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">泽诚资源工具盒</h3>
+                        <p class="gallery-desc">PC软件</p>
+                    </div>
+                </div>
+                
+            <!-- 推荐软件 -->
+                <div class="gallery-item" 
+                     data-title="林熙万能视频解析" 
+                     data-image="/img/jx.png" 
+                     data-description="林熙万能视频解析为广大网友提供优酷VIP解析，爱奇艺VIP解析，腾讯VIP解析，乐视VIP解析，芒果VIP解析等解析服务，让你省去购买视频VIP费用，欢迎大家收藏本站，并将它介绍给您的朋友！"
+                     data-link="https://57zy.lanzout.com/iqPKu36fnxij"
+                     data-link-text="下载软件">
+                    <img src="/img/jx.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">林熙万能视频解析</h3>
+                        <p class="gallery-desc">PC软件</p>
+                    </div>
+                </div>
+                
+                <!-- 图文项1 -->
+                <div class="gallery-item" 
+                     data-title="班迪录屏 Bandicam 绿色便携版" 
+                     data-image="/img/lp.png" 
+                     data-description="班迪录屏去广告版是一款功能全面并且简单好用的高清录屏电脑软件，英文名称叫做 bandicam，支持录屏幕、录游戏、录视频等常见需求，这款软件相比其他录屏软件，优势就在于对电脑配置要求会比较低，还支持录制很多高清的游戏视频，支持 FPS 和 DirectX/OpenGL 的录制和屏幕录像，录制的视频体积小，而且画面清晰。"
+                     data-link="https://example.com/nature-photography"
+                     data-link-text="下载软件">
+                    <img src="/img/lp.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">班迪录屏 Bandicam 绿色便携版</h3>
+                        <p class="gallery-desc">PC软件</p>
+                    </div>
+                </div>
+                
+                <!-- 图文项2 -->
+                <div class="gallery-item" 
+                     data-title="林熙万能压枪助手HTML源码" 
+                     data-image="/img/yq.png" 
+                     data-description="林熙万能压枪助手整站HTML源码"
+                     data-link="https://57zy.lanzout.com/iXSNN09hezub"
+                     data-link-text="下载源码">
+                    <img src="/img/yq.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">林熙万能压枪助手HTML源码</h3>
+                        <p class="gallery-desc">HTML源码</p>
+                    </div>
+                </div>
+                
+                <!-- 图文项3 -->
+                <div class="gallery-item" 
+                     data-title="在线小姐姐HTML源码" 
+                     data-image="/img/xjj.png" 
+                     data-description="在线小姐姐整站HTML源码"
+                     data-link="https://57zy.lanzout.com/iWF5o066639g"
+                     data-link-text="下载源码">
+                    <img src="/img/xjj.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">在线小姐姐HTML源码</h3>
+                        <p class="gallery-desc">HTML源码</p>
+                    </div>
+                </div>
+                
+                <!-- 图文项4 -->
+                <div class="gallery-item" 
+                     data-title="林熙视频解析系统全站源码" 
+                     data-image="/img/lxjx.jpeg" 
+                     data-description="林熙视频解析系统全站源码，带后台！"
+                     data-link="https://57zy.lanzout.com/iYX6Myo9tef"
+                     data-link-text="下载源码">
+                    <img src="/img/lxjx.jpeg" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">林熙视频解析系统全站源码</h3>
+                        <p class="gallery-desc">PHP + HTML源码</p>
+                    </div>
+                </div>
+                
+                <!-- 图文项5 -->
+                <div class="gallery-item" 
+                     data-title="林熙个人网站模板出售源码" 
+                     data-image="/img/mb.png" 
+                     data-description="林熙视频解析系统全站源码，带后台！"
+                     data-link="https://57zy.lanzout.com/i9LMLym19cd"
+                     data-link-text="下载源码">
+                    <img src="/img/mb.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">林熙个人网站模板出售源码</h3>
+                        <p class="gallery-desc">HTML源码</p>
+                    </div>
+                </div>
+                
+                <!-- 图文项6 -->
+                <div class="gallery-item" 
+                     data-title="Photoshop CS6破解版" 
+                     data-image="/img/ps.png" 
+                     data-description="Photoshop CS6中文版是Adobe公司旗下最为出名的图像处理软件之一，Photoshop CS6简体中文版集图像扫描、编辑修改、图像制作、广告创意，图像输入与输出于一体的图形图像处理软件，深受广大平面设计人员和电脑美术爱好者的喜爱。"
+                     data-link="https://57zy.lanzout.com/icQQj03rnnmj"
+                     data-link-text="下载软件">
+                    <img src="/img/ps.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">Photoshop CS6破解版</h3>
+                        <p class="gallery-desc">PC软件</p>
+                    </div>
+                </div>
+                
+                <!-- 图文项7 -->
+                <div class="gallery-item" 
+                     data-title="迅雷本地VIP精简版" 
+                     data-image="/img/xl.png" 
+                     data-description="迅雷11于2020年8月推出，是继迅雷X之后的换代版PC迅雷客户端。迅雷11重新设计了主界面框架，将下载与云盘合二为一，在迅雷云盘里，可以流畅的观看视频 ，从云盘取回文件的速度，号称将前所未有的快！"
+                     data-link="https://57zy.lanzout.com/iXLru2ay9ppg"
+                     data-link-text="下载软件">
+                    <img src="/img/xl.png" class="gallery-image">
+                    <div class="gallery-info">
+                        <h3 class="gallery-title-text">迅雷本地VIP精简版</h3>
+                        <p class="gallery-desc">PC软件</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+    
+    <!-- 弹窗 -->
+    <div id="gallery-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title"></h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="" class="modal-image">
+                <p class="modal-description"></p>
+                <a href="#" class="modal-link-button" target="_blank"></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="http://linxi9528.hkfree.work/" target="_blank">林熙博客</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #a79552;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
+</body>
+</html>

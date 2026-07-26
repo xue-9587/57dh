@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>⎛⎝ 林熙图片画廊 ⎠⎞丨精选壁纸图片大全！</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 拟态核心基础样式 - 统一背景色 + 阴影逻辑 */
+        body {
+            /* 拟态主背景色：浅灰调，适配拟态光影 */
+            background: #e0e5ec;
+            color: #4a5568;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 移除原渐变背景和伪元素，替换为拟态简洁背景 */
+        body::before, body::after {
+            display: none;
+        }
+        
+        /* 导航栏拟态样式 */
+        .navbar {
+            /* 拟态凸起效果：浅阴影+深阴影 */
+            background: #e0e5ec;
+            box-shadow: 
+                8px 8px 16px #b8c0c8,
+                -8px -8px 16px #ffffff;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #2d3748;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* 拟态文字轻微阴影 */
+            text-shadow: 1px 1px 2px #b8c0c8, -1px -1px 2px #ffffff;
+        }
+        
+        .logo i {
+            color: #4a6cf7;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            position: relative;
+            /* 拟态按钮基础样式 */
+            border-radius: 10px;
+        }
+        
+        .nav-links a:hover {
+            color: #4a6cf7;
+            /* 悬浮时拟态按压效果 */
+            background: #e0e5ec;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+        }
+        
+        .nav-links a.active {
+            color: #4a6cf7;
+            /* 激活态拟态按压 */
+            background: #e0e5ec;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+        }
+        
+        /* 关键修复：默认隐藏汉堡菜单，仅在移动端显示 */
+        .menu-toggle {
+            display: none; /* 桌面端默认隐藏 */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #4a5568;
+            /* 拟态圆形按钮 */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: #e0e5ec;
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            width: 100%;
+        }
+        
+        /* 分类信息拟态样式 */
+        .url-category-info {
+            background: #e0e5ec;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            /* 拟态凸起阴影 */
+            box-shadow: 
+                8px 8px 16px #b8c0c8,
+                -8px -8px 16px #ffffff;
+            border: none; /* 移除原边框，拟态不需要 */
+        }
+        
+        .url-category-info h2 {
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px #b8c0c8, -1px -1px 2px #ffffff;
+        }
+        
+        .url-category-info p {
+            color: #718096;
+            margin-bottom: 0;
+        }
+        
+        .url-buttons {
+            margin: 10px auto 20px;
+            padding: 20px 25px;
+            max-width: 100%;
+            width: 100%;
+            background: #e0e5ec;
+            border-radius: 16px;
+            box-shadow: 
+                8px 8px 16px #b8c0c8,
+                -8px -8px 16px #ffffff;
+            border: none;
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+        
+        /* 按钮拟态样式 */
+        .url-button {
+            display: inline-block;
+            background: #e0e5ec;
+            border-radius: 12px;
+            color: #4a5568;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            /* 拟态凸起阴影 */
+            box-shadow: 
+                6px 6px 12px #b8c0c8,
+                -6px -6px 12px #ffffff;
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            /* 悬浮按压效果 */
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+            color: #4a6cf7;
+            transform: translateY(0); /* 移除原位移，拟态更内敛 */
+        }
+
+        /* 画廊区域拟态 */
+        .gallery-section {
+            margin: 40px 0;
+            padding: 30px 25px;
+            background: #e0e5ec;
+            border-radius: 20px;
+            box-shadow: 
+                10px 10px 20px #b8c0c8,
+                -10px -10px 20px #ffffff;
+            border: none;
+        }
+
+        .gallery-title {
+            color: #2d3748;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px #b8c0c8, -1px -1px 2px #ffffff;
+            padding-left: 15px;
+            border-left: 4px solid #4a6cf7;
+        }
+
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 4;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .masonry-grid {
+                column-count: 5;
+            }
+        }
+
+        /* 图片项拟态 */
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            /* 拟态凸起阴影 */
+            box-shadow: 
+                8px 8px 16px #b8c0c8,
+                -8px -8px 16px #ffffff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .masonry-item:hover {
+            /* 悬浮轻微按压 */
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+            transform: translateY(0);
+        }
+
+        .masonry-img {
+            width: 100%;
+            display: block;
+            transition: opacity 0.3s ease;
+            border-radius: 16px; /* 图片适配容器圆角 */
+        }
+
+        .masonry-item:hover .masonry-img {
+            opacity: 0.95;
+        }
+
+        /* 图片弹窗拟态样式 */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* 半透明拟态背景 */
+            background: rgba(224, 229, 236, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            /* 弹窗拟态凸起 */
+            background: #e0e5ec;
+            border-radius: 20px;
+            box-shadow: 
+                15px 15px 30px #b8c0c8,
+                -15px -15px 30px #ffffff;
+        }
+
+        .modal-img-container {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 16px;
+            overflow: hidden;
+            /* 图片容器拟态 */
+            box-shadow: 
+                inset 2px 2px 5px #b8c0c8,
+                inset -2px -2px 5px #ffffff;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 16px;
+        }
+
+        /* 图片描述文字拟态 */
+        .modal-caption {
+            color: #4a5568;
+            font-size: 1rem;
+            margin-top: 20px;
+            max-width: 80%;
+            text-align: center;
+            line-height: 1.6;
+            padding: 15px 20px;
+            background: #e0e5ec;
+            border-radius: 12px;
+            /* 拟态内凹 */
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+        }
+
+        /* 关闭/切换按钮拟态 */
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #4a5568;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            /* 圆形拟态按钮 */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e0e5ec;
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+        }
+
+        .close-modal:hover {
+            color: #e53e3e;
+            /* 按压效果 */
+            box-shadow: 
+                inset 2px 2px 5px #b8c0c8,
+                inset -2px -2px 5px #ffffff;
+        }
+
+        .modal-prev, .modal-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4a5568;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+            /* 圆形拟态按钮 */
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e0e5ec;
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+        }
+
+        .modal-prev {
+            left: -60px;
+        }
+
+        .modal-next {
+            right: -60px;
+        }
+
+        .modal-prev:hover, .modal-next:hover {
+            color: #4a6cf7;
+            /* 按压效果 */
+            box-shadow: 
+                inset 2px 2px 5px #b8c0c8,
+                inset -2px -2px 5px #ffffff;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* 返回顶部按钮拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e0e5ec;
+            color: #4a6cf7;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            /* 拟态凸起 */
+            box-shadow: 
+                8px 8px 16px #b8c0c8,
+                -8px -8px 16px #ffffff;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top:hover {
+            /* 按压效果 */
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+            color: #2a43c8;
+            transform: translateY(0);
+        }
+        
+        /* 页脚拟态 */
+        footer {
+            background: #e0e5ec;
+            margin-top: auto;
+            padding: 30px 0;
+            border-top: none;
+            /* 拟态凸起 */
+            box-shadow: 
+                0 -8px 16px #b8c0c8;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 8px 0;
+            text-shadow: 1px 1px 2px #b8c0c8, -1px -1px 2px #ffffff;
+        }
+        
+        .copyright a {
+            color: #4a6cf7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+        
+        .copyright a:hover {
+            color: #2a43c8;
+            /* 轻微内凹 */
+            box-shadow: 
+                inset 2px 2px 4px #b8c0c8,
+                inset -2px -2px 4px #ffffff;
+            text-decoration: none;
+        }
+        
+        /* 响应式适配 */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端显示汉堡菜单 */
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #e0e5ec;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 20px 0;
+                /* 拟态阴影 */
+                box-shadow: 
+                    0 8px 16px #b8c0c8,
+                    0 -2px 8px #ffffff;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+                border-radius: 0 0 20px 20px;
+                border-top: none;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            /* 移动端弹窗按钮适配 */
+            .close-modal {
+                top: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.5rem;
+            }
+            
+            .modal-prev, .modal-next {
+                font-size: 1.5rem;
+                width: 40px;
+                height: 40px;
+                left: 15px;
+                right: 15px;
+            }
+            
+            .modal-prev {
+                left: 15px;
+            }
+            
+            .modal-next {
+                right: 15px;
+            }
+            
+            .modal-caption {
+                font-size: 0.9rem;
+                max-width: 95%;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // 修复：增加判断，避免移动端菜单按钮不存在时报错
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+
+            // 图片瀑布流和弹窗功能
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            // 弹窗结构增加文字展示区域
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-modal"><i class="fa fa-times"></i></span>
+                    <span class="modal-prev"><i class="fa fa-chevron-left"></i></span>
+                    <div class="modal-img-container">
+                        <img class="modal-img" src="" alt="图片预览">
+                    </div>
+                    <div class="modal-caption"></div> <!-- 文字内容区域 -->
+                    <span class="modal-next"><i class="fa fa-chevron-right"></i></span>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            const modalImg = modal.querySelector('.modal-img');
+            const modalCaption = modal.querySelector('.modal-caption'); // 获取文字容器
+            const closeBtn = modal.querySelector('.close-modal');
+            const prevBtn = modal.querySelector('.modal-prev');
+            const nextBtn = modal.querySelector('.modal-next');
+            const images = document.querySelectorAll('.masonry-img');
+            let currentIndex = 0;
+
+            // 打开弹窗 - 同时显示文字内容
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src;
+                    // 获取图片的描述文字并显示
+                    modalCaption.textContent = img.dataset.caption || '图片展示';
+                    currentIndex = index;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // 关闭弹窗
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // 点击弹窗外部关闭
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // 上一张图片 - 同步更新文字
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                modalImg.src = images[currentIndex].src;
+                modalCaption.textContent = images[currentIndex].dataset.caption || '图片展示';
+            });
+
+            // 下一张图片 - 同步更新文字
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % images.length;
+                modalImg.src = images[currentIndex].src;
+                modalCaption.textContent = images[currentIndex].dataset.caption || '图片展示';
+            });
+
+            // 键盘导航 - 同步更新文字
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    modalImg.src = images[currentIndex].src;
+                    modalCaption.textContent = images[currentIndex].dataset.caption || '图片展示';
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    modalImg.src = images[currentIndex].src;
+                    modalCaption.textContent = images[currentIndex].dataset.caption || '图片展示';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html" class="active"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- 图片瀑布流区域 -->
+        <section class="gallery-section">
+            <h2 class="gallery-title"><i class="fa-solid fa-images"></i> 林熙AI图片生成 提示词库</h2>
+            <div class="masonry-grid">
+                <!-- 示例图片 - 添加data-caption属性存储文字内容 -->
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrDZo-T3ut0dQiDef0lWCi8aqkxR3dAACQyQAAoqNyFfgTOcF_TzJ7DYE.png" class="masonry-img" data-caption="提示词：线条漫画插画写实风格，半真实，立体仿真人，仿真皮肤，OC质感，超清画质32K，黑色线条厚涂，一位现代女子，身高172，温柔有气质，肤白貌美大长腿，凹凸有致，26岁，高冷御姐脸，眼睛很美，妆容精致。 女生留着黑棕色长直发，雾霾蓝色宽松衬衫斜穿露单肩，深灰色丝光棉不规则包臀中裙，腰部系着名牌腰带，黑色八厘米细跟高跟鞋。斜挎名牌黑色漆皮小包包。">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrDdo-T7TnQk9raRcOw4X6kIBdgafKgACSCQAAoqNyFfqfCw62Zm6qDYE.png" class="masonry-img" data-caption="提示词：国风动漫风格，工笔画，图片以深棕色调，一年轻女子，骑一毛驴，身穿明朝传统风格的服饰，骑上毛驴从荒野土路走来。她面容娇美，头插一小花，毛驴身后还驮着二箩筐，箩筐里装有包袱和农产品。夕阳照在她身上，一派温馨祥和的画面">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrDho-T9np2REjzVDGfCfMnMKXHfrswACSSQAAoqNyFd6oOQx2KggazYE.png" class="masonry-img" data-caption="提示词：全身港漫特写，柯镇恶，面容沧桑不怒自威，黑色瞳孔，眉头紧锁尽显刚毅决绝，灰色短须长发，尽显江湖风霜，头戴巨大旧毡帽，身穿粗布灰色短打劲装，腰间缠着布带，绑腿布鞋，手持沉重木纹龙头杖矗立，腰间挂有酒葫芦，虽衣衫简朴但身形挺拔如松，周身气场沉雄，背景为雨夜破庙或荒废酒馆，电闪雷鸣照亮残破环境，凸显其嫉恶如仇坚韧不拔的侠者气概，港漫画风，线条粗犷有力，黑色彩对比强烈，光影效果极具戏剧张力。">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrDlo-T_AjxXuJGxEo3JgWpSuCdhucwACSiQAAoqNyFf4NRL5NdFNrzYE.png" class="masonry-img" data-caption="提示词：Moebius (Jean Giraud)风格，极繁主义，极致表现力，浪漫感，细节完美，大师杰作。 创作一幅清新治愈的插画，全图翠绿色调 高空鳥瞰圖 插画，画面呈现雨中的清新自然场景，有大片翠绿植物，一只白色圆滚滚的生物手拿芋头叶子挡雨安静坐在水边石台上，背景是朦胧雨雾与淡蓝天空，营造静谧、诗意的节气氛围">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrDpo-UAaUoh_z4ZXhTrCU-uVnwMWagACSyQAAoqNyFeLD2l43tKoxDYE.png" class="masonry-img" data-caption="提示词：线条漫画插画写实风格，从头到脚全呈现，半真实，立体仿真人，仿真皮肤，OC质感，超清画质32K，黑色线条厚涂，一位现代女子，身高172，温柔有气质，肤白貌美大长腿，凹凸有致，26岁，高冷御姐脸，眼睛很美，妆容精致。 女生留着黑棕色长卷发，上衣穿白色的运动背心，下装搭配的是一条同色系的白色网球运动裙，鞋子是一双耐克网球运动鞋。袜子是白色的短袜，增加了整体的运动感。左手拿着网球拍，右手拿着保温瓶。">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrDto-UCz2i3cumRmjGsU5U05ZkssIAACTyQAAoqNyFdCIPRUtp9G8TYE.png" class="masonry-img" data-caption="提示词：Moebius (Jean Giraud)风格，极繁主义，极致表现力，浪漫感，细节完美，大师杰作。 创作一幅清新治愈的插画，全图翠绿色调 高品质细节，超高清分辨率，最佳品质，笔触清晰，高饱和度， 二只白色圓滾滾生物，一只頭上插黃色花朵，坐在一根粗大的植物長滿藤蔓青苔樹幹上，一只举着荷叶当作雨伞，另一只则在弹吉他。戴着草帽，面带微笑，小雨天氛围。">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrDxo-UFEG5nZUEVdQV2VzmI9igc-4gACUCQAAoqNyFdXMB7mF_RQDjYE.png" class="masonry-img" data-caption="提示词：荒木飞吕彦风格，JOJO风格，jojo经典pose，威尔史密斯，电影我是传奇经典角色造型，背着一把M16A突击步枪，身边有一只德牧，目光如炬，表情坚毅，细节清晰，面部特写，稍低角度仰拍镜头，细节清晰，背景为末日城市，高楼大厦之间长满了野草，暗色调，好莱坞电影质感风格光影感">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrD1o-UF8FQABzrtaDfmrXsd1IHv9u80AAlEkAAKKjchXP174a7TXV2Y2BA.png" class="masonry-img" data-caption="提示词：油纸伞，美女，古风，白娘子肩上扛着油纸伞 古典、优雅且富有诗意，女性，精美戏服、华丽头饰。传统戏曲艺术，精致与典雅。增添了一份温婉与才情。静谧而富有韵味的氛围，观者仿佛能感受到传统戏曲艺术的深厚底蕴和独特魅力。油画写实风格暗黑。">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrD5o-UI1E36nUmQcX2YidU336V_8rwACUiQAAoqNyFcCUMkVC09j8jYE.png" class="masonry-img" data-caption="提示词：（【东周古韵柔美动漫美学】+ 主体形象（洛邑城女性，身形高挑如修竹，沙漏型身材线条匀称显柔婉；长发如墨玉垂落有层次，几缕发丝随微风拂颊，似藏未语心事）+ 服饰装扮（绛红色战国袍拖地如流霞，布腰带轻束腰肢显纤细，衬得身形端庄带娇弱；服饰纹理清晰透古朴质感，衣袂边缘随动作微晃）+ 姿态呈现（背影优雅挺拔，肩颈舒展含怯意；正面端庄，神情沉静带羞赧，眼波如秋水微漾，低头垂眸时睫毛轻颤如蝶翼，显大气与娇柔）+ 风格渲染（动漫风格结合CG渲染与厚涂技法，色彩浓郁不张扬，绛红袍裙泛温润光泽，质感厚重藏细腻，细节丰富至发丝弧度、衣料褶皱）+ 构图呈现（全身照完整展身形与服饰，袍角垂落、束腰弧度、微颤睫毛凸显东周服饰特色，烘托端庄中带楚楚动人的气质）+ 徽标要求（右下角极小占地（小于万分之0.1）、似有似无、设计感极强的“秦岭”徽标，融入古朴色调，与整体氛围浑然一体） 方向：古朴与柔美交织，借东周服饰与动漫风格，呈现洛邑女性端庄中藏娇柔的独特气质，打造富艺术表现力的古韵画面） 右下角不起眼位置，占地极小（小于万分之 0.1），很难辨识，似有似无，设计感极强，徽标中有画面主题的元素，细节精湛，随画面色调打造的“丁宁”徽标，要恰到好处，不引起注意，与画面融为一体。">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrD9o-UMXE0DWnbc0Wg2dRDVx5U6r3QACUyQAAoqNyFe5LZ1CAAH4jVI2BA.png" class="masonry-img" data-caption="提示词：主体：古代 男子 设计：皮肤白皙细腻 长发束发 痞气的 服装：穿着门派服饰 简单的配饰 动作：靠在树上盯梢 背景：仙殿 祥云 巨大的海棠花树 色调：冷色调 灯光：自然光 特效： 风格：插画风格 画质：32K超高清画质 极其详细的刻画 构图与技术：半身像">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrEFo-UQRcQpQGOv6riCh7eEYo5KSNAACViQAAoqNyFcXYyZI22H9zjYE.png" class="masonry-img" data-caption="提示词：巫盅(蝎子），苗疆圣女，暗黑风格摄影，阴森，暗朦，光朦，复杂银饰+铃铛，大风吹拂黑色凌乱长发，浓雾。半身特写，目光瘆人，恐怖邪笑，红色瞳孔虹膜晶体纹理清晰，游戏cg，错综复杂的环境，3D">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrEJo-UTCeGHroZisU_45n4U3pyCcHwACWCQAAoqNyFd71eMtQUnbCTYE.png" class="masonry-img" data-caption="提示词：呈现出CG厚涂、游戏CG的风格，色彩层次丰富多样，质感细腻，有着真实的光影和精致细节的图片中，一位女性穿着原创汉服女【傩戏】明制大祭司戏曲风重工刺绣云肩汉元素套装，适合秋冬穿着。她的头发是灰棕色且齐腰长，佩戴着大祭司异域风的傩戏全套发饰，有发冠、蝴蝶抹额、流苏头饰等。她的妆容为微醺风格，有着黑黝黝毛嘟嘟的大眼睛，高挺的鼻梁，红唇迷人。她以正面的角度面对镜头，画面高清晰度，将她的美丽展现得淋漓尽致。国风光影，移轴摄影，低角度仰拍，三米左右身高修长身材高挑身材，皮肤肌理磨砂高抛光处理，暗夜微光，暗黑魔幻虚空，流体，发光体，精致艳丽的妆容，烈焰红唇，全身照，高光白皙皮肤，明亮感，妖艳，魅惑，冷色系，活体感，HDR，超立体，3D渲染，虚拟引擎渲染，高清80000000K。，浓妆艳抹烈焰红唇，肤白貌美，黑发飘逸凌乱，嘴角微扬，精致妆容，大眼，眼线，睫毛，黑色宝石耳环，咖项链，咖宝石手链，888k超高清分辨率，冷色调暗光背景，眼部高细节，超高清肌肤雪白瓷白光超高细节，极致超高清的夸张手法设计美，胸前超高清细节勾勒描绘">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrENo-UUvv2K2CgJnlqSzJsBa6VxUfwACWSQAAoqNyFdJYFZt6sjC_TYE.png" class="masonry-img" data-caption="提示词：邪魅凤眼, 细长眼尾, 雪肤凝脂, 湿发拂面, 凌乱发丝, 朱唇微启, 魅惑神情, 丰盈体态, 超精细手指刻画，霸气回眸，妩媚性感御姐，高清勾画细节，笔触，肌理， 绝色美人五官高清近距离特写，风吹发丝细腻而富有光泽。戏服（繁复精致）扇子掩面，动作优雅，突出诡异氛围 大师级配色，大师级光影，滤镜微闪，意境构图，俯瞰全景，人物全身。 背景暗色，中式诡异，身后暗黑披风战队（刻画细节）红色雾气摇曳，诡异氛围感，动作流畅，有故事，意识流，故事感。超高清画质。特写镜头下一位盘发薇乱，黑棕色眸的美丽御姐，樱唇泛着鲜红红晕。冷白皮，修长手指与优雅长甲相映成辉。画面采用柔和渐变的色彩呈现超现实主义肖像风格，高画质展现发丝的细腻纹理。写实逼真，CG厚涂，3D高精度建模渲染 ,OC渲染 Dolby Vision动态范围，立体唇纹反光，细腻皮肤纹理 柔和 8K超清真人比例建模，电影级景深，精确的面部解剖结构，微距摄影打光技术，动态表情捕捉，瞳孔虹膜分层着色。3D渲染，女性，大波浪长发，身材高挑，身着黑色制服，神秘高贵优雅">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrERo-UVi4Z9pbX3uOYciGgju9YR7uAACWiQAAoqNyFdewEMpQb57IzYE.png" class="masonry-img" data-caption="提示词：治愈插画，绘本插画，彩铅笔触，满屏是酒（茅台，五粮液，酒鬼酒，古井贡酒，杏花村，枝江大曲，西凤酒，泰山特曲，习酒，稻花香，梦之蓝），紧密堆叠在一起，中间露出一个诗仙李白的头，流露出嫌弃的眼神，写实风格的质感，极简主义，高清画质，8K">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrEVo-UWbP74WKjIEWRYJqtbNL9S4jAACWyQAAoqNyFfCfyMLt3mBdTYE.png" class="masonry-img" data-caption="提示词：兴奋的满房间乱跑，趴桌子，推椅子，掀被子，砸镜子，泼裤子……胡天胡地还乐不可支的男宝宝，女当家再次嘶吼一声，左手一挥用刚学太极揉手把苦苦相劝的丈夫打飞出窗户，右手抓起衣架就扑向了还在畅声大笑的宝宝……">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrEZo-UYzMrRwS8NUYFEnC5IM1KL-xAACXCQAAoqNyFfE00UIvhEk0zYE.png" class="masonry-img" data-caption="提示词：一位皮肤白皙、眼神单纯可爱的长发猫妖少女，编着一条粗长麻花辫垂到脚踝，发丝凌乱，穿着军绿色短款工装外套，内搭黑色工字背心，下着卡其色多口袋工装裤，系着黑色腰带，脚穿黑色马丁靴，戴着黑色鸭舌帽、指虎戒指，站在废旧工厂前，白色背景，人物特写，幻想风格，浅景深，光斑，光影对比，神秘、微光氛围，服装繁复细节、复古、层层叠叠风格，CG、游戏风格、oc渲染，超高清、面部高清，清透、色彩饱满有层次">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrEdo-UZ7NRSEkm9Uqh-TCvUqOxbmmgACXSQAAoqNyFf8Sq5UIrWuODYE.png" class="masonry-img" data-caption="提示词：山海经妖人，背景山水，暗黑，电影写实感">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrEho-UbH60sLDfDTJvQe1anwzBgEhgACXiQAAoqNyFcoCiPnqCOqcTYE.png" class="masonry-img" data-caption="提示词：封建时代日本城堡位于海中的海岛上，离陆地非常近，城堡的三面都是悬崖峭壁，只有北面有片缓坡一直通往临近的海岛，山上的城堡从南面的正门延伸出一条路通到海岛的岸边，通过简易的浮桥与陆地相连。临近海岛上有个码头（停着几条日本古代安宅船），对面陆地上是有人居住的城镇，浮世绘风格，海洋场景，历史绘画，古代日本，远景，壮丽氛围，精细描绘。">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrElo-UbzEzuxP9YwZJGCpogCpTfeEwACXyQAAoqNyFcLvLjBFSiGAAE2BA.png" class="masonry-img" data-caption="提示词：唐朝汉服，米色暗纹 齐腰襦裙，盘发发髻，身材高挑，御姐美人，高雅气质，超清画质高细节，发丝细腻，皮肤白皙，细腻厚涂 大师级作品，细节丰富，细节优化，高清图，绝美容颜，亮色系色调，CG渲染，动漫风格">
+</div>
+<div class="masonry-item">
+<img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEDrEpo-UdnL8Li6Ki6gUQ9g3PISnnw0gACYCQAAoqNyFcjAYwWaZ2w9DYE.png" class="masonry-img" data-caption="提示词：女子立绘，巨复杂！！！几乎全身被银色红杜鹃花纹覆盖，流苏，花，巨华丽，多装饰，古风衣，长头发，3D引擎，OC渲染，CG半厚涂，主要红色渐变全身，小物！！全身镜头。图片风格为暗黑，，宝剑">
+</div>
+<!-- 更多图片... -->
+
+            </div>
+        </section>
+    </div>
+    
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="http://linxi9528.hkfree.work/" target="_blank">林熙图库</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #6b7280;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
+</body>
+</html>
