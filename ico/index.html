@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>林熙在线ICO图标生成丨免费在线ico图标制作！</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 拟态风格基础背景 */
+        body {
+            background: #e0e5ec;
+            color: #4a5568;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 拟态风格 */
+        .navbar {
+            background: #e0e5ec;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+            box-shadow: 
+                8px 8px 16px #b8c0c8,
+                -8px -8px 16px #ffffff;
+            border-radius: 0 0 16px 16px;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #4a5568;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: #6d78e2;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #6d78e2;
+            background: #e0e5ec;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+        }
+        
+        .nav-links a.active {
+            color: #6d78e2;
+            background: #e0e5ec;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+        }
+        
+        /* 汉堡菜单按钮 - 拟态（默认隐藏，仅移动端显示） */
+        .menu-toggle {
+            display: none; /* 电脑端默认隐藏 */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #4a5568;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            background: #e0e5ec;
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 网址分类说明 - 拟态卡片 */
+        .url-category-info {
+            background: #e0e5ec;
+            border-radius: 16px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            box-shadow: 
+                6px 6px 12px #b8c0c8,
+                -6px -6px 12px #ffffff;
+            width: 100%;
+        }
+        
+        .url-category-info h2 {
+            color: #4a5568;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .url-category-info p {
+            color: #718096;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 拟态风格 */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 15px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #e0e5ec;
+            border-radius: 16px;
+            box-shadow: 
+                6px 6px 12px #b8c0c8,
+                -6px -6px 12px #ffffff;
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 15px;
+            width: 100%;
+        }
+        
+        /* 拟态风格按钮 */
+        .url-button {
+            display: inline-block;
+            background: #e0e5ec;
+            border-radius: 12px;
+            color: #4a5568;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            color: #6d78e2;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+            transform: translateY(-2px);
+        }
+        
+        /* ICO生成工具样式 - 拟态风格 */
+        .ico-generator {
+            background: #e0e5ec;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 
+                8px 8px 16px #b8c0c8,
+                -8px -8px 16px #ffffff;
+            border: none;
+        }
+        
+        .ico-generator h2 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        /* 上传区域 - 拟态 */
+        .upload-area {
+            border: none;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #e0e5ec;
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+        }
+        
+        .upload-area:hover {
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: #6d78e2;
+            margin-bottom: 15px;
+        }
+        
+        .upload-area p {
+            color: #718096;
+            margin: 0;
+        }
+        
+        #file-input {
+            display: none;
+        }
+        
+        .settings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+        
+        .setting-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .setting-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        /* 下拉框/输入框 - 拟态 */
+        .setting-group select, .setting-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background: #e0e5ec;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+            border: none;
+            color: #4a5568;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+            min-height: 128px;
+        }
+        
+        .preview-box {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 
+                6px 6px 12px #b8c0c8,
+                -6px -6px 12px #ffffff;
+            display: none;
+        }
+        
+        .preview-image {
+            max-width: 100%;
+            max-height: 256px;
+            display: block;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        /* 拟态按钮 */
+        .btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e0e5ec;
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+            color: #4a5568;
+        }
+        
+        .btn-primary {
+            color: #6d78e2;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+            color: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            box-shadow: 
+                2px 2px 4px #b8c0c8,
+                -2px -2px 4px #ffffff;
+        }
+        
+        .btn-primary:disabled:hover {
+            box-shadow: 
+                2px 2px 4px #b8c0c8,
+                -2px -2px 4px #ffffff;
+            transform: none;
+        }
+        
+        /* 状态消息 - 拟态 */
+        .status-message {
+            text-align: center;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            box-shadow: 
+                inset 2px 2px 4px #b8c0c8,
+                inset -2px -2px 4px #ffffff;
+        }
+        
+        .success {
+            background: #e0e5ec;
+            color: #10b981;
+        }
+        
+        .error {
+            background: #e0e5ec;
+            color: #ef4444;
+        }
+        
+        /* 返回顶部按钮 - 拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e0e5ec;
+            color: #6d78e2;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 
+                4px 4px 8px #b8c0c8,
+                -4px -4px 8px #ffffff;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top:hover {
+            box-shadow: 
+                inset 4px 4px 8px #b8c0c8,
+                inset -4px -4px 8px #ffffff;
+            color: #5a67d8;
+            transform: translateY(-3px);
+        }
+        
+        /* 底部版权信息 - 拟态 */
+        footer {
+            background: #e0e5ec;
+            margin-top: auto;
+            padding: 20px 0;
+            box-shadow: 
+                0 -4px 8px #b8c0c8,
+                0 4px 8px #ffffff;
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #6d78e2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #5a67d8;
+            text-decoration: underline;
+        }
+        
+        /* 响应式适配 */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端导航菜单 */
+            .menu-toggle {
+                display: flex; /* 仅移动端显示汉堡菜单 */
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #e0e5ec;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: 
+                    0 8px 16px #b8c0c8,
+                    0 -8px 16px #ffffff;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+                border-radius: 0 0 16px 16px;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            /* 移动端网址按钮 - 每行两个 */
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* 移动端ICO生成器调整 */
+            .ico-generator {
+                padding: 15px;
+                margin: 15px;
+            }
+            
+            .upload-area {
+                padding: 30px 15px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+            
+            // ICO生成器功能
+            const fileInput = document.getElementById('file-input');
+            const uploadArea = document.querySelector('.upload-area');
+            const previewBox = document.querySelector('.preview-box');
+            const previewImage = document.querySelector('.preview-image');
+            const generateBtn = document.getElementById('generate-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const statusMessage = document.querySelector('.status-message');
+            const sizeSelect = document.getElementById('size-select');
+            const formatSelect = document.getElementById('format-select');
+            
+            let originalImage = null;
+            
+            // 触发文件选择
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // 处理文件选择
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = (event) => {
+                        const img = new Image();
+                        img.onload = () => {
+                            originalImage = img;
+                            previewImage.src = event.target.result;
+                            previewBox.style.display = 'block';
+                            showStatus('图片已加载，请设置参数并生成ICO', 'success');
+                            downloadBtn.disabled = true;
+                        };
+                        img.src = event.target.result;
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // 生成ICO按钮点击事件
+            generateBtn.addEventListener('click', () => {
+                if (!originalImage) {
+                    showStatus('请先上传图片', 'error');
+                    return;
+                }
+                
+                try {
+                    // 获取用户选择的尺寸
+                    const size = parseInt(sizeSelect.value);
+                    const format = formatSelect.value;
+                    
+                    // 创建Canvas处理图像
+                    const canvas = document.createElement('canvas');
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+                    
+                    // 绘制图像（保持比例居中裁剪）
+                    const scale = Math.max(size / originalImage.width, size / originalImage.height);
+                    const scaledWidth = originalImage.width * scale;
+                    const scaledHeight = originalImage.height * scale;
+                    const x = (size - scaledWidth) / 2;
+                    const y = (size - scaledHeight) / 2;
+                    
+                    ctx.drawImage(
+                        originalImage,
+                        x, y,
+                        scaledWidth, scaledHeight
+                    );
+                    
+                    // 更新预览
+                    previewImage.src = canvas.toDataURL(`image/${format}`);
+                    
+                    // 准备下载
+                    downloadBtn.disabled = false;
+                    downloadBtn.onclick = () => {
+                        const link = document.createElement('a');
+                        link.download = `favicon.${format}`;
+                        link.href = canvas.toDataURL(`image/${format}`);
+                        link.click();
+                    };
+                    
+                    showStatus(`已成功生成 ${size}x${size} ${format.toUpperCase()} 图标`, 'success');
+                } catch (error) {
+                    showStatus('生成图标失败: ' + error.message, 'error');
+                    console.error(error);
+                }
+            });
+            
+            // 显示状态消息
+            function showStatus(message, type) {
+                statusMessage.textContent = message;
+                statusMessage.className = 'status-message ' + type;
+                statusMessage.style.display = 'block';
+                
+                // 3秒后自动隐藏
+                setTimeout(() => {
+                    statusMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html" class="active"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- ICO图标生成工具 -->
+    <div class="container">
+        <div class="ico-generator">
+            <h2><i class="fa-solid fa-file-image"></i> 图片转ICO图标工具</h2>
+            
+            <div class="upload-area">
+                <i class="fa-solid fa-cloud-upload"></i>
+                <p>点击或拖拽图片到此处上传</p>
+                <input type="file" id="file-input" accept="image/*">
+            </div>
+            
+            <div class="settings">
+                <div class="setting-group">
+                    <label for="size-select">图标尺寸</label>
+                    <select id="size-select">
+                        <option value="16">16x16</option>
+                        <option value="32" selected>32x32</option>
+                        <option value="48">48x48</option>
+                        <option value="64">64x64</option>
+                        <option value="128">128x128</option>
+                        <option value="256">256x256</option>
+                    </select>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="format-select">输出格式</label>
+                    <select id="format-select">
+                        <option value="ico" selected>ICO</option>
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPEG</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="generate-btn" class="btn btn-primary">
+                    <i class="fa-solid fa-magic"></i> 生成图标
+                </button>
+                <button id="download-btn" class="btn btn-primary" disabled>
+                    <i class="fa-solid fa-download"></i> 下载图标
+                </button>
+            </div>
+            
+            <div class="preview-container">
+                <div class="preview-box">
+                    <img id="preview-image" class="preview-image" src="" alt="预览图">
+                </div>
+            </div>
+            
+            <div class="status-message"></div>
+        </div>
+    </div>
+    
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="http://linxi9528.hkfree.work/" target="_blank">林熙ICO图标生成工具</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #a79552;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
+</body>
+</html>
