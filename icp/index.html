@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林熙导航网 - ICP备案信息查询结果</title>
+    <!-- 引入Tailwind CSS用于快速实现响应式和美观样式 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/icp/favicon.png" rel="icon">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 自定义配置：适配拟态风格的色彩 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 拟态核心色：低对比度的深色系
+                        neumo: {
+                            bg: '#272727',       // 页面主背景
+                            card: '#272727',     // 卡片背景（与主背景接近）
+                            primary: '#165DFF',  // 主色保留，作为点缀
+                            text: '#e0e0e0',     // 主要文本
+                            secondary: '#9e9e9e',// 次要文本
+                            shadow: {
+                                dark: '#1a1a1a',  // 拟态暗阴影
+                                light: '#303030'  // 拟态亮阴影
+                            }
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            /* 拟态卡片核心样式：凸起效果（外浅阴影+内深阴影） */
+            .neumo-card {
+                box-shadow: 
+                    8px 8px 16px theme('colors.neumo.shadow.dark'),
+                    -8px -8px 16px theme('colors.neumo.shadow.light'),
+                    inset 1px 1px 2px theme('colors.neumo.shadow.dark'),
+                    inset -1px -1px 2px theme('colors.neumo.shadow.light');
+            }
+            /* 拟态子模块：凹陷效果（内浅阴影+内深阴影） */
+            .neumo-inset {
+                box-shadow: 
+                    inset 4px 4px 8px theme('colors.neumo.shadow.dark'),
+                    inset -4px -4px 8px theme('colors.neumo.shadow.light');
+            }
+            /* 拟态悬浮效果：微调阴影增强交互 */
+            .neumo-hover {
+                transition: all 0.3s ease;
+            }
+            .neumo-hover:hover {
+                transform: translateY(-2px);
+                box-shadow: 
+                    10px 10px 20px theme('colors.neumo.shadow.dark'),
+                    -10px -10px 20px theme('colors.neumo.shadow.light'),
+                    inset 1px 1px 2px theme('colors.neumo.shadow.dark'),
+                    inset -1px -1px 2px theme('colors.neumo.shadow.light');
+            }
+            /* 拟态圆形图标容器 */
+            .neumo-circle {
+                box-shadow: 
+                    4px 4px 8px theme('colors.neumo.shadow.dark'),
+                    -4px -4px 8px theme('colors.neumo.shadow.light');
+            }
+        }
+    </style>
+</head>
+<!-- 替换页面背景为拟态主背景 -->
+<body class="bg-neumo-bg min-h-screen flex flex-col items-center justify-center py-8 px-4 text-neumo-text transition-all duration-500">
+    <!-- 页面容器 -->
+    <div class="max-w-4xl w-full">
+        <!-- 网站头部 -->
+        <header class="text-center mb-10">
+            <div class="inline-block mb-6 neumo-circle p-4 rounded-full">
+                <i class="fa-solid fa-shield-halved text-neumo-primary text-4xl md:text-5xl"></i>
+            </div>
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-neumo-text mb-2">网站备案信息</h1>
+            <p class="text-neumo-secondary text-lg">本网站已按国家相关规定完成备案，合法合规运营</p>
+        </header>
+
+        <!-- 备案信息主卡片：拟态凸起效果 -->
+        <main class="bg-neumo-card rounded-2xl neumo-card neumo-hover p-6 md:p-8 mb-8">
+            <!-- 备案信息列表 -->
+            <div class="space-y-8">
+                <!-- ICP备案信息：拟态凹陷效果 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-4 p-5 rounded-2xl neumo-inset bg-neumo-bg">
+                    <div class="neumo-circle p-4 rounded-full">
+                        <i class="fa-solid fa-shield-halved text-neumo-primary text-4xl md:text-5xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="font-semibold text-neumo-text text-lg mb-2">萌ICP备案信息</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-neumo-secondary">
+                            <p><span class="font-medium text-neumo-text">备案主体：</span>林晓诚（个人）</p>
+                            <p><span class="font-medium text-neumo-text">备案号：</span>萌ICP备10000000号-1</p>
+                            <p><span class="font-medium text-neumo-text">备案时间：</span>2025年12月15日</p>
+                            <p><span class="font-medium text-neumo-text">审核状态：</span>已备案</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 公安机关备案：拟态凹陷效果 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-4 p-5 rounded-2xl neumo-inset bg-neumo-bg">
+                    <div class="neumo-circle p-4 rounded-full">
+                    <i class="fa-solid fa-shield-virus text-neumo-primary text-4xl md:text-5xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="font-semibold text-neumo-text text-lg mb-2">互联网萌备案</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-neumo-secondary">
+                            <p><span class="font-medium text-neumo-text">萌备案号：</span>萌ICP备10000000号</p>
+                            <p>
+                                <span class="font-medium text-neumo-text">查询链接：</span>
+                                <a href="http://linxi9528.hkfree.work/icp" target="_blank" class="text-neumo-primary hover:underline transition-colors">
+                                    萌ICP备案查询服务平台
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 网站信息：拟态凹陷效果 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-4 p-5 rounded-2xl neumo-inset bg-neumo-bg">
+                    <div class="neumo-circle p-4 rounded-full">
+                    <i class="fa-solid fa-globe text-neumo-primary text-4xl md:text-5xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="font-semibold text-neumo-text text-lg mb-2">网站基本信息</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-neumo-secondary">
+                            <p><span class="font-medium text-neumo-text">网站名称：</span>林熙导航网</p>
+                            <p><span class="font-medium text-neumo-text">网站域名：</span>
+                                <a href="http://linxi9528.hkfree.work" target="_blank" class="text-neumo-primary hover:underline transition-colors">
+                                    linxi9528.hkfree.work
+                                </a>
+                            </p>
+                            <p><span class="font-medium text-neumo-text">服务器位置：</span>中国 香港</p>
+                            <p><span class="font-medium text-neumo-text">运营主体：</span>个人</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 免责声明：拟态凹陷效果 -->
+            <div class="mt-10 p-5 rounded-2xl neumo-inset bg-neumo-bg text-sm text-neumo-secondary">
+                <p class="mb-2"><i class="fa-solid fa-circle-info text-neumo-primary mr-2"></i><strong class="text-neumo-text">免责声明：</strong></p>
+                <p>本网站备案信息真实有效，所有内容均为个人原创或合法转载，不代表任何官方立场。如有任何备案信息变更，将及时更新。</p>
+                <p class="mt-2">根据《互联网信息服务管理办法》规定，本网站所有内容仅供学习交流使用，严禁用于商业用途。</p>
+            </div>
+        </main>
+
+        <!-- 底部信息 -->
+        <footer class="text-center text-neumo-secondary text-sm">
+            <p>© 2026 林熙导航网 版权所有</p>
+            <p class="mt-2">
+                <a href="http://linxi9528.hkfree.work/" class="text-neumo-secondary hover:text-neumo-primary transition-colors">返回首页</a> | 
+                <a href="http://linxi9528.hkfree.work/blog.html" class="text-neumo-secondary hover:text-neumo-primary transition-colors">林熙blog</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- 简单的JS增强体验 -->
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('opacity-100');
+            document.body.classList.remove('opacity-0');
+        });
+    </script>
+</body>
+</html>
