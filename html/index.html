@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>林熙html在线加密解密丨免费在线html网页代码加密解密平台！</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 拟态核心背景 - 浅灰主色调 */
+        body {
+            background: #e0e5ec;
+            color: #4a5568;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 拟态风格 */
+        .navbar {
+            background: #e0e5ec;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+            box-shadow: 
+                8px 8px 16px rgba(163, 177, 198, 0.6),
+                -8px -8px 16px rgba(255, 255, 255, 0.8);
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #4a5568;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: #6b7280;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #2d3748;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6b7280;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: #2d3748;
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* 汉堡菜单按钮 - 拟态 (电脑端默认隐藏) */
+        .menu-toggle {
+            display: none; /* 核心修改：电脑端完全隐藏 */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #4a5568;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                4px 4px 8px rgba(163, 177, 198, 0.6),
+                -4px -4px 8px rgba(255, 255, 255, 0.8);
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 网址分类说明 - 拟态卡片 */
+        .url-category-info {
+            background: #e0e5ec;
+            border-radius: 16px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-left: 4px solid #6b7280;
+            width: 100%;
+            box-shadow: 
+                6px 6px 12px rgba(163, 177, 198, 0.6),
+                -6px -6px 12px rgba(255, 255, 255, 0.8);
+        }
+        
+        .url-category-info h2 {
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .url-category-info p {
+            color: #718096;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 拟态风格 */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 15px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #e0e5ec;
+            border-radius: 16px;
+            box-shadow: 
+                6px 6px 12px rgba(163, 177, 198, 0.6),
+                -6px -6px 12px rgba(255, 255, 255, 0.8);
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 15px;
+            width: 100%;
+        }
+        
+        /* 拟态按钮 */
+        .url-button {
+            display: inline-block;
+            background: #e0e5ec;
+            border-radius: 12px;
+            color: #4a5568;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 
+                4px 4px 8px rgba(163, 177, 198, 0.6),
+                -4px -4px 8px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            box-shadow: 
+                6px 6px 12px rgba(163, 177, 198, 0.6),
+                -6px -6px 12px rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            color: #2d3748;
+        }
+        
+        .url-button:active {
+            box-shadow: 
+                inset 4px 4px 8px rgba(163, 177, 198, 0.6),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            transform: translateY(0);
+        }
+        
+        /* 返回顶部按钮 - 拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e0e5ec;
+            color: #6b7280;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 
+                6px 6px 12px rgba(163, 177, 198, 0.6),
+                -6px -6px 12px rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top:hover {
+            color: #2d3748;
+            transform: translateY(-3px);
+        }
+        
+        .back-to-top:active {
+            box-shadow: 
+                inset 4px 4px 8px rgba(163, 177, 198, 0.6),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* 底部版权信息 - 拟态 */
+        footer {
+            background: #e0e5ec;
+            margin-top: auto;
+            padding: 20px 0;
+            box-shadow: 
+                inset 0 4px 8px rgba(163, 177, 198, 0.4),
+                inset 0 -4px 8px rgba(255, 255, 255, 0.6);
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #4a5568;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #2d3748;
+            text-decoration: underline;
+        }
+        
+        /* 代码加密框样式 - 拟态风格 */
+        .code-container {
+            max-width: 90%; /* 加宽代码框容器 */
+            width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #e0e5ec;
+            border-radius: 16px;
+            box-shadow: 
+                8px 8px 16px rgba(163, 177, 198, 0.6),
+                -8px -8px 16px rgba(255, 255, 255, 0.8);
+        }
+        
+        textarea[name="text"] {
+            width: 100%;
+            background: #e0e5ec;
+            color: #4a5568;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 400px; /* 增加高度 */
+            box-shadow: 
+                inset 4px 4px 8px rgba(163, 177, 198, 0.6),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            outline: none;
+        }
+        
+        /* 拟态按钮样式 */
+        .transparent-button {
+            background: #e0e5ec;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #4a5568;
+            cursor: pointer;
+            box-shadow: 
+                4px 4px 8px rgba(163, 177, 198, 0.6),
+                -4px -4px 8px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .transparent-button:hover {
+            color: #2d3748;
+            box-shadow: 
+                6px 6px 12px rgba(163, 177, 198, 0.6),
+                -6px -6px 12px rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .transparent-button:active {
+            box-shadow: 
+                inset 4px 4px 8px rgba(163, 177, 198, 0.6),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            transform: translateY(1px);
+        }
+        
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端导航菜单 */
+            .menu-toggle {
+                display: flex; /* 移动端显示汉堡按钮 */
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #e0e5ec;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: 
+                    8px 8px 16px rgba(163, 177, 198, 0.6),
+                    -8px -8px 16px rgba(255, 255, 255, 0.8);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            /* 移动端网址按钮 - 每行两个 */
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+            
+            /* 移动端代码框和按钮 */
+            .code-container {
+                max-width: 95%;
+                padding: 15px;
+            }
+            
+            textarea[name="text"] {
+                width: 100%;
+                font-size: 0.85rem;
+                min-height: 300px;
+            }
+            
+            .transparent-button {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+                margin: 0 3px 8px;
+                display: inline-block;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+        });
+       <!-- 代码加密开始 --> 
+        var i = 0;
+        var ie = (document.all) ? 1 : 0;
+        var ns = (document.layers) ? 1 : 0;
+        function initStyleElements() /* Styles for Buttons Init */
+        {
+            var c = document.pad;
+            if (ie) {
+                c.compileIt.style.cursor = "hand";
+                c.select.style.cursor = "hand";
+                c.view.style.cursor = "hand";
+                c.retur.style.cursor = "hand";
+                c.clear.style.cursor = "hand";
+            } else
+                return;
+        }
+        /* Buttons Enlightment of "Compilation" panel */
+
+        function FocusOn(what) {
+            if (ie)
+                what.style.background = '#e0e5ec';
+                what.style.boxShadow = '6px 6px 12px rgba(163, 177, 198, 0.6), -6px -6px 12px rgba(255, 255, 255, 0.8)';
+            else
+                return;
+        }
+
+        function FocusOff(what) {
+            if (ie)
+                what.style.background = '#e0e5ec';
+                what.style.boxShadow = '4px 4px 8px rgba(163, 177, 198, 0.6), -4px -4px 8px rgba(255, 255, 255, 0.8)';
+            else
+                return;
+        }
+        /* Buttons Enlightment of "Compilation" panel */
+        function generate() /* Generation of "Compilation" */
+        {
+            code = document.pad.text.value;
+            if (code) {
+                document.pad.text.value = 'Compiling...Please wait!';
+                setTimeout("compile()", 1000);
+            } else
+                alert('请先输入要加密的内容，再点击加密按钮')
+        }
+        function compile() /* The "Compilation" */
+        {
+            document.pad.text.value = '';
+            compilation = escape(code);
+            document.pad.text.value = "<script>\n<!--\ndocument.write(unescape(\"" + compilation + "\"));\n//-->\n<\/script>";
+            i++;
+            if (i == 1)
+                alert("页面已加密 1 次!");
+            else
+                alert("页面已加密 " + i + " 次!");
+        }
+        function selectCode() /* Selecting "Compilation" for Copying */
+        {
+            if (document.pad.text.value.length > 0) {
+                document.pad.text.focus();
+                document.pad.text.select();
+            } else
+                alert('没有可选择的内容!')
+        }
+        function preview() /* Preview for the "Compilation" */
+        {
+            if (document.pad.text.value.length > 0) {
+                pr = window.open("", "Preview", "scrollbars=1,menubar=1,status=1,width=900,height=600,left=50,top=50");
+                pr.document.write(document.pad.text.value);
+            } else
+                alert('没有可预览的内容!')
+        }
+        function uncompile() /* Decompiling a "Compilation" */
+        {
+            if (document.pad.text.value.length > 0) {
+                source = unescape(document.pad.text.value);
+                document.pad.text.value = "" + source + "";
+            } else
+                alert('请先输入要解密的代码!')
+        }
+        // -->
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html" class="active"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="code-container">
+        <p align="center"><strong>HTML原代码加、解密脚本</strong></p>
+        <br>
+        <form name="pad" method="post" align="center">
+        <textarea name="text" rows="30" cols="80"></textarea>
+        <br><br>
+        <input onclick="generate()" type="button" value="加密" name="compileIt" class="transparent-button">
+        <input onclick="selectCode()" type="button" value="全选" name="select" class="transparent-button">
+        <input onclick="preview()" type="button" value="预览" name="view" class="transparent-button">
+        <input onclick="uncompile()" type="button" value="解密" name="retur" class="transparent-button">
+        <input type="reset" value="清除" name="clear" class="transparent-button"></form>
+    </div>
+        
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="http://linxi9528.hkfree.work/" target="_blank">林熙HTML在线加/解密</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #a79552;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
+</body>
+</html>
