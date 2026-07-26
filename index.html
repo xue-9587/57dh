@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具,林熙资源网,林熙blog,林熙影院,林熙在线工具,林熙图库,林熙音乐试听网,林熙博客"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>⎛⎝ 林熙导航网 ⎠⎞ 致力于网络资源收集分享平台！</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+    a{
+ text-decoration: none;
+ }
+ 
+    @font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+    
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 新拟态基础配色：浅灰主背景，统一的阴影色 */
+        body {
+            background: #e0e5ec;
+            color: #4a5568;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 新拟态 */
+        .navbar {
+            background: #e0e5ec;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+            box-shadow: 
+                8px 8px 16px #b8c0ca,
+                -8px -8px 16px #ffffff;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #4a5568;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: #6b7280;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #3182ce;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0ca,
+                inset -4px -4px 8px #ffffff;
+        }
+        
+        .nav-links a.active {
+            color: #3182ce;
+            box-shadow: 
+                inset 4px 4px 8px #b8c0ca,
+                inset -4px -4px 8px #ffffff;
+        }
+        
+        /* 汉堡菜单按钮 - 新拟态 
+           修复：电脑端默认隐藏，移动端显示 */
+        .menu-toggle {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #4a5568;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none; /* 电脑端默认隐藏 */
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                4px 4px 8px #b8c0ca,
+                -4px -4px 8px #ffffff;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 网址分类说明 - 新拟态卡片 */
+        .url-category-info {
+            background: #e0e5ec;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            box-shadow: 
+                6px 6px 12px #b8c0ca,
+                -6px -6px 12px #ffffff;
+            width: 100%;
+        }
+        
+        .url-category-info h2 {
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .url-category-info p {
+            color: #718096;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 新拟态 */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 25px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #e0e5ec;
+            border-radius: 16px;
+            box-shadow: 
+                6px 6px 12px #b8c0ca,
+                -6px -6px 12px #ffffff;
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 20px;
+            width: 100%;
+        }
+        
+        /* 新拟态按钮 */
+        .url-button {
+            display: inline-block;
+            background: #e0e5ec;
+            border-radius: 12px;
+            color: #4a5568;
+            padding: 15px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            box-shadow: 
+                5px 5px 10px #b8c0ca,
+                -5px -5px 10px #ffffff;
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            box-shadow: 
+                inset 4px 4px 8px #b8c0ca,
+                inset -4px -4px 8px #ffffff;
+            color: #3182ce;
+            transform: translateY(0);
+        }
+        
+        /* 返回顶部按钮 - 新拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e0e5ec;
+            color: #6b7280;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 
+                6px 6px 12px #b8c0ca,
+                -6px -6px 12px #ffffff;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top:hover {
+            box-shadow: 
+                inset 4px 4px 8px #b8c0ca,
+                inset -4px -4px 8px #ffffff;
+            color: #3182ce;
+            transform: translateY(0);
+        }
+        
+        /* 底部版权信息 - 新拟态 */
+        footer {
+            background: #e0e5ec;
+            margin-top: auto;
+            padding: 30px 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 
+                inset 8px 8px 16px #b8c0ca,
+                inset -8px -8px 16px #ffffff;
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #3182ce;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+        
+        /* 响应式适配 */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端导航菜单 - 显示汉堡按钮 */
+            .menu-toggle {
+                display: flex; /* 移动端显示汉堡图标 */
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #e0e5ec;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 20px 0;
+                box-shadow: 
+                    8px 8px 16px #b8c0ca,
+                    -8px -8px 16px #ffffff;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+                border-radius: 0 0 20px 20px;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            /* 移动端网址按钮 - 每行两个 */
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+        
+        /* 可选：如果需要电脑端也显示汉堡图标，添加以下样式 */
+        /*
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: flex; /* 电脑端也显示汉堡图标 */
+                margin-left: 20px;
+            }
+            .nav-links {
+                display: none; /* 隐藏默认导航，只保留汉堡菜单 */
+            }
+            .nav-links.active {
+                display: flex;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                left: auto;
+                width: 200px;
+            }
+        }
+        */
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                // 切换图标（汉堡/叉号）
+                const icon = menuToggle.querySelector('i');
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html" class="active"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- 网址分类说明一 -->
+        <div class="url-category-info">
+            <h2><i class="fa-solid fa-paper-plane" style="color: #805ad5;"></i> 常用资源网站</h2>
+            <p>以下是精选的常用资源网站链接，点击即可在新窗口打开相应网站。</p>
+            <p><i class="fa-brands fa-vimeo-v" style="color: #d69e2e;"></i> 本站备用域名如下：57dh.sylu.cc丨57dh.web3v.vip 或 必应搜索 "林熙导航网"即可访问！</p>
+        </div>
+        
+        <!-- 网址按钮区域 - 固定四个按钮 -->
+        <div class="url-buttons">
+            <div class="url-grid">
+                <a href="https://cn.bing.com/search?q=site:linxi9528.hkfree.work+%e6%9e%97%e7%86%99%e5%af%bc%e8%88%aa%e7%bd%91&form=DLINKR" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 每日必点</a>
+                <a href="https://zoneabc.net/register?invite=b72526b30b564a8c89e4bded6b41cb25" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 免费域名</a>
+                <a href="https://dnsexit.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 国外免费域名</a>
+                <a href="https://yandex.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 雅虎搜索</a>
+                <a href="https://ttsmaker.cn/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 马克配音</a>
+                <a href="https://www.aigei.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 爱给网</a>
+                <a href="https://miankoutupian.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 免扣图片网</a>
+                <a href="https://magiceraser.org/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 在线免费去水印</a>
+                <a href="https://www.audiocutter.org/zh/audio-converter" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 在线音频转换器</a>
+                <a href="http://music.2t58.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 爱听音乐网</a>
+                <a href="https://www.koukoutu.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 扣图图</a>
+                <a href="https://easylink.cc/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 简单云链</a>
+                <a href="http://sk.sskgame.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> SK投屏助手</a>
+                <a href="https://zhishuzhan.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 短视频解析</a>
+                <a href="https://byruthub.org/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 俄罗斯单机游戏</a>
+                <a href="https://www.linshi-email.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 临时邮箱</a>
+                <a href="https://fontawesome.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> fonta图标</a>
+                <a href="https://img.remit.ee/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> remit免费图床</a>
+            </div>
+        </div>
+    </div>
+              
+    <div class="container">
+        <!-- 网址分类说明二 -->
+        <div class="url-category-info">
+            <h2><i class="fa-solid fa-icons" style="color: #d69e2e;"></i>  AI资源网站</h2>
+            <p>以下是精选的AI视频，图片，音频生成工具网，点击即可在新窗口打开相应网站。</p>
+        </div>
+        
+        <!-- 网址按钮区域 - 固定四个按钮 -->
+        <div class="url-buttons">
+            <div class="url-grid">
+                <a href="https://www.qianwen.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  千问通义</a>
+                <a href="https://www.doubao.com/chat/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  豆包AI</a>
+                <a href="https://chatglm.cn/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  智谱清言</a>
+                <a href="https://musichero.ai/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  AI音乐生成</a>
+                <a href="https://www.haimian.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  海绵AI音乐生成</a>
+                <a href="https://app.klingai.com/cn/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  可灵AI</a>
+                <a href="https://hailuoai.video/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  海螺AI</a>
+                <a href="https://voidmagic.ai/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  AI换脸</a>
+                <a href="https://jimeng.jianying.com/ai-tool/home/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  即梦AI</a>
+                <a href="https://vocalremover.org/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  分离人声</a>
+                <a href="https://www.talkingavatar.ai/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  AI视频声音克隆</a>
+                <a href="https://dessi.co/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  AI去衣</a>
+                <a href="https://www.vocu.ai/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  睿声克隆</a>
+                <a href="https://www.text-to-speech.cn/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  文本转语音</a>
+                <a href="https://dubbing.tech/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  大饼AI变声</a>
+                <a href="https://app.goenhance.ai/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  画质增强</a>
+                <a href="https://nicevoice.org/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  免费AI声音克隆</a>
+                <a href="https://app.dubbingx.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  智声云配</a>
+                <a href="https://www.liblib.art/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  哩布哩布</a>
+            </div>
+        </div>
+    </div>
+            
+    <div class="container">
+        <!-- 网址分类说明三 -->
+        <div class="url-category-info">
+            <h2><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  影视资源采集站</h2>
+            <p>以下是精选的影视资源采集站点，点击即可在新窗口打开相应网站。</p>
+        </div>
+        
+        <!-- 网址按钮区域 - 固定四个按钮 -->
+        <div class="url-buttons">
+            <div class="url-grid">
+                <a href="https://www.haohuazy.com/" target="_blank" class="url-button"><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  豪华资源站</a>
+                <a href="https://ukuzy.com/" target="_blank" class="url-button"><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  U酷资源站</a>
+                <a href="https://mtzy.me/" target="_blank" class="url-button"><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  茅台资源站</a>
+                <a href="https://www.wujinzy.com/" target="_blank" class="url-button"><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  无尽资源站</a>
+                <a href="https://www.hongniuziyuan.com/" target="_blank" class="url-button"><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  红牛资源站</a>
+                <a href="https://ryzy.tv/" target="_blank" class="url-button"><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  如意资源站</a>
+                <a href="https://1080zyk.com/" target="_blank" class="url-button"><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  1080资源站</a>
+                <a href="https://bfzy.tv/" target="_blank" class="url-button"><i class="fa-solid fa-pepper-hot" style="color: #e53e3e;"></i>  暴风资源站</a>
+            </div>
+        </div>
+    </div>
+            
+    <div class="container">
+        <!-- 网址分类说明四 -->
+        <div class="url-category-info">
+            <h2><i class="fa-solid fa-paw" style="color: #4299e1;"></i>  在线无水印观影</h2>
+            <p>以下是各大无水印影视在线观看平台，点击即可在新窗口打开相应网站。</p>
+        </div>
+        
+        <!-- 网址按钮区域 - 固定四个按钮 -->
+        <div class="url-buttons">
+            <div class="url-grid">
+                <a href="https://www.nivod.vip/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 泥视频</a>
+                <a href="https://www.netflixgc.com/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 奈飞工厂</a>
+                <a href="https://www.dandanqu.cc/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 蛋蛋趣</a>
+                <a href="https://ddys.tv/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 低端影视</a>
+                <a href="https://www.libvio.vip/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> libvio影视</a>
+                <a href="https://www.dalvdm.cc/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 打驴动漫</a>
+                <a href="https://www.iyf.lv/" target="_blank" class="url-button"><i class="fa-solid fa-paw" style="color: #4299e1;"></i> 爱壹帆</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- 网址分类说明五 -->
+        <div class="url-category-info">
+            <h2><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i>  免费PHP空间主机</h2>
+            <p>以下是各大免费注册使用PHP空间平台，点击即可在新窗口打开相应网站。</p>
+        </div>
+        
+        <!-- 网址按钮区域 - 固定四个按钮 -->
+        <div class="url-buttons">
+            <div class="url-grid">
+                <a href="https://free.3v.do/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> 三维免费空间</a>
+                <a href="https://www.swb.cc/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> swb免费主机</a>
+                <a href="https://www.vmhost.cc/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> Vmhost免费主机</a>
+                <a href="https://www.freehostcn.com/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> 承影免费主机</a>
+                <a href="https://idc.a2088.cn/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> 浅笑云主机</a>
+                <a href="https://nodehost.ca/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> nodehost虚拟主机</a>
+                <a href="https://cn.cgiwebhost.com/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> CGl虚拟主机</a>
+                <a href="https://www.serv00.com/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> serv00免费主机</a>
+                <a href="https://googiehost.com/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> googiehost托管</a>
+                <a href="https://www.infinityfree.com/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> infinityfree托管</a>
+                <a href="https://myownfreehost.net/" target="_blank" class="url-button"><i class="fa-brands fa-cloudflare" style="color: #805ad5;"></i> 主机托管代理</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- 网址分类说明六 -->
+        <div class="url-category-info">
+            <h2><i class="fa-brands fa-canadian-maple-leaf" style="color: #4299e1;"></i>  本站备用域名</h2>
+            <p>以下是本站备用访问域名，点击即可在新窗口打开相应网站。</p>
+        </div>
+        
+        <!-- 网址按钮区域 - 固定四个按钮 -->
+        <div class="url-buttons">
+            <div class="url-grid">
+                <a href="http://linxi9528.hkfree.work/" target="_blank" class="url-button"><i class="fa-brands fa-canadian-maple-leaf" style="color: #4299e1;"></i> 主域名：linxi9528.hkfree.work</a>
+                <a href="http://57dh.sylu.cc/" target="_blank" class="url-button"><i class="fa-brands fa-canadian-maple-leaf" style="color: #4299e1;"></i> 备用域名一：57dh.sylu.cc</a>
+                <a href="http://57dh.web3v.vip/" target="_blank" class="url-button"><i class="fa-brands fa-canadian-maple-leaf" style="color: #4299e1;"></i> 备用域名二：57dh.web3v.vip</a>
+            </div>
+        </div>
+    </div>
+        
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="http://linxi9528.hkfree.work/" target="_blank">林熙导航网</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><i class="fa-brands fa-qq"></i> <i class="fa-solid fa-1"></i> <i class="fa-solid fa-8"></i> <i class="fa-solid fa-4"></i> <i class="fa-solid fa-5"></i> <i class="fa-solid fa-6"></i> <i class="fa-solid fa-3"></i> <i class="fa-solid fa-7"></i> <i class="fa-solid fa-7"></i> <i class="fa-solid fa-4"></i> <i class="fa-solid fa-5"></i></p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #a79552;"></i> 萌ICP备 <i class="fa-solid fa-1"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-0"></i>号-<i class="fa-solid fa-1"></i></a></p>
+        </div>
+    </footer>
+</body>
+</html>
