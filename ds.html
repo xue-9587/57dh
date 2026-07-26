@@ -17,21 +17,21 @@
         extend: {
           colors: {
             neumo: {
-              bg: '#e0e5ec', // 拟态主背景色
-              darkBg: '#d1d9e6', // 深色拟态背景
-              shadow: '#b8c0ca', // 拟态阴影色
-              highlight: '#ffffff', // 拟态高光色
+              bg: '#2d3139', // 拟态主背景色
+              darkBg: '#262a31', // 深色拟态背景
+              shadow: '#1f2228', // 拟态阴影色
+              highlight: '#3b4049', // 拟态高光色
               primary: '#165DFF', // 主色保留
               secondary: '#FF7D9C', // 辅助色保留
             },
             neutral: {
-              100: '#F5F7FA',
-              200: '#E5E6EB',
-              300: '#C9CDD4',
-              400: '#86909C',
-              500: '#4E5969',
-              600: '#272E3B',
-              700: '#1D2129',
+              100: '#cbd2dc',
+              200: '#3b4049',
+              300: '#aeb6c2',
+              400: '#8b95a3',
+              500: '#aeb6c2',
+              600: '#e2e8f0',
+              700: '#cbd2dc',
             }
           },
           fontFamily: {
@@ -50,55 +50,55 @@
       }
       /* 拟态基础样式 - 凸起效果 */
       .neumo {
-        background: #e0e5ec;
-        box-shadow:  8px 8px 16px #b8c0ca,
-                     -8px -8px 16px #ffffff;
+        background: #2d3139;
+        box-shadow:  8px 8px 16px #1f2228,
+                     -8px -8px 16px #3b4049;
       }
       /* 拟态凹陷效果 */
       .neumo-inset {
-        background: #e0e5ec;
-        box-shadow: inset 5px 5px 10px #b8c0ca,
-                    inset -5px -5px 10px #ffffff;
+        background: #2d3139;
+        box-shadow: inset 5px 5px 10px #1f2228,
+                    inset -5px -5px 10px #3b4049;
       }
       /* 拟态按钮 - 凸起 */
       .neumo-btn {
-        background: #e0e5ec;
-        box-shadow:  5px 5px 10px #b8c0ca,
-                     -5px -5px 10px #ffffff;
+        background: #2d3139;
+        box-shadow:  5px 5px 10px #1f2228,
+                     -5px -5px 10px #3b4049;
         transition: all 0.3s ease;
       }
       .neumo-btn:hover {
-        box-shadow:  7px 7px 14px #b8c0ca,
-                     -7px -7px 14px #ffffff;
+        box-shadow:  7px 7px 14px #1f2228,
+                     -7px -7px 14px #3b4049;
         transform: translateY(-2px);
       }
       .neumo-btn:active {
-        box-shadow: inset 5px 5px 10px #b8c0ca,
-                    inset -5px -5px 10px #ffffff;
+        box-shadow: inset 5px 5px 10px #1f2228,
+                    inset -5px -5px 10px #3b4049;
         transform: translateY(0);
       }
       /* 拟态卡片 */
       .neumo-card {
-        background: #e0e5ec;
-        box-shadow:  10px 10px 20px #b8c0ca,
-                     -10px -10px 20px #ffffff;
+        background: #2d3139;
+        box-shadow:  10px 10px 20px #1f2228,
+                     -10px -10px 20px #3b4049;
       }
       /* 拟态圆形 */
       .neumo-circle {
-        background: #e0e5ec;
-        box-shadow:  6px 6px 12px #b8c0ca,
-                     -6px -6px 12px #ffffff;
+        background: #2d3139;
+        box-shadow:  6px 6px 12px #1f2228,
+                     -6px -6px 12px #3b4049;
       }
       /* 拟态输入/容器 - 凹陷 */
       .neumo-container {
-        background: #e0e5ec;
-        box-shadow: inset 4px 4px 8px #b8c0ca,
-                    inset -4px -4px 8px #ffffff;
+        background: #2d3139;
+        box-shadow: inset 4px 4px 8px #1f2228,
+                    inset -4px -4px 8px #3b4049;
       }
       /* 选中状态 */
       .neumo-active {
-        box-shadow: inset 5px 5px 10px #b8c0ca,
-                    inset -5px -5px 10px #ffffff !important;
+        box-shadow: inset 5px 5px 10px #1f2228,
+                    inset -5px -5px 10px #3b4049 !important;
         color: #165DFF;
       }
       .text-shadow {
@@ -116,10 +116,10 @@
   <!-- 基础样式 -->
   <style>       
     body {
-      background-color: #e0e5ec; /* 拟态主背景 */
+      background-color: #2d3139; /* 拟态主背景 */
       min-height: 100vh;
       font-family: 'Inter', system-ui, sans-serif;
-      color: #4E5969; /* 拟态风格文字主色 */
+      color: #aeb6c2; /* 拟态风格文字主色 */
     }
     
     /* 动画效果 */
@@ -143,16 +143,16 @@
     }
     
     ::-webkit-scrollbar-track {
-      background: #e0e5ec;
-      box-shadow: inset 2px 2px 4px #b8c0ca,
-                  inset -2px -2px 4px #ffffff;
+      background: #2d3139;
+      box-shadow: inset 2px 2px 4px #1f2228,
+                  inset -2px -2px 4px #3b4049;
       border-radius: 4px;
     }
     
     ::-webkit-scrollbar-thumb {
-      background: #d1d9e6;
-      box-shadow:  2px 2px 4px #b8c0ca,
-                   -2px -2px 4px #ffffff;
+      background: #262a31;
+      box-shadow:  2px 2px 4px #1f2228,
+                   -2px -2px 4px #3b4049;
       border-radius: 4px;
     }
     
@@ -160,6 +160,7 @@
       background: #c9cdd4;
     }
   </style>
+    <meta name="color-scheme" content="dark">
 </head>
 
 <body class="bg-neumo text-neutral-500">
