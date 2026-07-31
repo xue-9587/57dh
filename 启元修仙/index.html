@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>启元修仙录</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+        
+        /* 全局暗色拟态基底 */
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: #12141a;
+            min-height: 100vh;
+            color: #d1d5db;
+        }
+        
+        .title-font {
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+
+        /* 暗色拟态卡片 - 全透明背景，仅阴影分层 */
+        .glass-card {
+            background: transparent;
+            box-shadow: 6px 6px 12px #0a0c10, -6px -6px 12px #1a1d26;
+            border-radius: 16px;
+            padding: 1rem;
+        }
+        .glass-card-inset {
+            box-shadow: inset 4px 4px 8px #0a0c10, inset -4px -4px 8px #1a1d26;
+        }
+
+        /* 通用拟态按钮 */
+        .neum-btn {
+            background: transparent;
+            box-shadow: 4px 4px 8px #0a0c10, -4px -4px 8px #1a1d26;
+            border-radius: 10px;
+            transition: all 0.25s ease;
+            border: none;
+            color: #e5e7eb;
+            cursor: pointer;
+        }
+        .neum-btn:hover:not(:disabled) {
+            box-shadow: inset 4px 4px 8px #0a0c10, inset -4px -4px 8px #1a1d26;
+            transform: translateY(1px);
+        }
+        .neum-btn:active:not(:disabled) {
+            box-shadow: inset 2px 2px 4px #0a0c10, inset -2px -2px 4px #1a1d26;
+        }
+        .neum-btn:disabled {
+            opacity: 0.35;
+            pointer-events: none;
+            box-shadow: none;
+        }
+
+        /* 分页控件 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .pagination .page-num {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* 头像环形悬浮容器（三枚环绕按钮） */
+        .avatar-orbit-wrap {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 1.5rem auto;
+        }
+        /* 环绕圆形按钮统一样式 */
+        .orbit-btn {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        /* 左侧背包 */
+        .orbit-bag {
+            top: 50%;
+            left: -48px;
+            transform: translateY(-50%);
+        }
+        /* 右侧功法 */
+        .orbit-skill {
+            top: 50%;
+            right: -48px;
+            transform: translateY(-50%);
+        }
+        /* 下方凡人城镇 */
+        .orbit-market {
+            bottom: -48px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .tab.active {
+            box-shadow: inset 4px 4px 8px #0a0c10, inset -4px -4px 8px #1a1d26;
+        }
+
+        .item-card {
+            background: transparent;
+            box-shadow: 3px 3px 6px #0a0c10, -3px -3px 6px #1a1d26;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+        .item-card:hover {
+            box-shadow: inset 3px 3px 6px #0a0c10, inset -3px -3px 6px #1a1d26;
+        }
+
+        /* BOSS列表项 */
+        .boss-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 进度条拟态 */
+        .progress-bar {
+            background: transparent;
+            box-shadow: inset 3px 3px 6px #0a0c10, inset -3px -3px 6px #1a1d26;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 999px;
+            transition: width 0.5s ease;
+        }
+        .exp-fill { background: linear-gradient(90deg, #667eea, #764ba2); }
+        .hp-fill { background: linear-gradient(90deg, #f5576c, #f093fb); }
+        .spirit-fill { background: linear-gradient(90deg, #4facfe); }
+
+        /* 日志滚动条 */
+        .log-container {
+            max-height: 420px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #333842 transparent;
+        }
+        .log-container::-webkit-scrollbar { width: 5px; }
+        .log-container::-webkit-scrollbar-track { background: transparent; }
+        .log-container::-webkit-scrollbar-thumb {
+            background: #333842;
+            border-radius: 3px;
+        }
+
+        .log-item {
+            animation: fadeIn 0.3s ease;
+            border-left: 3px solid transparent;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .log-item.good { border-left-color: #10b981; color: #6ee7b7; }
+        .log-item.bad { border-left-color: #ef4444; color: #fca5a5; }
+        .log-item.info { border-left-color: #3b82f6; color: #93c5fd; }
+        .log-item.rare { border-left-color: #f59e0b; color: #fcd34d; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(168, 139, 255, 0.3), 4px 4px 8px #0a0c10, -4px -4px 8px #1a1d26; }
+            50% { box-shadow: 0 0 30px rgba(168, 139, 255, 0.6), inset 2px 2px 4px #0a0c10, inset -2px -2px 4px #1a1d26; }
+        }
+        .breakthrough-glow { animation: pulse-glow 1s ease-in-out infinite; }
+
+        .rarity-common { color: #9ca3af; }
+        .rarity-uncommon { color: #34d399; }
+        .rarity-rare { color: #60a5fa; }
+        .rarity-epic { color: #c084fc; }
+        .rarity-legendary { color: #fbbf24; }
+        .rarity-immortal { color: #f472b6; text-shadow: 0 0 8px rgba(244,114,182,0.55); }
+
+        /* 头像：取消圆形裁切，方形原图 */
+        .avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="p-3 md:p-6">
+    <!-- 页面加宽全屏 -->
+    <div class="max-w-full mx-auto px-2 md:px-8">
+        <!-- 标题 -->
+        <header class="text-center mb-6">
+            <h1 class="title-font text-4xl md:text-6xl text-white mb-2">启元修仙录</h1>
+            <p class="text-gray-400 text-sm md:text-base">大道无形，生育天地；大道无情，运行日月</p>
+        </header>
+
+        <!-- 三栏布局 -->
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-4 md:gap-6">
+            <!-- 左侧栏：修士信息 -->
+            <div class="xl:col-span-3 space-y-4">
+                <div class="glass-card">
+                    <h2 class="title-font text-xl text-purple-300 mb-4">修士信息</h2>
+                    <div class="flex flex-col items-center mb-4">
+                        <div class="font-bold text-lg" id="playerName">无名散修</div>
+                        <div class="text-purple-300 text-sm mb-3" id="playerRealm">炼气初期</div>
+
+                        <!-- 头像三环悬浮按钮：背包左、功法右、凡人城镇下 -->
+                        <div class="avatar-orbit-wrap">
+                            <button onclick="switchTab('bag')" class="neum-btn orbit-btn orbit-bag" title="背包"><img class="icon" src="https://img10.360buyimg.com/imgzone/jfs/t1/473006/33/6891/2541261/6a4adc49F9db6a480/008361e61e538a7e.png" /></button>
+                            <button onclick="switchTab('skill')" class="neum-btn orbit-btn orbit-skill" title="功法"><img class="icon" src="https://img10.360buyimg.com/imgzone/jfs/t1/470867/2/8517/2447411/6a4adc4eF1d21affa/00838008008d92f0.png" /></button>
+                            <!-- 凡人城镇按钮 带冷却倒计时 -->
+                            <button onclick="goMarket()" id="marketBtn" class="neum-btn orbit-btn orbit-market" title="凡人城镇">
+                                <span id="marketIcon"><img class="icon" src="https://img10.360buyimg.com/imgzone/jfs/t1/472320/5/8527/2606744/6a4adc51Fbf9887dc/00835f95f98ef001.png" /></span>
+                                <span id="marketCd" class="hidden text-xs font-bold"></span>
+                            </button>
+                            <!-- 方形头像 -->
+                            <div class="avatar-wrap glass-card glass-card-inset p-1 w-full h-full">
+                                <img 
+                                    src="https://img10.360buyimg.com/imgzone/jfs/t1/468441/13/13219/2564268/6a47c929F907d2d2a/008366c5918b0951.png" 
+                                    alt="修士头像" 
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 气血 -->
+                    <div class="mb-3">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>气血</span>
+                            <span id="hpText">120 / 120</span>
+                        </div>
+                        <div class="progress-bar h-3">
+                            <div class="progress-fill hp-fill" id="hpBar" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <!-- 灵力 -->
+                    <div class="mb-3">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>灵力</span>
+                            <span id="mpText">60 / 60</span>
+                        </div>
+                        <div class="progress-bar h-3">
+                            <div class="progress-fill spirit-fill" id="mpBar" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <!-- 修为 -->
+                    <div class="mb-3">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>修为</span>
+                            <span id="expText">0 / 120</span>
+                        </div>
+                        <div class="progress-bar h-3">
+                            <div class="progress-fill exp-fill" id="expBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <!-- 属性：攻击/防御/战力/轮回次数 -->
+                    <div class="grid grid-cols-2 gap-2 text-sm mt-4">
+                        <div class="flex justify-between"><span class="text-gray-400">攻击</span><span id="atkStat">12</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">防御</span><span id="defStat">6</span></div>
+                        <div class="flex justify-between"><span class="text-yellow-400">战力</span><span id="fightPower">0</span></div>
+                        <div class="flex justify-between"><span class="text-cyan-400">轮回次数</span><span id="cycleCount">0</span></div>
+                    </div>
+                    <!-- 灵石 -->
+                    <div class="mt-4 pt-3 border-t border-gray-700 flex justify-between">
+                        <span class="text-yellow-400">💎 灵石</span>
+                        <span id="stoneCount" class="text-yellow-300 font-bold">50</span>
+                    </div>
+                </div>
+
+                <!-- 修炼操作：打坐+调息一行对称，突破单独一行 -->
+                <div class="glass-card space-y-3">
+                    <h2 class="title-font text-xl text-purple-300 mb-3">修炼</h2>
+                    <div class="flex gap-3">
+                        <button onclick="cultivate()" class="neum-btn flex-1 py-3 font-bold text-white">
+                            <i class="fa-solid fa-seedling" style="color: rgb(116, 129, 252);"></i> 打坐修炼
+                        </button>
+                        <button onclick="rest()" class="neum-btn flex-1 py-3 font-bold text-white">
+                            <i class="fa-solid fa-yin-yang" style="color: rgb(177, 151, 252);"></i> 调息恢复
+                        </button>
+                    </div>
+                    <button onclick="breakthrough()" id="breakthroughBtn" class="neum-btn w-full py-3 font-bold text-white" disabled>
+                        <i class="fa-solid fa-bolt-lightning"></i> 突破境界
+                    </button>
+                </div>
+            </div>
+
+            <!-- 中间主区域 -->
+            <div class="xl:col-span-6 space-y-4">
+                <!-- 顶部标签栏：探索 / 世界BOSS / 坊市 / 通天塔 -->
+                <div class="glass-card flex gap-2 flex-wrap">
+                    <button onclick="switchTab('explore')" class="tab neum-btn flex-1 py-2 px-4 text-sm font-medium active" data-tab="explore"><img src="https://img10.360buyimg.com/imgzone/jfs/t1/463737/17/20442/2611492/6a4adc44F6d4f06ae/00835c25c233fc33.png" alt="" width="120" height="120" /></button>
+                    <button onclick="switchTab('worldBoss')" class="tab neum-btn flex-1 py-2 px-4 text-sm font-medium" data-tab="worldBoss"><p><img src="https://img10.360buyimg.com/imgzone/jfs/t1/472657/21/7366/2646139/6a4adc41Fdd5f2bf7/008361e61e4a1f22.png" alt="" width="120" height="120" /></p></button>
+                    <button onclick="switchTab('shop')" class="tab neum-btn flex-1 py-2 px-4 text-sm font-medium" data-tab="shop"><p><img src="https://img10.360buyimg.com/imgzone/jfs/t1/475893/29/3818/2610974/6a4adc4cF71d140d5/00835665666e4d7b.png" alt="" width="120" height="120" /></p></button>
+                    <button onclick="switchTab('tower')" class="tab neum-btn flex-1 py-2 px-4 text-sm font-medium" data-tab="tower"><p><img src="https://img10.360buyimg.com/imgzone/jfs/t1/465089/22/18921/2680054/6a4adc47F0de2dba8/008350a50aed4c2f.png" alt="" width="120" height="120" /></p></button>
+                </div>
+
+                <!-- 公共战斗面板（副本/通天塔共用） -->
+                <div id="battlePanel" class="glass-card mb-4 hidden">
+                    <h2 class="title-font text-red-400 mb-4">⚔️ 遭遇战斗</h2>
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <div class="font-bold text-lg" id="enemyName">妖物</div>
+                            <div class="text-sm text-gray-400" id="enemyRealm">炼气初期</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm">气血: <span id="enemyHpText">50/50</span></div>
+                            <div class="progress-bar h-2 w-32 mt-1">
+                                <div class="progress-fill hp-fill" id="enemyHpBar" style="width:100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="battleAttack()" class="neum-btn flex-1 py-2 font-bold">⚔️ 攻击</button>
+                        <button onclick="battleSkill()" id="battleSkillBtn" class="neum-btn flex-1 py-2 font-bold" disabled>✨ 法术</button>
+                        <button onclick="battleFlee()" class="neum-btn flex-1 py-2 font-bold">🏃 逃跑</button>
+                    </div>
+                </div>
+
+                <!-- 天地探索面板 -->
+                <div id="explorePanel" class="glass-card">
+                    <h2 class="title-font text-xl text-purple-300 mb-4">天地探索 · BOSS列表</h2>
+                    <div id="bossList"></div>
+                    <div class="pagination">
+                        <button onclick="changeBossPage(-1)" id="bossPrevBtn" class="neum-btn px-3 py-1 text-sm">上一页</button>
+                        <span class="page-num" id="bossPageNum">1 / 2</span>
+                        <button onclick="changeBossPage(1)" id="bossNextBtn" class="neum-btn px-3 py-1 text-sm">下一页</button>
+                    </div>
+                </div>
+
+                <!-- 世界BOSS面板 -->
+                <div id="worldBossPanel" class="glass-card hidden">
+                    <h2 class="title-font text-xl text-red-400 mb-4">世界BOSS · 禁地试炼</h2>
+                    <div id="worldBossList"></div>
+                    <div class="pagination">
+                        <button onclick="changeWorldBossPage(-1)" id="worldBossPrevBtn" class="neum-btn px-3 py-1 text-sm">上一页</button>
+                        <span class="page-num" id="worldBossPageNum">1 / 2</span>
+                        <button onclick="changeWorldBossPage(1)" id="worldBossNextBtn" class="neum-btn px-3 py-1 text-sm">下一页</button>
+                    </div>
+                </div>
+
+                <!-- 坊市面板 -->
+                <div id="shopPanel" class="glass-card hidden">
+                    <h2 class="title-font text-xl text-purple-300 mb-4">启元坊市</h2>
+                    <div class="space-y-2" id="shopList"></div>
+                    <div class="pagination">
+                        <button onclick="changeShopPage(-1)" id="shopPrevBtn" class="neum-btn px-3 py-1 text-sm">上一页</button>
+                        <span class="page-num" id="shopPageNum">1 / 4</span>
+                        <button onclick="changeShopPage(1)" id="shopNextBtn" class="neum-btn px-3 py-1 text-sm">下一页</button>
+                    </div>
+                </div>
+
+                <!-- 通天塔面板 -->
+                <div id="towerPanel" class="glass-card hidden">
+                    <h2 class="title-font text-xl text-purple-300 mb-4">通天塔 · 轮回试炼</h2>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-yellow-400 title-font">第 <span id="towerCurrentFloor">1</span> 层</div>
+                        <div class="text-sm text-gray-400 mt-2">
+                            历史最高：第 <span id="towerMaxFloor">0</span> 层
+                        </div>
+                    </div>
+                    
+                    <div class="item-card p-4 mb-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-white text-lg" id="towerMonsterName">炼气守塔卫</div>
+                                <div class="text-xs text-gray-400 mt-2">
+                                    气血：<span id="towerMonsterHp">120</span> | 
+                                    攻击：<span id="towerMonsterAtk">12</span> | 
+                                    防御：<span id="towerMonsterDef">6</span>
+                                </div>
+                                <div class="text-xs text-yellow-300 mt-2">
+                                    通关奖励：<span id="towerRewardExp">36</span> 修为、<span id="towerRewardStone">35</span> 灵石
+                                </div>
+                            </div>
+                            <button onclick="challengeTower()" id="towerChallengeBtn" class="neum-btn py-2.5 px-5 font-bold">
+                                挑战
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-gray-500 text-center bg-black/20 rounded-lg py-2 px-3">
+                        💡 每通关10层自动触发一次轮回，永久提升全属性10%，可叠加
+                    </div>
+                </div>
+
+                <!-- 背包面板 -->
+                <div id="bagPanel" class="glass-card hidden">
+                    <h2 class="title-font text-xl text-purple-300 mb-4">储物袋</h2>
+                    <div id="bagGrid" class="grid grid-cols-2 md:grid-cols-4 gap-2"></div>
+                    <div id="bagEmpty" class="text-center text-gray-500 py-8">储物袋空空如也...</div>
+                </div>
+
+                <!-- 功法面板 -->
+                <div id="skillPanel" class="glass-card hidden">
+                    <h2 class="title-font text-xl text-purple-300 mb-4">功法秘籍</h2>
+                    <div class="space-y-2" id="skillList">
+                        <div class="text-gray-500 text-center py-4">尚未习得任何功法</div>
+                    </div>
+                </div>
+
+                <!-- 底部存档 -->
+                <div class="glass-card flex gap-2 flex-wrap">
+                    <button onclick="saveGame()" class="neum-btn flex-1 py-2 text-sm"><i class="fa-solid fa-folder-closed" style="color: rgb(57, 109, 144);"></i> 保存进度</button>
+                    <button onclick="loadGame()" class="neum-btn flex-1 py-2 text-sm"><i class="fa-solid fa-folder-open" style="color: rgb(177, 151, 252);"></i> 读取存档</button>
+                    <button onclick="resetGame()" class="neum-btn flex-1 py-2 text-sm"><i class="fa-brands fa-hornbill" style="color: rgb(223, 6, 6);"></i> 散功重修</button>
+                </div>
+            </div>
+
+            <!-- 右侧：修行日志 -->
+            <div class="xl:col-span-3">
+                <div class="glass-card h-full">
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="title-font text-xl text-purple-300">修行日志</h2>
+                        <button onclick="clearLog()" class="text-xs text-gray-500 hover:text-gray-300 neum-btn px-2 py-1">清空</button>
+                    </div>
+                    <div class="log-container text-sm" id="logContainer">
+                        <div class="log-item info">欢迎来到启元修仙界，开始你的大道之旅吧！</div>
+                        <div class="log-item info">BUG反馈请联系QQ：1934717019</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== 完整境界体系：9大境界，每阶4小段 ==========
+        const REALM_GROUP_ORDER = ['炼气','筑基','金丹','元婴','化神','炼虚','合体','大乘','渡劫','真仙','金仙','太乙金仙','大罗金仙','仙帝','道祖'];
+        const REALM_LIST = [
+            // 炼气 0-3
+            {name:"炼气初期",exp:120,hp:120,mp:60,atk:12,def:6,group:'炼气'},
+            {name:"炼气中期",exp:240,hp:160,mp:80,atk:18,def:10,group:'炼气'},
+            {name:"炼气后期",exp:400,hp:210,mp:105,atk:26,def:14,group:'炼气'},
+            {name:"炼气圆满",exp:600,hp:280,mp:140,atk:36,def:19,group:'炼气'},
+            // 筑基 4-7
+            {name:"筑基初期",exp:900,hp:400,mp:200,atk:50,def:28,group:'筑基'},
+            {name:"筑基中期",exp:1300,hp:520,mp:260,atk:68,def:38,group:'筑基'},
+            {name:"筑基后期",exp:1800,hp:660,mp:330,atk:90,def:49,group:'筑基'},
+            {name:"筑基圆满",exp:2500,hp:820,mp:410,atk:116,def:62,group:'筑基'},
+            // 金丹 8-11
+            {name:"金丹初期",exp:3500,hp:1100,mp:550,atk:150,def:80,group:'金丹'},
+            {name:"金丹中期",exp:4800,hp:1400,mp:700,atk:190,def:102,group:'金丹'},
+            {name:"金丹后期",exp:6400,hp:1750,mp:875,atk:238,def:126,group:'金丹'},
+            {name:"金丹圆满",exp:8500,hp:2150,mp:1075,atk:294,def:154,group:'金丹'},
+            // 元婴 12-15
+            {name:"元婴初期",exp:11000,hp:2600,mp:1300,atk:360,def:185,group:'元婴'},
+            {name:"元婴中期",exp:14000,hp:3100,mp:1550,atk:434,def:220,group:'元婴'},
+            {name:"元婴后期",exp:17500,hp:3650,mp:1825,atk:516,def:258,group:'元婴'},
+            {name:"元婴圆满",exp:21500,hp:4250,mp:2125,atk:606,def:300,group:'元婴'},
+            // 化神 16-19
+            {name:"化神初期",exp:26000,hp:4900,mp:2450,atk:704,def:346,group:'化神'},
+            {name:"化神中期",exp:31000,hp:5600,mp:2800,atk:810,def:396,group:'化神'},
+            {name:"化神后期",exp:36500,hp:6350,mp:3175,atk:924,def:450,group:'化神'},
+            {name:"化神圆满",exp:42500,hp:7150,mp:3575,atk:1046,def:508,group:'化神'},
+            // 炼虚 20-23
+            {name:"炼虚初期",exp:50000,hp:9000,mp:4500,atk:1280,def:620,group:'炼虚'},
+            {name:"炼虚中期",exp:58000,hp:10200,mp:5100,atk:1450,def:700,group:'炼虚'},
+            {name:"炼虚后期",exp:66500,hp:11500,mp:5750,atk:1630,def:785,group:'炼虚'},
+            {name:"炼虚圆满",exp:76000,hp:12900,mp:6450,atk:1820,def:875,group:'炼虚'},
+            // 合体 24-27
+            {name:"合体初期",exp:87000,hp:14400,mp:7200,atk:2020,def:970,group:'合体'},
+            {name:"合体中期",exp:99000,hp:16000,mp:8000,atk:2230,def:1070,group:'合体'},
+            {name:"合体后期",exp:112000,hp:17700,mp:8850,atk:2450,def:1175,group:'合体'},
+            {name:"合体圆满",exp:126000,hp:19500,mp:9750,atk:2680,def:1285,group:'合体'},
+            // 大乘 28-31
+            {name:"大乘初期",exp:142000,hp:21500,mp:10750,atk:2920,def:1400,group:'大乘'},
+            {name:"大乘中期",exp:160000,hp:23700,mp:11850,atk:3180,def:1525,group:'大乘'},
+            {name:"大乘后期",exp:180000,hp:26000,mp:13000,atk:3450,def:1660,group:'大乘'},
+            {name:"大乘圆满",exp:202000,hp:28500,mp:14250,atk:3730,def:1800,group:'大乘'},
+            // 渡劫 32-35
+            {name:"渡劫初期",exp:226000,hp:31200,mp:15600,atk:4030,def:1950,group:'渡劫'},
+            {name:"渡劫中期",exp:252000,hp:34100,mp:17050,atk:4340,def:2110,group:'渡劫'},
+            {name:"渡劫后期",exp:280000,hp:37200,mp:18600,atk:4670,def:2280,group:'渡劫'},
+            {name:"渡劫圆满",exp:310000,hp:40500,mp:20250,atk:5010,def:2460,group:'渡劫'},
+            // 真仙 36-39
+            {name:"真仙初期",exp:347200,hp:45360,mp:22680,atk:5611,def:2755,group:'真仙'},
+            {name:"真仙中期",exp:388864,hp:50803,mp:25402,atk:6284,def:3086,group:'真仙'},
+            {name:"真仙后期",exp:435528,hp:56899,mp:28450,atk:7038,def:3456,group:'真仙'},
+            {name:"真仙圆满",exp:487791,hp:63727,mp:31864,atk:7883,def:3871,group:'真仙'},
+            // 金仙 40-43
+            {name:"金仙初期",exp:546326,hp:71374,mp:35688,atk:8829,def:4336,group:'金仙'},
+            {name:"金仙中期",exp:611885,hp:79939,mp:39971,atk:9888,def:4856,group:'金仙'},
+            {name:"金仙后期",exp:685311,hp:89532,mp:44768,atk:11075,def:5439,group:'金仙'},
+            {name:"金仙圆满",exp:767548,hp:100276,mp:50140,atk:12404,def:6092,group:'金仙'},
+            // 太乙金仙 44-47
+            {name:"太乙金仙初期",exp:859654,hp:112309,mp:56157,atk:13892,def:6823,group:'太乙金仙'},
+            {name:"太乙金仙中期",exp:962812,hp:125786,mp:62896,atk:15559,def:7642,group:'太乙金仙'},
+            {name:"太乙金仙后期",exp:1078349,hp:140880,mp:70444,atk:17426,def:8559,group:'太乙金仙'},
+            {name:"太乙金仙圆满",exp:1207751,hp:157786,mp:78897,atk:19517,def:9586,group:'太乙金仙'},
+            // 大罗金仙 48-51
+            {name:"大罗金仙初期",exp:1352681,hp:176720,mp:88365,atk:21859,def:10736,group:'大罗金仙'},
+            {name:"大罗金仙中期",exp:1515003,hp:197926,mp:98969,atk:24482,def:12024,group:'大罗金仙'},
+            {name:"大罗金仙后期",exp:1696803,hp:221677,mp:110845,atk:27420,def:13467,group:'大罗金仙'},
+            {name:"大罗金仙圆满",exp:1900419,hp:248278,mp:124146,atk:30710,def:15083,group:'大罗金仙'},
+            // 仙帝 52-55
+            {name:"仙帝初期",exp:2128469,hp:278071,mp:139044,atk:34395,def:16893,group:'仙帝'},
+            {name:"仙帝中期",exp:2383885,hp:311440,mp:155729,atk:38522,def:18920,group:'仙帝'},
+            {name:"仙帝后期",exp:2669951,hp:348813,mp:174416,atk:43145,def:21190,group:'仙帝'},
+            {name:"仙帝圆满",exp:2990345,hp:390671,mp:195346,atk:48322,def:23733,group:'仙帝'},
+            // 道祖 56-59
+            {name:"道祖初期",exp:3349186,hp:437552,mp:218788,atk:54121,def:26581,group:'道祖'},
+            {name:"道祖中期",exp:3751088,hp:490058,mp:245043,atk:60616,def:29771,group:'道祖'},
+            {name:"道祖后期",exp:4201219,hp:548865,mp:274448,atk:67890,def:33344,group:'道祖'},
+            {name:"道祖圆满",exp:4705365,hp:614729,mp:307382,atk:76037,def:37345,group:'道祖'},
+        ];
+
+        // 物品库（扩充版）
+        const ITEMS = {
+            // 丹药 - 低阶
+            lowPill: { name: '下品聚气丹', type: 'pill', effect: { exp: 50 }, desc: '增加50点修为', rarity: 'common', price: 30 },
+            midPill: { name: '中品聚气丹', type: 'pill', effect: { exp: 150 }, desc: '增加150点修为', rarity: 'uncommon', price: 100 },
+            hpPill: { name: '回血丹', type: 'pill', effect: { hp: 200 }, desc: '恢复200点气血', rarity: 'common', price: 20 },
+            mpPill: { name: '回灵丹', type: 'pill', effect: { mp: 100 }, desc: '恢复100点灵力', rarity: 'common', price: 25 },
+            spiritStone: { name: '下品灵石', type: 'material', effect: { stone: 10 }, desc: '可兑换10灵石', rarity: 'common', price: 10 },
+            // 丹药 - 中高阶
+            highPill: { name: '上品聚气丹', type: 'pill', effect: { exp: 400 }, desc: '增加400点修为', rarity: 'rare', price: 300 },
+            greatHpPill: { name: '大还丹', type: 'pill', effect: { hp: 500 }, desc: '恢复500点气血', rarity: 'uncommon', price: 150 },
+            nineMpPill: { name: '九转灵元丹', type: 'pill', effect: { mp: 300 }, desc: '恢复300点灵力', rarity: 'rare', price: 400 },
+            topPill: { name: '极品聚气丹', type: 'pill', effect: { exp: 1200 }, desc: '增加1200点修为', rarity: 'epic', price: 1200 },
+            enlightenPill: { name: '悟道金丹', type: 'pill', effect: { exp: 3000 }, desc: '增加3000点修为', rarity: 'epic', price: 3000 },
+            // 武器
+            ironSword: { name: '精铁剑', type: 'weapon', effect: { atk: 5 }, desc: '攻击+5', rarity: 'common', price: 100 },
+            jadeSword: { name: '青玉剑', type: 'weapon', effect: { atk: 15 }, desc: '攻击+15', rarity: 'uncommon', price: 500 },
+            goldenSword: { name: '鎏金仙剑', type: 'weapon', effect: { atk: 45 }, desc: '攻击+45', rarity: 'rare', price: 2200 },
+            purpleSword: { name: '紫电飞剑', type: 'weapon', effect: { atk: 80 }, desc: '攻击+80', rarity: 'rare', price: 4500 },
+            skySword: { name: '苍穹灵剑', type: 'weapon', effect: { atk: 120 }, desc: '攻击+120', rarity: 'epic', price: 8000 },
+            voidSword: { name: '太虚神剑', type: 'weapon', effect: { atk: 200 }, desc: '攻击+200', rarity: 'epic', price: 15000 },
+            hongmengSword: { name: '鸿蒙圣剑', type: 'weapon', effect: { atk: 350 }, desc: '攻击+350', rarity: 'legendary', price: 50000 },
+            // 功法 - 基础/中阶
+            basicSkill: { name: '基础吐纳术', type: 'skill', effect: { expBonus: 0.2 }, desc: '修炼速度+20%', rarity: 'common', price: 200 },
+            thunderSkill: { name: '奔雷诀', type: 'skill', effect: { atkBonus: 0.2, skillDmg: 20 }, desc: '攻击力+20%，解锁奔雷术', rarity: 'uncommon', price: 800 },
+            diamondSkill: { name: '金刚护体诀', type: 'skill', effect: { defBonus: 0.25 }, desc: '防御力+25%', rarity: 'uncommon', price: 800 },
+            zifuSkill: { name: '紫府长生功', type: 'skill', effect: { hpBonus: 0.3 }, desc: '气血上限+30%', rarity: 'uncommon', price: 800 },
+            // 功法 - 高阶
+            fireSkill: { name: '离火诀', type: 'skill', effect: { atkBonus: 0.3, skillDmg: 30 }, desc: '攻击力+30%，解锁离火术', rarity: 'rare', price: 1500 },
+            waterSkill: { name: '碧波诀', type: 'skill', effect: { defBonus: 0.3, mpBonus: 0.2 }, desc: '防御+30%，灵力+20%', rarity: 'rare', price: 1500 },
+            woodSkill: { name: '长生诀', type: 'skill', effect: { hpBonus: 0.4 }, desc: '气血上限+40%', rarity: 'rare', price: 1500 },
+            taishangSkill: { name: '太上悟道经', type: 'skill', effect: { expBonus: 0.4 }, desc: '修炼速度+40%', rarity: 'rare', price: 3500 },
+            // 功法 - 传说
+            godSkill: { name: '混沌道经', type: 'skill', effect: {hpBonus:0.8,atkBonus:0.6,defBonus:0.6,expBonus:0.5}, desc:'全属性大幅增幅', rarity:'legendary',price:20000},
+            // 功法 - 仙道（新增）
+            zhenxianSkill: { name: '真仙诀', type: 'skill', effect: {hpBonus:1.0,atkBonus:0.8,defBonus:0.8,expBonus:0.8}, desc:'仙道功法，全属性+80%', rarity:'immortal',price:300000},
+            jinxianSkill: { name: '金仙大道', type: 'skill', effect: {hpBonus:1.5,atkBonus:1.2,defBonus:1.2,expBonus:1.2}, desc:'金仙传承，全属性+120%', rarity:'immortal',price:900000},
+            daluoSkill: { name: '大罗真法', type: 'skill', effect: {hpBonus:2.0,atkBonus:1.6,defBonus:1.6,expBonus:1.6}, desc:'大罗秘法，全属性+160%', rarity:'immortal',price:2500000},
+            daozuSkill: { name: '道祖无上经', type: 'skill', effect: {hpBonus:3.0,atkBonus:2.5,defBonus:2.5,expBonus:2.5}, desc:'道祖本源，全属性+250%', rarity:'immortal',price:7000000},
+            // 武器 - 仙道（新增）
+            zhenxianSword: { name: '真仙灵剑', type: 'weapon', effect: { atk: 600 }, desc: '攻击+600', rarity: 'immortal', price: 200000 },
+            jinxianSword: { name: '金仙神锋', type: 'weapon', effect: { atk: 1500 }, desc: '攻击+1500', rarity: 'immortal', price: 600000 },
+            daluoSword: { name: '大罗仙刃', type: 'weapon', effect: { atk: 3500 }, desc: '攻击+3500', rarity: 'immortal', price: 1800000 },
+            daozuSword: { name: '道祖本源剑', type: 'weapon', effect: { atk: 8000 }, desc: '攻击+8000', rarity: 'immortal', price: 5000000 },
+            // 丹药 - 仙道（新增）
+            zhenxianPill: { name: '真仙悟道丹', type: 'pill', effect: { exp: 20000 }, desc: '增加20000点修为', rarity: 'immortal', price: 100000 },
+            jinxianPill: { name: '金仙造化丹', type: 'pill', effect: { exp: 60000 }, desc: '增加60000点修为', rarity: 'immortal', price: 350000 },
+            daluoPill: { name: '大罗涅槃丹', type: 'pill', effect: { exp: 150000 }, desc: '增加150000点修为', rarity: 'immortal', price: 1200000 },
+            daozuPill: { name: '道祖混沌丹', type: 'pill', effect: { exp: 400000 }, desc: '增加400000点修为', rarity: 'immortal', price: 3500000 },
+        };
+
+        // 坊市商品列表（按品级从低到高排序）
+        const SHOP_ITEMS = [
+            'lowPill', 'midPill', 'hpPill', 'mpPill', 'spiritStone', 'ironSword', 'jadeSword',
+            'basicSkill', 'highPill', 'greatHpPill', 'nineMpPill', 'goldenSword', 'thunderSkill', 'diamondSkill',
+            'zifuSkill', 'topPill', 'enlightenPill', 'purpleSword', 'fireSkill', 'waterSkill', 'woodSkill',
+            'taishangSkill', 'skySword', 'voidSword', 'godSkill', 'hongmengSword',
+            // 仙道物品（新增）
+            'zhenxianPill', 'jinxianPill', 'daluoPill', 'daozuPill',
+            'zhenxianSword', 'jinxianSword', 'daluoSword', 'daozuSword',
+            'zhenxianSkill', 'jinxianSkill', 'daluoSkill', 'daozuSkill'
+        ];
+
+        // 普通副本BOSS（8个）
+        const BOSS_LIST = [
+            {
+                group: "筑基",
+                groupLevel: 1,
+                list: [
+                    { name: '岩甲巨犀【筑基BOSS】', realmIdx:7, hp:2600, atk:180, def:110, exp:1800, stone:1200, drop:['topPill','goldenSword','fireSkill'] }
+                ]
+            },
+            {
+                group: "金丹",
+                groupLevel: 2,
+                list: [
+                    { name: '玄火麒麟【金丹BOSS】', realmIdx:11, hp:7500, atk:380, def:220, exp:5000, stone:3200, drop:['topPill','skySword','waterSkill'] }
+                ]
+            },
+            {
+                group: "元婴",
+                groupLevel: 3,
+                list: [
+                    { name: '九幽寒蛛【元婴BOSS】', realmIdx:15, hp:18000, atk:780, def:420, exp:12000, stone:7500, drop:['topPill','woodSkill','spiritStone'] }
+                ]
+            },
+            {
+                group: "化神",
+                groupLevel: 4,
+                list: [
+                    { name: '天妖凰【化神BOSS】', realmIdx:19, hp:38000, atk:1500, def:780, exp:25000, stone:16000, drop:['godSkill','topPill'] }
+                ]
+            },
+            {
+                group: "炼虚",
+                groupLevel: 5,
+                list: [
+                    { name: '虚空魔尊【炼虚BOSS】', realmIdx:23, hp:72000, atk:2600, def:1300, exp:45000, stone:28000, drop:['godSkill','topPill'] }
+                ]
+            },
+            {
+                group: "合体",
+                groupLevel: 6,
+                list: [
+                    { name: '太古妖圣【合体BOSS】', realmIdx:27, hp:130000, atk:4200, def:2100, exp:75000, stone:46000, drop:['godSkill'] }
+                ]
+            },
+            {
+                group: "大乘",
+                groupLevel: 7,
+                list: [
+                    { name: '寂灭道主【大乘BOSS】', realmIdx:31, hp:220000, atk:6500, def:3200, exp:120000, stone:72000, drop:['godSkill'] }
+                ]
+            },
+            {
+                group: "渡劫",
+                groupLevel: 8,
+                list: [
+                    { name: '天道化身【渡劫BOSS】', realmIdx:35, hp:380000, atk:9800, def:4800, exp:200000, stone:120000, drop:['godSkill'] }
+                ]
+            },
+            {
+                group: "真仙",
+                groupLevel: 9,
+                list: [
+                    { name: '太虚真君【真仙BOSS】', realmIdx:39, hp:573543, atk:15372, def:7548, exp:317064, stone:190238, drop:['godSkill','topPill'] }
+                ]
+            },
+            {
+                group: "金仙",
+                groupLevel: 10,
+                list: [
+                    { name: '九天金仙【金仙BOSS】', realmIdx:43, hp:902484, atk:24188, def:11879, exp:498906, stone:299344, drop:['godSkill','topPill'] }
+                ]
+            },
+            {
+                group: "太乙金仙",
+                groupLevel: 11,
+                list: [
+                    { name: '太乙金仙【太乙金仙BOSS】', realmIdx:47, hp:1420074, atk:38058, def:18693, exp:785038, stone:471023, drop:['godSkill','hongmengSword'] }
+                ]
+            },
+            {
+                group: "大罗金仙",
+                groupLevel: 12,
+                list: [
+                    { name: '大罗金仙【大罗金仙BOSS】', realmIdx:51, hp:2234502, atk:59884, def:29412, exp:1235272, stone:741163, drop:['godSkill','hongmengSword'] }
+                ]
+            },
+            {
+                group: "仙帝",
+                groupLevel: 13,
+                list: [
+                    { name: '九霄仙帝【仙帝BOSS】', realmIdx:55, hp:3516039, atk:94228, def:46279, exp:1943724, stone:1166234, drop:['godSkill','hongmengSword'] }
+                ]
+            },
+            {
+                group: "道祖",
+                groupLevel: 14,
+                list: [
+                    { name: '鸿钧道祖【道祖BOSS】', realmIdx:59, hp:5532561, atk:148272, def:72823, exp:3058487, stone:1835092, drop:['godSkill','hongmengSword'] }
+                ]
+            }
+        ];
+
+        // 世界BOSS（7个）
+        const WORLD_BOSS_LIST = [
+            {
+                group: "金丹",
+                groupLevel: 2,
+                list: [
+                    { name: '赤炎金猊【金丹世界BOSS】', realmIdx:11, hp:4730, atk:647, def:339, exp:11000, stone:7000, drop:['topPill','skySword','waterSkill'] }
+                ]
+            },
+            {
+                group: "元婴",
+                groupLevel: 3,
+                list: [
+                    { name: '玄冰螭龙【元婴世界BOSS】', realmIdx:15, hp:10200, atk:1454, def:720, exp:28000, stone:18000, drop:['topPill','godSkill'] }
+                ]
+            },
+            {
+                group: "化神",
+                groupLevel: 4,
+                list: [
+                    { name: '八翼黑鸾【化神世界BOSS】', realmIdx:19, hp:17875, atk:2615, def:1270, exp:62000, stone:40000, drop:['godSkill','topPill'] }
+                ]
+            },
+            {
+                group: "炼虚",
+                groupLevel: 5,
+                list: [
+                    { name: '虚空兽皇【炼虚世界BOSS】', realmIdx:23, hp:33540, atk:4732, def:2275, exp:120000, stone:75000, drop:['godSkill'] }
+                ]
+            },
+            {
+                group: "合体",
+                groupLevel: 6,
+                list: [
+                    { name: '太古魔猿【合体世界BOSS】', realmIdx:27, hp:52650, atk:7236, def:3469, exp:200000, stone:125000, drop:['godSkill'] }
+                ]
+            },
+            {
+                group: "大乘",
+                groupLevel: 7,
+                list: [
+                    { name: '寂灭古神【大乘世界BOSS】', realmIdx:31, hp:78375, atk:10257, def:4950, exp:320000, stone:200000, drop:['godSkill'] }
+                ]
+            },
+            {
+                group: "渡劫",
+                groupLevel: 8,
+                list: [
+                    { name: '天道法相【渡劫世界BOSS】', realmIdx:35, hp:113400, atk:14028, def:6888, exp:500000, stone:300000, drop:['godSkill'] }
+                ]
+            },
+            {
+                group: "真仙",
+                groupLevel: 9,
+                list: [
+                    { name: '紫霄真仙【真仙世界BOSS】', realmIdx:39, hp:258094, atk:24595, def:12077, exp:760954, stone:456571, drop:['godSkill','topPill'] }
+                ]
+            },
+            {
+                group: "金仙",
+                groupLevel: 10,
+                list: [
+                    { name: '玄金仙尊【金仙世界BOSS】', realmIdx:43, hp:406118, atk:38701, def:19006, exp:1197374, stone:718426, drop:['godSkill','topPill'] }
+                ]
+            },
+            {
+                group: "太乙金仙",
+                groupLevel: 11,
+                list: [
+                    { name: '太乙元君【太乙金仙世界BOSS】', realmIdx:47, hp:639033, atk:60893, def:29909, exp:1884091, stone:1130455, drop:['godSkill','hongmengSword'] }
+                ]
+            },
+            {
+                group: "大罗金仙",
+                groupLevel: 12,
+                list: [
+                    { name: '混元大罗【大罗金仙世界BOSS】', realmIdx:51, hp:1005526, atk:95814, def:47059, exp:2964653, stone:1778791, drop:['godSkill','hongmengSword'] }
+                ]
+            },
+            {
+                group: "仙帝",
+                groupLevel: 13,
+                list: [
+                    { name: '太初仙帝【仙帝世界BOSS】', realmIdx:55, hp:1582218, atk:150765, def:74046, exp:4664938, stone:2798962, drop:['godSkill','hongmengSword'] }
+                ]
+            },
+            {
+                group: "道祖",
+                groupLevel: 14,
+                list: [
+                    { name: '天道道祖【道祖世界BOSS】', realmIdx:59, hp:2489652, atk:237235, def:116517, exp:7340369, stone:4404221, drop:['godSkill','hongmengSword'] }
+                ]
+            }
+        ];
+
+        // 通天塔常量
+        const TOTAL_TOWER_FLOORS = 150;
+        const CYCLE_BONUS_RATE = 0.1; // 每次轮回全属性+10%
+        
+        // 游戏全局状态
+        let game = {
+            name: '无名散修',
+            realmIndex: 0,
+            exp: 0,
+            hp: 120,
+            mp: 60,
+            maxHp: 120,
+            maxMp: 60,
+            cycleCount: 0,
+            towerFloor: 1,
+            maxTowerFloor: 0,
+            stones: 50,
+            bag: {},
+            skills: [],
+            equippedWeapon: null,
+            inBattle: false,
+            enemy: null,
+        };
+
+        // 分页全局变量 - BOSS列表每页5个
+        const PAGE_SIZE = 3;
+        const SHOP_PAGE_SIZE = 4;
+        let currentBossPage = 0;
+        let currentWorldBossPage = 0;
+        let currentShopPage = 0;
+
+        // 凡人城镇冷却全局变量
+        let marketCooldown = 0;
+        let marketTimer = null;
+
+        // ========== 存档兼容：补全缺失字段 ==========
+        function fixSaveData(){
+            if (typeof game.cycleCount === 'undefined') game.cycleCount = 0;
+            if (typeof game.towerFloor === 'undefined') game.towerFloor = 1;
+            if (typeof game.maxTowerFloor === 'undefined') game.maxTowerFloor = 0;
+            if (typeof game.bag === 'undefined') game.bag = {};
+            if (typeof game.skills === 'undefined') game.skills = [];
+        }
+
+        // ========== 轮回加成计算 ==========
+        function getCycleBonus(){
+            return 1 + game.cycleCount * CYCLE_BONUS_RATE;
+        }
+
+        // ========== 战力计算（统一入口） ==========
+        function calcFightPower(){
+            const atk = getTotalAtk();
+            const def = getTotalDef();
+            const hp = getMaxHp();
+            return Math.floor(atk * 2.5 + def * 2 + hp * 0.8);
+        }
+
+        function getRealm() { return REALM_LIST[game.realmIndex]; }
+        function getTotalAtk() {
+            let atk = getRealm().atk;
+            if (game.equippedWeapon && ITEMS[game.equippedWeapon]) {
+                atk += ITEMS[game.equippedWeapon].effect.atk || 0;
+            }
+            let bonus = 1;
+            for(let i = 0; i < game.skills.length; i++){
+                const s = game.skills[i];
+                if (ITEMS[s] && ITEMS[s].effect && ITEMS[s].effect.atkBonus) {
+                    bonus += ITEMS[s].effect.atkBonus;
+                }
+            }
+            bonus *= getCycleBonus();
+            return Math.floor(atk * bonus);
+        }
+        function getTotalDef() {
+            let def = getRealm().def;
+            let bonus = 1;
+            for(let i = 0; i < game.skills.length; i++){
+                const s = game.skills[i];
+                if (ITEMS[s] && ITEMS[s].effect && ITEMS[s].effect.defBonus) {
+                    bonus += ITEMS[s].effect.defBonus;
+                }
+            }
+            bonus *= getCycleBonus();
+            return Math.floor(def * bonus);
+        }
+        function getMaxHp() {
+            let hp = getRealm().hp;
+            let bonus = 1;
+            for(let i = 0; i < game.skills.length; i++){
+                const s = game.skills[i];
+                if (ITEMS[s] && ITEMS[s].effect && ITEMS[s].effect.hpBonus) {
+                    bonus += ITEMS[s].effect.hpBonus;
+                }
+            }
+            bonus *= getCycleBonus();
+            return Math.floor(hp * bonus);
+        }
+        function getMaxMp() {
+            let mp = getRealm().mp;
+            let bonus = 1;
+            for(let i = 0; i < game.skills.length; i++){
+                const s = game.skills[i];
+                if (ITEMS[s] && ITEMS[s].effect && ITEMS[s].effect.mpBonus) {
+                    bonus += ITEMS[s].effect.mpBonus;
+                }
+            }
+            bonus *= getCycleBonus();
+            return Math.floor(mp * bonus);
+        }
+        function getExpBonus() {
+            let bonus = 1;
+            for(let i = 0; i < game.skills.length; i++){
+                const s = game.skills[i];
+                if (ITEMS[s] && ITEMS[s].effect && ITEMS[s].effect.expBonus) {
+                    bonus += ITEMS[s].effect.expBonus;
+                }
+            }
+            return bonus;
+        }
+
+        // ========== 判断物品是否已拥有（限购用） ==========
+        function isItemOwned(itemId){
+            const item = ITEMS[itemId];
+            if (!item) return false;
+            
+            // 功法：已学会则算拥有
+            if (item.type === 'skill') {
+                return game.skills.indexOf(itemId) !== -1;
+            }
+            // 武器：已装备 或 背包中有，则算拥有
+            if (item.type === 'weapon') {
+                const inBag = game.bag[itemId] && game.bag[itemId] > 0;
+                const equipped = game.equippedWeapon === itemId;
+                return inBag || equipped;
+            }
+            // 丹药、材料不限购
+            return false;
+        }
+
+        // ========== 通天塔怪物属性生成 ==========
+        function getTowerMonster(floor){
+            const groupIdx = Math.floor((floor - 1) / 10);
+            const groupName = groupIdx < REALM_GROUP_ORDER.length ? REALM_GROUP_ORDER[groupIdx] : '超脱';
+            const subFloor = (floor - 1) % 10;
+            
+            let realmBaseIdx = groupIdx * 4;
+            if(groupIdx >= REALM_GROUP_ORDER.length) realmBaseIdx = REALM_LIST.length - 1;
+            
+            const realmOffset = subFloor < 8 ? Math.floor(subFloor / 2) : 3;
+            const extraRatio = subFloor >= 8 ? (subFloor - 7) * 0.1 : 0;
+            
+            const baseRealm = REALM_LIST[Math.min(REALM_LIST.length - 1, realmBaseIdx + realmOffset)];
+            
+            const hp = Math.floor(baseRealm.hp * (1 + extraRatio));
+            const atk = Math.floor(baseRealm.atk * (1 + extraRatio));
+            const def = Math.floor(baseRealm.def * (1 + extraRatio));
+            const exp = Math.floor(baseRealm.exp * 0.3 * (1 + extraRatio));
+            const stone = Math.floor(20 + floor * 15);
+            
+            return {
+                name: groupName + '守塔卫',
+                realmIdx: Math.min(REALM_LIST.length - 1, realmBaseIdx + realmOffset),
+                hp: hp,
+                atk: atk,
+                def: def,
+                exp: exp,
+                stone: stone
+            };
+        }
+
+        // ========== 日志工具 ==========
+        function addLog(msg, type){
+            if(!type) type = 'info';
+            const container = document.getElementById('logContainer');
+            const div = document.createElement('div');
+            div.className = 'log-item ' + type;
+            div.textContent = msg;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+        function clearLog(){
+            document.getElementById('logContainer').innerHTML = '';
+        }
+        function random(min, max){
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        function chance(percent){
+            return Math.random() < percent;
+        }
+
+        // ========== 修炼核心功能 ==========
+        function cultivate(){
+            if (game.inBattle) return;
+            const baseExp = 8 + game.realmIndex * 3;
+            const gain = Math.floor(baseExp * getExpBonus());
+            game.exp += gain;
+            game.mp = Math.max(0, game.mp - 2);
+            
+            addLog('打坐修炼，获得 ' + gain + ' 点修为', 'good');
+            
+            // 固定5%概率顿悟
+            if (chance(0.05)) {
+                const bonus = Math.floor(gain * 0.5);
+                game.exp += bonus;
+                addLog('✨ 心有所悟，额外获得 ' + bonus + ' 点修为！', 'rare');
+            }
+            
+            checkLevelUp();
+            updateUI();
+        }
+
+        function breakthrough(){
+            if (game.inBattle) return;
+            const realm = getRealm();
+            if (game.exp < realm.exp) {
+                addLog('修为不足，无法突破', 'bad');
+                return;
+            }
+            if (game.realmIndex >= REALM_LIST.length - 1) {
+                addLog('已达【' + REALM_LIST[REALM_LIST.length - 1].name + '】，大道尽头！', 'rare');
+                return;
+            }
+            
+            game.exp -= realm.exp;
+            game.realmIndex++;
+            
+            const newRealm = getRealm();
+            game.maxHp = getMaxHp();
+            game.maxMp = getMaxMp();
+            game.hp = game.maxHp;
+            game.mp = game.maxMp;
+            
+            addLog('⚡ 突破成功！境界提升至【' + newRealm.name + '】', 'rare');
+            checkLevelUp();
+            updateUI();
+            renderBossList();
+            renderWorldBossList();
+            renderTower();
+        }
+
+        function checkLevelUp(){
+            const realm = getRealm();
+            const btn = document.getElementById('breakthroughBtn');
+            if (game.exp >= realm.exp && game.realmIndex < REALM_LIST.length - 1) {
+                btn.disabled = false;
+                btn.classList.add('breakthrough-glow');
+            } else {
+                btn.disabled = true;
+                btn.classList.remove('breakthrough-glow');
+            }
+        }
+
+        function rest(){
+            if (game.inBattle) return;
+            const hpRecover = Math.floor(game.maxHp * 0.3);
+            const mpRecover = Math.floor(game.maxMp * 0.4);
+            game.hp = Math.min(game.maxHp, game.hp + hpRecover);
+            game.mp = Math.min(game.maxMp, game.mp + mpRecover);
+            addLog('调息完毕，恢复 ' + hpRecover + ' 气血、' + mpRecover + ' 灵力', 'good');
+            updateUI();
+        }
+
+        // ========== 凡人城镇（5秒冷却） ==========
+        function goMarket(){
+            if (game.inBattle) return;
+            if (marketCooldown > 0) {
+                addLog('凡人城镇冷却中，还剩 ' + marketCooldown + ' 秒', 'info');
+                return;
+            }
+            if (game.mp < 5) {
+                addLog('灵力不足，无法前往城镇', 'bad');
+                return;
+            }
+            game.mp -= 5;
+            const earnings = random(20, 50) + game.realmIndex * 12;
+            game.stones += earnings;
+            addLog('在凡人城镇行医，赚取 ' + earnings + ' 枚灵石', 'good');
+            
+            // 启动5秒冷却
+            marketCooldown = 5;
+            updateMarketBtn();
+            marketTimer = setInterval(function(){
+                marketCooldown--;
+                updateMarketBtn();
+                if (marketCooldown <= 0) {
+                    clearInterval(marketTimer);
+                }
+            }, 1000);
+            
+            updateUI();
+        }
+
+        // 更新凡人城镇按钮状态
+        function updateMarketBtn(){
+            const btn = document.getElementById('marketBtn');
+            const icon = document.getElementById('marketIcon');
+            const cd = document.getElementById('marketCd');
+            if (marketCooldown > 0) {
+                btn.disabled = true;
+                icon.classList.add('hidden');
+                cd.classList.remove('hidden');
+                cd.textContent = marketCooldown;
+            } else {
+                btn.disabled = false;
+                icon.classList.remove('hidden');
+                cd.classList.add('hidden');
+            }
+        }
+
+        // ========== 普通BOSS分页与渲染 ==========
+        function changeBossPage(delta){
+            const totalPage = Math.ceil(BOSS_LIST.length / PAGE_SIZE);
+            currentBossPage = Math.max(0, Math.min(totalPage - 1, currentBossPage + delta));
+            renderBossList();
+        }
+
+        function renderBossList(){
+            const wrap = document.getElementById('bossList');
+            wrap.innerHTML = '';
+            const playerGroup = getRealm().group;
+            const playerGroupLevel = REALM_GROUP_ORDER.indexOf(playerGroup);
+            const totalPage = Math.ceil(BOSS_LIST.length / PAGE_SIZE);
+
+            const start = currentBossPage * PAGE_SIZE;
+            const pageData = BOSS_LIST.slice(start, start + PAGE_SIZE);
+
+            pageData.forEach(function(groupData, idx){
+                const groupIdx = start + idx;
+
+                groupData.list.forEach(function(boss, bossIdx){
+                    const bossRealm = REALM_LIST[boss.realmIdx];
+                    const canFight = playerGroupLevel >= groupData.groupLevel;
+                    
+                    const item = document.createElement('div');
+                    item.className = 'item-card boss-item';
+                    item.innerHTML = 
+                        '<div>' +
+                            '<div class="font-bold ' + (canFight ? 'text-white' : 'text-gray-500') + '">' + boss.name + '</div>' +
+                            '<div class="text-xs text-gray-400 mt-1">' +
+                                '推荐境界：' + bossRealm.name + ' | 气血 ' + boss.hp + ' 攻击 ' + boss.atk + ' 防御 ' + boss.def +
+                            '</div>' +
+                            '<div class="text-xs text-yellow-300 mt-1">' +
+                                '掉落：' + boss.drop.map(function(id){ return ITEMS[id].name; }).join('、') +
+                            '</div>' +
+                        '</div>' +
+                        '<button onclick="fightBoss(' + groupIdx + ', ' + bossIdx + ')" class="neum-btn py-1.5 px-4 text-sm" ' + (canFight ? '' : 'disabled') + '>挑战</button>';
+                    wrap.appendChild(item);
+                });
+            });
+
+            document.getElementById('bossPageNum').textContent = (currentBossPage + 1) + ' / ' + totalPage;
+            document.getElementById('bossPrevBtn').disabled = currentBossPage === 0;
+            document.getElementById('bossNextBtn').disabled = currentBossPage >= totalPage - 1;
+        }
+
+        // 挑战普通BOSS
+        function fightBoss(groupIdx, bossIdx){
+            if (game.inBattle) {
+                addLog('正在战斗中，无法挑战新BOSS', 'bad');
+                return;
+            }
+            if (game.mp < 5) {
+                addLog('灵力不足，无法挑战', 'bad');
+                return;
+            }
+            game.mp -= 5;
+            const boss = BOSS_LIST[groupIdx].list[bossIdx];
+            startBattle({
+                name: boss.name,
+                realm: boss.realmIdx,
+                hp: boss.hp,
+                atk: boss.atk,
+                def: boss.def,
+                exp: boss.exp,
+                stone: boss.stone,
+                drop: boss.drop,
+                isTower: false
+            });
+        }
+
+        // ========== 世界BOSS分页与渲染 ==========
+        function changeWorldBossPage(delta){
+            const totalPage = Math.ceil(WORLD_BOSS_LIST.length / PAGE_SIZE);
+            currentWorldBossPage = Math.max(0, Math.min(totalPage - 1, currentWorldBossPage + delta));
+            renderWorldBossList();
+        }
+
+        function renderWorldBossList(){
+            const wrap = document.getElementById('worldBossList');
+            wrap.innerHTML = '';
+            const playerGroup = getRealm().group;
+            const playerGroupLevel = REALM_GROUP_ORDER.indexOf(playerGroup);
+            const totalPage = Math.ceil(WORLD_BOSS_LIST.length / PAGE_SIZE);
+
+            const start = currentWorldBossPage * PAGE_SIZE;
+            const pageData = WORLD_BOSS_LIST.slice(start, start + PAGE_SIZE);
+
+            pageData.forEach(function(groupData, idx){
+                const groupIdx = start + idx;
+
+                groupData.list.forEach(function(boss, bossIdx){
+                    const bossRealm = REALM_LIST[boss.realmIdx];
+                    const canFight = playerGroupLevel >= groupData.groupLevel;
+                    
+                    const item = document.createElement('div');
+                    item.className = 'item-card boss-item';
+                    item.innerHTML = 
+                        '<div>' +
+                            '<div class="font-bold ' + (canFight ? 'text-white' : 'text-gray-500') + '">' + boss.name + '</div>' +
+                            '<div class="text-xs text-gray-400 mt-1">' +
+                                '推荐境界：' + bossRealm.name + ' | 气血 ' + boss.hp + ' 攻击 ' + boss.atk + ' 防御 ' + boss.def +
+                            '</div>' +
+                            '<div class="text-xs text-yellow-300 mt-1">' +
+                                '掉落：' + boss.drop.map(function(id){ return ITEMS[id].name; }).join('、') +
+                            '</div>' +
+                        '</div>' +
+                        '<button onclick="fightWorldBoss(' + groupIdx + ', ' + bossIdx + ')" class="neum-btn py-1.5 px-4 text-sm" ' + (canFight ? '' : 'disabled') + '>挑战</button>';
+                    wrap.appendChild(item);
+                });
+            });
+
+            document.getElementById('worldBossPageNum').textContent = (currentWorldBossPage + 1) + ' / ' + totalPage;
+            document.getElementById('worldBossPrevBtn').disabled = currentWorldBossPage === 0;
+            document.getElementById('worldBossNextBtn').disabled = currentWorldBossPage >= totalPage - 1;
+        }
+
+        // 挑战世界BOSS
+        function fightWorldBoss(groupIdx, bossIdx){
+            if (game.inBattle) {
+                addLog('正在战斗中，无法挑战新BOSS', 'bad');
+                return;
+            }
+            if (game.mp < 10) {
+                addLog('灵力不足，挑战世界BOSS需10点灵力', 'bad');
+                return;
+            }
+            game.mp -= 10;
+            const boss = WORLD_BOSS_LIST[groupIdx].list[bossIdx];
+            startBattle({
+                name: boss.name,
+                realm: boss.realmIdx,
+                hp: boss.hp,
+                atk: boss.atk,
+                def: boss.def,
+                exp: boss.exp,
+                stone: boss.stone,
+                drop: boss.drop,
+                isTower: false
+            });
+        }
+
+        // ========== 通天塔核心功能 ==========
+        function renderTower(){
+            if(!game.towerFloor) game.towerFloor = 1;
+            if(!game.maxTowerFloor) game.maxTowerFloor = 0;
+
+            document.getElementById('towerCurrentFloor').textContent = game.towerFloor;
+            document.getElementById('towerMaxFloor').textContent = game.maxTowerFloor;
+            
+            if(game.towerFloor > TOTAL_TOWER_FLOORS){
+                document.getElementById('towerMonsterName').textContent = '已通关全部层数';
+                document.getElementById('towerChallengeBtn').disabled = true;
+                return;
+            }
+            
+            const monster = getTowerMonster(game.towerFloor);
+            document.getElementById('towerMonsterName').textContent = monster.name;
+            document.getElementById('towerMonsterHp').textContent = monster.hp;
+            document.getElementById('towerMonsterAtk').textContent = monster.atk;
+            document.getElementById('towerMonsterDef').textContent = monster.def;
+            document.getElementById('towerRewardExp').textContent = monster.exp;
+            document.getElementById('towerRewardStone').textContent = monster.stone;
+            
+            document.getElementById('towerChallengeBtn').disabled = game.inBattle;
+        }
+
+        function challengeTower(){
+            if (game.inBattle) {
+                addLog('正在战斗中，无法挑战', 'bad');
+                return;
+            }
+            if (game.towerFloor > TOTAL_TOWER_FLOORS) {
+                addLog('已通关通天塔全部' + TOTAL_TOWER_FLOORS + '层！', 'rare');
+                return;
+            }
+            if (game.mp < 5) {
+                addLog('灵力不足，无法挑战', 'bad');
+                return;
+            }
+            game.mp -= 5;
+            const monster = getTowerMonster(game.towerFloor);
+            startBattle({
+                name: monster.name,
+                realm: monster.realmIdx,
+                hp: monster.hp,
+                atk: monster.atk,
+                def: monster.def,
+                exp: monster.exp,
+                stone: monster.stone,
+                drop: null,
+                isTower: true
+            });
+        }
+
+        // ========== 坊市分页与渲染（新增限购标识） ==========
+        function changeShopPage(delta){
+            const totalPage = Math.ceil(SHOP_ITEMS.length / SHOP_PAGE_SIZE);
+            currentShopPage = Math.max(0, Math.min(totalPage - 1, currentShopPage + delta));
+            renderShop();
+        }
+
+        function renderShop(){
+            const list = document.getElementById('shopList');
+            list.innerHTML = '';
+            const totalPage = Math.ceil(SHOP_ITEMS.length / SHOP_PAGE_SIZE);
+            const start = currentShopPage * SHOP_PAGE_SIZE;
+            const pageItems = SHOP_ITEMS.slice(start, start + SHOP_PAGE_SIZE);
+
+            pageItems.forEach(function(id){
+                const item = ITEMS[id];
+                const owned = isItemOwned(id);
+                
+                // 根据是否拥有生成不同按钮
+                let btnHtml = '';
+                if (owned) {
+                    btnHtml = '<button disabled class="neum-btn px-3 py-1 text-sm">已有</button>';
+                } else {
+                    btnHtml = '<button onclick="buyItem(\'' + id + '\')" class="neum-btn px-3 py-1 text-sm">💎 ' + item.price + '</button>';
+                }
+
+                const div = document.createElement('div');
+                div.className = 'item-card p-3 rounded-lg flex justify-between items-center';
+                div.innerHTML = 
+                    '<div>' +
+                        '<div class="font-bold rarity-' + item.rarity + '">' + item.name + '</div>' +
+                        '<div class="text-xs text-gray-400">' + item.desc + '</div>' +
+                    '</div>' +
+                    btnHtml;
+                list.appendChild(div);
+            });
+
+            document.getElementById('shopPageNum').textContent = (currentShopPage + 1) + ' / ' + totalPage;
+            document.getElementById('shopPrevBtn').disabled = currentShopPage === 0;
+            document.getElementById('shopNextBtn').disabled = currentShopPage >= totalPage - 1;
+        }
+
+        function buyItem(itemId){
+            const item = ITEMS[itemId];
+            
+            // 限购校验
+            if (isItemOwned(itemId)) {
+                addLog('你已经拥有此物品了', 'info');
+                return;
+            }
+
+            if (game.stones < item.price) {
+                addLog('灵石不足', 'bad');
+                return;
+            }
+            game.stones -= item.price;
+            addItem(itemId);
+            addLog('购买了【' + item.name + '】', 'good');
+            renderBag();
+            renderShop(); // 购买后立即刷新坊市，显示「已有」
+            updateUI();
+        }
+
+        // ========== 战斗系统（副本/通天塔共用） ==========
+        function startBattle(monster){
+            game.inBattle = true;
+            game.enemy = {
+                hp: monster.hp,
+                maxHp: monster.hp,
+                name: monster.name,
+                realm: monster.realm,
+                atk: monster.atk,
+                def: monster.def,
+                exp: monster.exp,
+                stone: monster.stone,
+                drop: monster.drop,
+                isTower: monster.isTower
+            };
+            
+            // 显示公共战斗面板
+            document.getElementById('battlePanel').classList.remove('hidden');
+            document.getElementById('enemyName').textContent = game.enemy.name;
+            document.getElementById('enemyRealm').textContent = REALM_LIST[game.enemy.realm].name;
+            
+            // 判断是否有法术技能
+            let hasSkill = false;
+            for(let i = 0; i < game.skills.length; i++){
+                const s = game.skills[i];
+                if (ITEMS[s] && ITEMS[s].effect && ITEMS[s].effect.skillDmg) {
+                    hasSkill = true;
+                    break;
+                }
+            }
+            document.getElementById('battleSkillBtn').disabled = !hasSkill;
+            
+            addLog('⚔️ 遭遇了 ' + game.enemy.name + '！', 'bad');
+            updateBattleUI();
+            renderTower();
+        }
+
+        function updateBattleUI(){
+            if (!game.enemy) return;
+            const pct = (game.enemy.hp / game.enemy.maxHp) * 100;
+            document.getElementById('enemyHpText').textContent = game.enemy.hp + '/' + game.enemy.maxHp;
+            document.getElementById('enemyHpBar').style.width = pct + '%';
+        }
+
+        function battleAttack(){
+            if (!game.inBattle) return;
+            const playerDmg = Math.max(1, getTotalAtk() - game.enemy.def + random(-3, 3));
+            game.enemy.hp -= playerDmg;
+            addLog('你挥出一击，造成 ' + playerDmg + ' 点伤害', 'info');
+            
+            if (game.enemy.hp <= 0) {
+                battleWin();
+                return;
+            }
+            enemyAttack();
+            updateBattleUI();
+            updateUI();
+        }
+
+        function battleSkill(){
+            if (!game.inBattle) return;
+            if (game.mp < 15) {
+                addLog('灵力不足，无法施展法术', 'bad');
+                return;
+            }
+            game.mp -= 15;
+            
+            let skillDmg = 0;
+            for(let i = 0; i < game.skills.length; i++){
+                const s = game.skills[i];
+                if (ITEMS[s] && ITEMS[s].effect && ITEMS[s].effect.skillDmg) {
+                    skillDmg += ITEMS[s].effect.skillDmg;
+                }
+            }
+            const totalDmg = Math.floor(getTotalAtk() * 0.5 + skillDmg + random(0, 15));
+            game.enemy.hp -= totalDmg;
+            addLog('✨ 施展法术，造成 ' + totalDmg + ' 点伤害！', 'good');
+            
+            if (game.enemy.hp <= 0) {
+                battleWin();
+                return;
+            }
+            enemyAttack();
+            updateBattleUI();
+            updateUI();
+        }
+
+        function enemyAttack(){
+            const enemyDmg = Math.max(1, game.enemy.atk - getTotalDef() + random(-2, 2));
+            game.hp -= enemyDmg;
+            addLog(game.enemy.name + ' 反击，造成 ' + enemyDmg + ' 点伤害', 'bad');
+            if (game.hp <= 0) battleLose();
+        }
+
+        function battleWin(){
+            addLog('🎉 击败了 ' + game.enemy.name + '！', 'good');
+            game.exp += game.enemy.exp;
+            game.stones += game.enemy.stone;
+            addLog('获得 ' + game.enemy.exp + ' 修为、' + game.enemy.stone + ' 灵石', 'good');
+            
+            if (game.enemy.drop && chance(0.4)) {
+                const drop = game.enemy.drop[random(0, game.enemy.drop.length - 1)];
+                addItem(drop);
+                addLog('掉落了【' + ITEMS[drop].name + '】', 'rare');
+            }
+
+            // 通天塔特殊处理
+            if(game.enemy.isTower){
+                addLog('🏆 通关通天塔第 ' + game.towerFloor + ' 层！', 'good');
+                if(game.towerFloor > game.maxTowerFloor){
+                    game.maxTowerFloor = game.towerFloor;
+                }
+                game.towerFloor++;
+                
+                // 每10层触发轮回
+                if((game.towerFloor - 1) % 10 === 0){
+                    game.cycleCount++;
+                    addLog('🔄 触发轮回！当前轮回 ' + game.cycleCount + ' 次，全属性永久提升' + (CYCLE_BONUS_RATE*100) + '%', 'rare');
+                    game.maxHp = getMaxHp();
+                    game.maxMp = getMaxMp();
+                    game.hp = game.maxHp;
+                    game.mp = game.maxMp;
+                }
+            }
+            
+            endBattle();
+            checkLevelUp();
+            updateUI();
+            renderBossList();
+            renderWorldBossList();
+            renderTower();
+        }
+
+        function battleLose(){
+            game.hp = 1;
+            addLog('💀 你被击败了...侥幸逃回，气血大损', 'bad');
+            endBattle();
+            updateUI();
+            renderTower();
+        }
+
+        function battleFlee(){
+            // 通天塔战斗不可逃跑
+            if(game.enemy && game.enemy.isTower){
+                addLog('通天塔中无法逃跑！', 'bad');
+                enemyAttack();
+                updateBattleUI();
+                updateUI();
+                return;
+            }
+            
+            if (chance(0.6)) {
+                addLog('成功逃离战斗', 'info');
+                endBattle();
+            } else {
+                addLog('逃跑失败！', 'bad');
+                enemyAttack();
+            }
+            updateBattleUI();
+            updateUI();
+        }
+
+        function endBattle(){
+            game.inBattle = false;
+            game.enemy = null;
+            document.getElementById('battlePanel').classList.add('hidden');
+        }
+
+        // ========== 背包与物品 ==========
+        function addItem(itemId){
+            if (!game.bag[itemId]) {
+                game.bag[itemId] = 0;
+            }
+            game.bag[itemId]++;
+        }
+
+        function useItem(itemId){
+            if (!game.bag[itemId] || game.bag[itemId] <= 0) return;
+            const item = ITEMS[itemId];
+            
+            if (item.type === 'pill') {
+                game.bag[itemId]--;
+                if (item.effect.exp) {
+                    game.exp += item.effect.exp;
+                    addLog('服用【' + item.name + '】，增加 ' + item.effect.exp + ' 修为', 'good');
+                }
+                if (item.effect.hp) {
+                    game.hp = Math.min(getMaxHp(), game.hp + item.effect.hp);
+                    addLog('服用【' + item.name + '】，恢复 ' + item.effect.hp + ' 气血', 'good');
+                }
+                if (item.effect.mp) {
+                    game.mp = Math.min(getMaxMp(), game.mp + item.effect.mp);
+                    addLog('服用【' + item.name + '】，恢复 ' + item.effect.mp + ' 灵力', 'good');
+                }
+                checkLevelUp();
+            } else if (item.type === 'weapon') {
+                if (game.equippedWeapon) addItem(game.equippedWeapon);
+                game.equippedWeapon = itemId;
+                game.bag[itemId]--;
+                addLog('装备了【' + item.name + '】', 'good');
+            } else if (item.type === 'skill') {
+                if (game.skills.indexOf(itemId) !== -1) {
+                    addLog('你已经学会此功法了', 'info');
+                    return;
+                }
+                game.skills.push(itemId);
+                game.bag[itemId]--;
+                addLog('📜 学会了【' + item.name + '】！', 'rare');
+                game.maxHp = getMaxHp();
+                game.maxMp = getMaxMp();
+            } else if (item.type === 'material') {
+                if (item.effect.stone) {
+                    game.stones += item.effect.stone;
+                    game.bag[itemId]--;
+                    addLog('兑换了 ' + item.effect.stone + ' 枚灵石', 'good');
+                }
+            }
+            renderBag();
+            updateUI();
+            renderBossList();
+            renderWorldBossList();
+            renderTower();
+            // 如果当前在坊市页面，使用物品后刷新坊市状态
+            const shopPanel = document.getElementById('shopPanel');
+            if (shopPanel && !shopPanel.classList.contains('hidden')) {
+                renderShop();
+            }
+        }
+
+        function renderBag(){
+            const grid = document.getElementById('bagGrid');
+            const empty = document.getElementById('bagEmpty');
+            grid.innerHTML = '';
+            const items = [];
+            for(let id in game.bag){
+                if(game.bag[id] > 0){
+                    items.push([id, game.bag[id]]);
+                }
+            }
+            
+            if (items.length === 0) {
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+            
+            items.forEach(function(pair){
+                const id = pair[0];
+                const count = pair[1];
+                const item = ITEMS[id];
+                const div = document.createElement('div');
+                div.className = 'item-card p-2 rounded-lg cursor-pointer';
+                div.onclick = function(){ useItem(id); };
+                div.innerHTML = 
+                    '<div class="text-xs rarity-' + item.rarity + ' font-bold">' + item.name + ' x' + count + '</div>' +
+                    '<div class="text-xs text-gray-400 mt-1">' + item.desc + '</div>' +
+                    '<div class="text-xs text-blue-400 mt-1">点击使用</div>';
+                grid.appendChild(div);
+            });
+        }
+
+        // ========== 功法面板 ==========
+        function renderSkills(){
+            const list = document.getElementById('skillList');
+            if (game.skills.length === 0) {
+                list.innerHTML = '<div class="text-gray-500 text-center py-4">尚未习得任何功法</div>';
+                return;
+            }
+            list.innerHTML = '';
+            game.skills.forEach(function(id){
+                const skill = ITEMS[id];
+                const div = document.createElement('div');
+                div.className = 'item-card p-3 rounded-lg';
+                div.innerHTML = 
+                    '<div class="font-bold rarity-' + skill.rarity + '">' + skill.name + '</div>' +
+                    '<div class="text-xs text-gray-400 mt-1">' + skill.desc + '</div>';
+                list.appendChild(div);
+            });
+        }
+
+        // ========== 标签切换（战斗面板独立不隐藏） ==========
+        function switchTab(tab){
+            const panels = document.querySelectorAll('[id$="Panel"]:not(#battlePanel)');
+            panels.forEach(function(p){ p.classList.add('hidden'); });
+            document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('active'); });
+            document.getElementById(tab + 'Panel').classList.remove('hidden');
+            
+            const tabBtn = document.querySelector('[data-tab="' + tab + '"]');
+            if(tabBtn) tabBtn.classList.add('active');
+            
+            if (tab === 'bag') renderBag();
+            if (tab === 'shop') renderShop();
+            if (tab === 'skill') renderSkills();
+            if (tab === 'explore') renderBossList();
+            if (tab === 'worldBoss') renderWorldBossList();
+            if (tab === 'tower') renderTower();
+        }
+
+        // ========== 存档系统 ==========
+        function saveGame(){
+            localStorage.setItem('xiuxian_save', JSON.stringify(game));
+            addLog('💾 存档已保存', 'info');
+        }
+        function loadGame(){
+            const data = localStorage.getItem('xiuxian_save');
+            if (!data) {
+                addLog('没有找到存档', 'bad');
+                return;
+            }
+            try {
+                game = JSON.parse(data);
+                fixSaveData();
+                game.maxHp = getMaxHp();
+                game.maxMp = getMaxMp();
+                addLog('📂 存档读取成功', 'good');
+                updateUI();
+                renderBag();
+                renderBossList();
+                renderWorldBossList();
+                renderTower();
+            } catch(e) {
+                addLog('存档损坏', 'bad');
+            }
+        }
+        function resetGame(){
+            if (!confirm('确定要重新开始吗？所有进度将丢失！')) return;
+            localStorage.removeItem('xiuxian_save');
+            location.reload();
+        }
+
+        // ========== 全局UI刷新 ==========
+        function updateUI(){
+            const realm = getRealm();
+            game.maxHp = getMaxHp();
+            game.maxMp = getMaxMp();
+            
+            document.getElementById('playerRealm').textContent = realm.name;
+            document.getElementById('hpText').textContent = game.hp + ' / ' + game.maxHp;
+            document.getElementById('hpBar').style.width = (game.hp / game.maxHp * 100) + '%';
+            document.getElementById('mpText').textContent = game.mp + ' / ' + game.maxMp;
+            document.getElementById('mpBar').style.width = (game.mp / game.maxMp * 100) + '%';
+            document.getElementById('expText').textContent = game.exp + ' / ' + realm.exp;
+            document.getElementById('expBar').style.width = Math.min(100, game.exp / realm.exp * 100) + '%';
+            document.getElementById('atkStat').textContent = getTotalAtk();
+            document.getElementById('defStat').textContent = getTotalDef();
+            document.getElementById('fightPower').textContent = calcFightPower();
+            document.getElementById('cycleCount').textContent = game.cycleCount;
+            document.getElementById('stoneCount').textContent = game.stones;
+        }
+
+        // ========== 初始化 ==========
+        function init(){
+            const data = localStorage.getItem('xiuxian_save');
+            if (data) {
+                try {
+                    game = JSON.parse(data);
+                    fixSaveData();
+                    addLog('检测到存档，已自动加载', 'info');
+                } catch(e) {}
+            }
+            
+            game.maxHp = getMaxHp();
+            game.maxMp = getMaxMp();
+            updateUI();
+            checkLevelUp();
+            renderBossList();
+            updateMarketBtn();
+            // 每30秒自动保存
+            setInterval(function(){
+                localStorage.setItem('xiuxian_save', JSON.stringify(game));
+            }, 30000);
+        }
+        init();
+    </script>
+</body>
+</html>
