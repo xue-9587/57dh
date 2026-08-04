@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 页面未找到</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2b2b33;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #c5c5d2;
+            padding: 20px;
+        }
+
+        /* 暗色拟态容器 */
+        .neumo-card {
+            background: #2b2b33;
+            border-radius: 24px;
+            box-shadow:
+                8px 8px 16px #222228,
+                -8px -8px 16px #34343e;
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .code-404 {
+            font-size: clamp(80px, 18vw, 140px);
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c86ff, #b084ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .title {
+            font-size: clamp(20px,4vw,26px);
+            margin-bottom: 12px;
+            color: #e2e2ee;
+        }
+
+        .desc {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        /* 拟态按钮 */
+        .neumo-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #d0d0e4;
+            padding: 14px 36px;
+            border-radius: 14px;
+            background: #2b2b33;
+            box-shadow:
+                5px 5px 10px #222228,
+                -5px -5px 10px #34343e;
+            transition: all 0.25s ease;
+            font-size: 16px;
+        }
+
+        .neumo-btn:hover {
+            box-shadow:
+                inset 5px 5px 10px #222228,
+                inset -5px -5px 10px #34343e;
+            color: #9fa8ff;
+        }
+
+        .neumo-btn:active {
+            box-shadow:
+                inset 7px 7px 14px #222228,
+                inset -7px -7px 14px #34343e;
+        }
+    </style>
+</head>
+<body>
+    <div class="neumo-card">
+        <div class="code-404">404</div>
+        <h2 class="title">页面不存在</h2>
+        <p class="desc">你访问的页面已经丢失、被移除或者地址输入错误，请检查链接后重试。</p>
+        <a href="/" class="neumo-btn">返回首页</a>
+    </div>
+</body>
+</html>
