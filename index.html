@@ -204,6 +204,70 @@
             transform: translateY(0);
         }
         
+        /* 文字广告栏 - 新拟态 */
+        .ad-bar {
+            max-width: 1600px;
+            width: 100%;
+            margin: 15px auto;
+            padding: 0 20px;
+        }
+
+        .ad-bar-inner {
+            background: #2d3139;
+            border-radius: 14px;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 15px;
+            box-shadow:
+                6px 6px 12px #1f2228,
+                -6px -6px 12px #3b4049;
+            flex-wrap: wrap;
+        }
+
+        .ad-item {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #aeb6c2;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .ad-item:hover {
+            color: #4299e1;
+            box-shadow:
+                inset 3px 3px 6px #1f2228,
+                inset -3px -3px 6px #3b4049;
+        }
+
+        .ad-item .ad-tag {
+            background: #4299e1;
+            color: #2d3139;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .ad-bar-inner {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .ad-item {
+                width: 100%;
+            }
+        }
+
         /* 返回顶部按钮 - 新拟态 */
         .back-to-top {
             position: fixed;
@@ -284,7 +348,7 @@
         
         /* 响应式适配 */
         @media (max-width: 1200px) {
-            .container, .nav-container, .copyright {
+            .container, .nav-container, .copyright, .ad-bar {
                 max-width: 1000px;
             }
         }
@@ -340,7 +404,7 @@
                 padding: 0 15px;
             }
             
-            .container, .nav-container, .copyright {
+            .container, .nav-container, .copyright, .ad-bar {
                 max-width: 100%;
                 padding: 0 15px;
             }
@@ -448,6 +512,28 @@
             </div>
         </div>
     </nav>
+
+    <!-- 文字广告栏 -->
+    <div class="ad-bar">
+        <div class="ad-bar-inner">
+            <a href="https://57dh.sylu.cc/" target="_blank" class="ad-item">
+                <span class="ad-tag">广告</span>
+                <i class="fa-solid fa-fire" style="color: #e53e3e;"></i> 林熙导航网
+            </a>
+            <a href="https://57zy.sylu.cc/" target="_blank" class="ad-item">
+                <span class="ad-tag">广告</span>
+                <i class="fa-solid fa-robot" style="color: #805ad5;"></i> 影游编辑器
+            </a>
+            <a href="http://57zy.cc.cd/" target="_blank" class="ad-item">
+                <span class="ad-tag">广告</span>
+                <i class="fa-solid fa-globe" style="color: #38a169;"></i> 林熙音乐台
+            </a>
+            <a href="https://57zy.ccwu.cc/" target="_blank" class="ad-item">
+                <span class="ad-tag">广告</span>
+                <i class="fa-solid fa-server" style="color: #d69e2e;"></i> 林熙个人店铺
+            </a>
+        </div>
+    </div>
     
     <div class="container">
         <!-- 网址分类说明一 -->
