@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>⎛⎝ 林熙导航网 ⎠⎞丨Epic 限时免费游戏</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 暗色拟态核心背景：深灰基调，统一暗色拟态视觉基础 */
+        body {
+            background: #2b2f36;
+            color: #c8cdd6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 暗色拟态风格 */
+        .navbar {
+            background: #2b2f36;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #c8cdd6;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* 暗色拟态文字轻微阴影 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
+                        -1px -1px 2px rgba(255, 255, 255, 0.05);
+        }
+        
+        .logo i {
+            color: #9aa1ad;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #c8cdd6;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            position: relative;
+            /* 暗色拟态基础按钮样式 */
+            border-radius: 8px;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-links a:hover {
+            color: #eef1f6;
+            /* 暗色拟态按压效果 */
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-links a.active {
+            color: #eef1f6;
+            /* 激活态暗色拟态按压 */
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* 汉堡菜单按钮 - 暗色拟态（核心修复：默认隐藏） */
+        .menu-toggle {
+            display: none; /* 电脑端默认隐藏，仅移动端显示 */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #c8cdd6;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 网址分类说明 - 暗色拟态卡片 */
+        .url-category-info {
+            background: #2b2f36;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            width: 100%;
+            /* 暗色拟态外阴影 */
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+        
+        .url-category-info h2 {
+            color: #eef1f6;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        
+        .url-category-info p {
+            color: #8b92a0;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 暗色拟态 */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 15px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #2b2f36;
+            border-radius: 12px;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 15px;
+            width: 100%;
+        }
+        
+        /* 暗色拟态按钮核心样式 */
+        .url-button {
+            display: inline-block;
+            background: #2b2f36;
+            border-radius: 10px;
+            color: #c8cdd6;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            /* 暗色拟态外阴影 */
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            /* 暗色拟态按压效果（内阴影） */
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+            color: #eef1f6;
+            transform: translateY(0); /* 取消原有位移，适配拟态风格 */
+        }
+        
+        /* 返回顶部按钮 - 暗色拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2b2f36;
+            color: #c8cdd6;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            /* 暗色拟态外阴影 */
+            box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.55),
+                        -5px -5px 11px rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top:hover {
+            /* 暗色拟态按压 */
+            box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.55),
+                        inset -5px -5px 11px rgba(255, 255, 255, 0.05);
+            color: #eef1f6;
+            transform: translateY(0);
+        }
+        
+        /* 底部版权信息 - 暗色拟态 */
+        footer {
+            background: #2b2f36;
+            margin-top: auto;
+            padding: 20px 0;
+            /* 暗色拟态上阴影 */
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.35);
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #8b92a0;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #c8cdd6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.55),
+                        -2px -2px 4px rgba(255, 255, 255, 0.05);
+        }
+        
+        .copyright a:hover {
+            color: #eef1f6;
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.55),
+                        inset -2px -2px 4px rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+        }
+        
+        /* 响应式适配 */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端仅在这里显示汉堡菜单 */
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #2b2f36;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 20px 0;
+                box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            /* 移动端网址按钮 - 每行两个 */
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+
+        /* ===== Epic 免费游戏领取区 - 暗色拟态（自适应） ===== */
+        .epic-section {
+            max-width: 1600px;
+            margin: 22px auto 0;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .epic-header {
+            background: #2b2f36;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            /* 暗色拟态外阴影 */
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+
+        .epic-header h2 {
+            color: #eef1f6;
+            font-size: 1.35rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .epic-header h2 i {
+            color: #9aa1ad;
+        }
+
+        .epic-refresh {
+            background: #2b2f36;
+            color: #c8cdd6;
+            border: none;
+            border-radius: 8px;
+            padding: 9px 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: inherit;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        -3px -3px 6px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .epic-refresh:hover:not(:disabled) {
+            color: #eef1f6;
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+
+        .epic-refresh:disabled {
+            cursor: not-allowed;
+            opacity: 0.55;
+        }
+
+        /* 自适应网格：自动按宽度填充列数 */
+        .epic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
+            width: 100%;
+        }
+
+        .epic-card {
+            background: #2b2f36;
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .epic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 9px 9px 18px rgba(0, 0, 0, 0.6),
+                        -9px -9px 18px rgba(255, 255, 255, 0.06);
+        }
+
+        .epic-card-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background: #23272d;
+            display: block;
+        }
+
+        .epic-card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .epic-card-title {
+            color: #eef1f6;
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .epic-card-desc {
+            color: #8b92a0;
+            font-size: 0.84rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .epic-card-price {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            min-height: 22px;
+        }
+
+        .epic-price-original {
+            color: #6b7280;
+            text-decoration: line-through;
+            font-size: 0.9rem;
+        }
+
+        .epic-price-free {
+            color: #5ad19b;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .epic-card-btn {
+            margin-top: auto;
+            background: #2b2f36;
+            color: #c8cdd6;
+            text-decoration: none;
+            text-align: center;
+            padding: 11px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .epic-card-btn:hover {
+            color: #eef1f6;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .epic-loading,
+        .epic-error,
+        .epic-empty {
+            background: #2b2f36;
+            border-radius: 12px;
+            padding: 34px 20px;
+            text-align: center;
+            color: #8b92a0;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+
+        .epic-error {
+            color: #e07a7a;
+        }
+
+        .epic-spinner {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            border: 4px solid #3a3f47;
+            border-top-color: #9aa1ad;
+            border-radius: 50%;
+            animation: epic-spin 0.8s linear infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes epic-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 768px) {
+            .epic-section {
+                padding: 0 15px;
+                margin-top: 18px;
+            }
+            .epic-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+            .epic-card-img {
+                height: 110px;
+            }
+            .epic-header h2 {
+                font-size: 1.15rem;
+            }
+        }
+
+        /* 分组小标题 & 状态标签（即将限免） */
+        .epic-subtitle {
+            color: #c8cdd6;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 20px 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .epic-subtitle i {
+            color: #9aa1ad;
+        }
+
+        .epic-subtitle .count {
+            font-size: 0.8rem;
+            color: #8b92a0;
+            font-weight: 400;
+        }
+
+        .epic-badge {
+            align-self: flex-start;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .epic-badge.now {
+            color: #5ad19b;
+            background: rgba(90, 209, 155, 0.12);
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.35),
+                        inset -2px -2px 4px rgba(255, 255, 255, 0.04);
+        }
+
+        .epic-badge.soon {
+            color: #e0b15a;
+            background: rgba(224, 177, 90, 0.12);
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.35),
+                        inset -2px -2px 4px rgba(255, 255, 255, 0.04);
+        }
+
+        .epic-soon-date {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            color: #8b92a0;
+            font-size: 0.82rem;
+        }
+
+        .epic-soon-date span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能（增加容错，避免电脑端报错）
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="./" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="./"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html" class="active"><i class="fa-solid fa-comment"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Epic 限时免费游戏领取信息（暗色拟态 · 自适应） -->
+    <section class="epic-section">
+        <div class="epic-header">
+            <h2><i class="fa-brands fa-epic-games"></i> Epic 限时免费游戏</h2>
+            <button class="epic-refresh" id="epicRefresh" type="button">
+                <i class="fa-solid fa-rotate"></i> 刷新
+            </button>
+        </div>
+        <div id="epicContent">
+            <div class="epic-loading">
+                <div class="epic-spinner"></div>
+                <p>正在获取 Epic 最新免费游戏...</p>
+            </div>
+        </div>
+    </section>
+
+<!--PC和WAP自适应版-->
+        
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="./" target="_blank">Epic 限时免费游戏</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #9aa1ad;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
+
+    <!-- Epic 免费游戏数据获取逻辑 -->
+    <script type="text/javascript">
+        (function () {
+            // Epic 官方静态促销接口（原始地址，本身不含 CORS 头）
+            var EPIC_API = 'https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions'
+                + '?locale=zh-CN&country=CN&allowCountries=CN';
+
+            // 数据源列表：直连优先，CORS 被拦截时依次回退到公共代理
+            // （若你的站点部署在自己服务器，建议自建同域代理，更稳定、无第三方依赖）
+            var SOURCES = [
+                EPIC_API,
+                'https://api.allorigins.win/raw?url=' + encodeURIComponent(EPIC_API),
+                'https://corsproxy.io/?url=' + encodeURIComponent(EPIC_API)
+            ];
+
+            function fetchJson(url) {
+                return fetch(url, { headers: { 'Accept': 'application/json' } })
+                    .then(function (res) {
+                        if (!res.ok) { throw new Error('网络响应异常 ' + res.status); }
+                        return res.json();
+                    });
+            }
+
+            // 依次尝试多个数据源，直到拿到可用 JSON
+            function fetchFromSources(index) {
+                index = index || 0;
+                if (index >= SOURCES.length) {
+                    throw new Error('所有数据源均不可用（可能为网络或跨域限制）');
+                }
+                return fetchJson(SOURCES[index]).catch(function () {
+                    return fetchFromSources(index + 1);
+                });
+            }
+
+            function getLink(el) {
+                var slug = '';
+                if (el.catalogNs && el.catalogNs.mappings && el.catalogNs.mappings[0]) {
+                    slug = el.catalogNs.mappings[0].pageSlug || '';
+                }
+                if (!slug && el.offerMappings && el.offerMappings[0]) {
+                    slug = el.offerMappings[0].pageSlug || '';
+                }
+                if (!slug) {
+                    slug = el.productSlug || el.urlSlug || '';
+                }
+                if (slug) {
+                    return 'https://store.epicgames.com/zh-CN/p/' + slug;
+                }
+                return 'https://store.epicgames.com/zh-CN/free-games';
+            }
+
+            // 判断某游戏在指定时间是否为“当前限时免费”
+            function isFreeNow(el, now) {
+                var promos = el && el.promotions && el.promotions.promotionalOffers;
+                var price = el && el.price && el.price.totalPrice;
+                if (!promos || !promos.length || !price) {
+                    return false;
+                }
+                if (price.discountPrice !== 0 || price.originalPrice <= 0) {
+                    return false;
+                }
+                return promos.some(function (po) {
+                    return (po.promotionalOffers || []).some(function (o) {
+                        var start = new Date(o.startDate).getTime();
+                        var end = new Date(o.endDate).getTime();
+                        return now >= start && now <= end;
+                    });
+                });
+            }
+
+            // 获取“即将限免”的最近开始时间（仅限 discountPercentage===0 且 start>now）
+            function getUpcomingFreeStart(el, now) {
+                var promos = el && el.promotions && el.promotions.upcomingPromotionalOffers;
+                if (!promos || !promos.length) { return null; }
+                var best = null;
+                promos.forEach(function (g) {
+                    (g.promotionalOffers || []).forEach(function (o) {
+                        var ds = o.discountSetting || {};
+                        if (ds.discountPercentage !== 0) { return; } // 仅“完全免费”才算限免，过滤 20%/50% 等折扣
+                        var start = new Date(o.startDate).getTime();
+                        if (isNaN(start) || start <= now) { return; }
+                        if (best === null || start < best) { best = start; }
+                    });
+                });
+                return best;
+            }
+
+            // 本地时间格式化：M月D日 HH:mm
+            function fmtDate(ts) {
+                var d = new Date(ts);
+                var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+                return (d.getMonth() + 1) + '月' + d.getDate() + '日 '
+                    + pad(d.getHours()) + ':' + pad(d.getMinutes());
+            }
+
+            function esc(str) {
+                return String(str == null ? '' : str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function buildCard(el, status, startTs) {
+                var images = el.keyImages || [];
+                var img = images.find(function (i) { return i.type === 'OfferImageWide'; })
+                    || images.find(function (i) { return i.type === 'Thumbnail'; })
+                    || images[0];
+                var imgUrl = img ? img.url : '';
+                var title = el.title || '未知游戏';
+                var desc = el.description || '';
+                var fmt = (el.price && el.price.totalPrice && el.price.totalPrice.fmtPrice) || {};
+                var original = fmt.originalPrice || '';
+                var current = fmt.discountPrice || '';
+                var link = getLink(el);
+
+                var imgHtml = imgUrl
+                    ? '<img class="epic-card-img" src="' + esc(imgUrl) + '" alt="' + esc(title) + '" loading="lazy">'
+                    : '';
+
+                var badgeHtml = (status === 'soon')
+                    ? '<span class="epic-badge soon">即将限免</span>'
+                    : '<span class="epic-badge now">免费领取</span>';
+
+                var priceHtml;
+                if (status === 'soon') {
+                    var curTxt = current ? ('现价 ' + esc(current)) : '';
+                    var dateTxt = startTs ? (fmtDate(startTs) + ' 开放') : '';
+                    priceHtml = '<div class="epic-soon-date">'
+                        + (curTxt ? '<span>' + curTxt + '</span>' : '')
+                        + (dateTxt ? '<span><i class="fa-regular fa-clock"></i> ' + dateTxt + '领取</span>' : '')
+                        + '</div>';
+                } else {
+                    var origHtml = original
+                        ? '<span class="epic-price-original">' + esc(original) + '</span>'
+                        : '';
+                    priceHtml = '<div class="epic-card-price">' + origHtml
+                        + '<span class="epic-price-free">免费</span></div>';
+                }
+
+                var btnTxt = (status === 'soon') ? '查看详情 ' : '前往领取 ';
+
+                return ''
+                    + '<div class="epic-card">'
+                    +   imgHtml
+                    +   '<div class="epic-card-body">'
+                    +     badgeHtml
+                    +     '<div class="epic-card-title">' + esc(title) + '</div>'
+                    +     '<div class="epic-card-desc">' + esc(desc) + '</div>'
+                    +     priceHtml
+                    +     '<a class="epic-card-btn" href="' + esc(link) + '" target="_blank" rel="noopener">' + btnTxt + '<i class="fa-solid fa-arrow-right"></i></a>'
+                    +   '</div>'
+                    + '</div>';
+            }
+
+            // 渲染一个分组（小标题 + 网格）
+            function renderGroup(icon, title, items) {
+                if (!items.length) { return ''; }
+                var cards = items.map(function (it) {
+                    return buildCard(it.el, it.status, it.start);
+                }).join('');
+                return '<h3 class="epic-subtitle"><i class="' + icon + '"></i> '
+                    + esc(title) + ' <span class="count">(' + items.length + ')</span></h3>'
+                    + '<div class="epic-grid">' + cards + '</div>';
+            }
+
+            function loadEpicFreeGames() {
+                var content = document.getElementById('epicContent');
+                var refreshBtn = document.getElementById('epicRefresh');
+                if (!content) { return; }
+                if (refreshBtn) { refreshBtn.disabled = true; }
+
+                content.innerHTML = '<div class="epic-loading"><div class="epic-spinner"></div>'
+                    + '<p>正在获取 Epic 最新免费游戏...</p></div>';
+
+                fetchFromSources(0)
+                    .then(function (data) {
+                        var elements = (data && data.data && data.data.Catalog
+                            && data.data.Catalog.searchStore
+                            && data.data.Catalog.searchStore.elements) || [];
+                        var now = Date.now();
+
+                        var currentList = [];
+                        var soonList = [];
+
+                        elements.forEach(function (el) {
+                            if (isFreeNow(el, now)) {
+                                currentList.push({ el: el, status: 'now' });
+                            } else {
+                                var start = getUpcomingFreeStart(el, now);
+                                if (start !== null) {
+                                    soonList.push({ el: el, status: 'soon', start: start });
+                                }
+                            }
+                        });
+
+                        // 当前可领为空时，回退到“含折扣且当前价为 0”的游戏
+                        if (!currentList.length) {
+                            currentList = elements.filter(function (el) {
+                                var price = el.price && el.price.totalPrice;
+                                return price && price.discountPrice === 0
+                                    && price.originalPrice > 0
+                                    && el.promotions && el.promotions.promotionalOffers
+                                    && el.promotions.promotionalOffers.length;
+                            }).map(function (el) { return { el: el, status: 'now' }; });
+                        }
+
+                        // 即将限免按开始时间升序
+                        soonList.sort(function (a, b) { return a.start - b.start; });
+
+                        if (!currentList.length && !soonList.length) {
+                            content.innerHTML = '<div class="epic-empty"><p>'
+                                + '<i class="fa-solid fa-gamepad"></i> 当前没有可领取的限时免费游戏，过几天再来看看吧～</p></div>';
+                            return;
+                        }
+
+                        var html = renderGroup('fa-solid fa-gift', '当前可免费领取', currentList)
+                            + renderGroup('fa-solid fa-hourglass-half', '即将限免', soonList);
+                        content.innerHTML = html;
+                    })
+                    .catch(function (err) {
+                        content.innerHTML = '<div class="epic-error"><p><i class="fa-solid fa-triangle-exclamation"></i> '
+                            + '获取失败：' + esc(err.message) + '</p>'
+                            + '<p style="font-size:0.85rem;margin-top:8px;">可能是网络限制或接口跨域（CORS）拦截，请点击右上角“刷新”稍后重试。</p></div>';
+                    })
+                    .then(function () {
+                        if (refreshBtn) { refreshBtn.disabled = false; }
+                    });
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                loadEpicFreeGames();
+                var refreshBtn = document.getElementById('epicRefresh');
+                if (refreshBtn) {
+                    refreshBtn.addEventListener('click', loadEpicFreeGames);
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
