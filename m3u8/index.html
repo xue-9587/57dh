@@ -9,6 +9,7 @@
     <title>林熙M3U8视频在线播放丨林熙导航网提供在线M3U8视频在线播放！</title>
     <link href="/favicon.ico" rel="icon">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
     <style>
 @font-face {
     font-family: 'MyCustomFont';
@@ -241,7 +242,51 @@
             border: none;
             border-radius: 16px;
         }
-        
+
+        /* 原生视频播放器 - 填充容器 */
+        .video-player {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px;
+            background: #000;
+            object-fit: contain;
+        }
+
+        /* 播放错误提示层 */
+        .player-error {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+            color: #8b95a3;
+            padding: 20px;
+            text-align: center;
+            background: #2d3139;
+            border-radius: 16px;
+        }
+
+        .player-error i {
+            font-size: 3rem;
+            color: #e57373;
+        }
+
+        .player-error a {
+            color: #4299e1;
+            text-decoration: none;
+        }
+
+        .player-error a:hover {
+            color: #63b3ed;
+            text-decoration: underline;
+        }
+
         .player-placeholder {
             position: absolute;
             top: 0;
@@ -475,41 +520,118 @@
                 scrollToTop();
             });
             
-            // 搜索功能
+            // 播放功能
             const searchInput = document.getElementById('search-input');
             const searchButton = document.getElementById('search-button');
+            const videoPlayer = document.getElementById('video-player');
             const webFrame = document.getElementById('web-frame');
             const playerPlaceholder = document.querySelector('.player-placeholder');
-            
-            // 固定的基础网址，这里使用示例网址，可根据实际需求修改
+            const playerError = document.getElementById('player-error');
+            const playerErrorMsg = document.getElementById('player-error-msg');
+            const playerErrorLink = document.getElementById('player-error-link');
+
+            // 固定的基础网址（预设地址），实际加载地址 = 预设地址 + 输入的M3U8地址
+            // 如需更换解析接口，只需修改此处
             const baseUrl = 'https://maotai888.vip:966/?url=';
-            
+
+            let hlsInstance = null;
+
             searchButton.addEventListener('click', function() {
-                performSearch();
+                performPlay();
             });
-            
-            // 支持回车键搜索
+
+            // 支持回车键播放
             searchInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
-                    performSearch();
+                    performPlay();
                 }
             });
-            
-            function performSearch() {
-                const searchTerm = searchInput.value.trim();
-                if (searchTerm) {
-                    // 隐藏占位符，显示iframe
-                    playerPlaceholder.style.display = 'none';
-                    webFrame.style.display = 'block';
-                    
-                    // 构建完整URL并加载
-                    const fullUrl = baseUrl + encodeURIComponent(searchTerm);
-                    webFrame.src = fullUrl;
-                    
-                    // 滚动到播放器位置
-                    document.querySelector('.web-player').scrollIntoView({
-                        behavior: 'smooth'
+
+            function showError(msg, url) {
+                playerPlaceholder.style.display = 'none';
+                videoPlayer.style.display = 'none';
+                webFrame.style.display = 'none';
+                playerError.style.display = 'flex';
+                playerErrorMsg.textContent = msg || '视频加载失败，请检查地址是否有效或是否存在跨域限制。';
+                if (url) {
+                    playerErrorLink.href = url;
+                    playerErrorLink.style.display = 'inline';
+                } else {
+                    playerErrorLink.style.display = 'none';
+                }
+            }
+
+            function hideOverlays() {
+                playerPlaceholder.style.display = 'none';
+                playerError.style.display = 'none';
+            }
+
+            function performPlay() {
+                const inputUrl = searchInput.value.trim();
+                if (!inputUrl) {
+                    alert('请输入 M3U8 视频地址');
+                    return;
+                }
+
+                // 构建完整地址：预设地址 + 输入的M3U8地址
+                const fullUrl = baseUrl + encodeURIComponent(inputUrl);
+
+                // 清理上一次播放实例
+                if (hlsInstance) {
+                    hlsInstance.destroy();
+                    hlsInstance = null;
+                }
+                videoPlayer.removeAttribute('src');
+                videoPlayer.load();
+                webFrame.removeAttribute('src');
+
+                hideOverlays();
+
+                // 滚动到播放器位置
+                document.querySelector('.web-player').scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // 优先使用 hls.js 原生播放（Chrome / Edge / Firefox 等）
+                if (window.Hls && Hls.isSupported()) {
+                    videoPlayer.style.display = 'block';
+                    hlsInstance = new Hls({
+                        lowLatencyMode: false,
+                        xhrSetup: function(xhr) {
+                            xhr.withCredentials = false;
+                        }
                     });
+                    hlsInstance.loadSource(fullUrl);
+                    hlsInstance.attachMedia(videoPlayer);
+                    hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
+                        videoPlayer.play().catch(function() {});
+                    });
+                    hlsInstance.on(Hls.Events.ERROR, function(evt, data) {
+                        if (data.fatal) {
+                            switch (data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR:
+                                    showError('网络错误：无法加载 M3U8 资源，请检查地址或网络。', fullUrl);
+                                    break;
+                                case Hls.ErrorTypes.MEDIA_ERROR:
+                                    showError('媒体解码错误，当前地址可能无法直接解析播放。', fullUrl);
+                                    break;
+                                default:
+                                    showError('加载失败：该地址可能不支持直接解析，已为你提供新窗口播放入口。', fullUrl);
+                                    break;
+                            }
+                        }
+                    });
+                }
+                // Safari / iOS 原生支持 HLS
+                else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                    videoPlayer.style.display = 'block';
+                    videoPlayer.src = fullUrl;
+                    videoPlayer.play().catch(function() {});
+                }
+                // 兜底：使用 iframe 嵌入播放页（兼容不支持 hls.js 的环境）
+                else {
+                    webFrame.style.display = 'block';
+                    webFrame.src = fullUrl;
                 }
             }
         });
@@ -556,7 +678,13 @@
                 <i class="fa-solid fa-globe" style="font-size: 3rem; color: #8b95a3;"></i>
                 <p>请在上方输入M3U8视频地址并点击开始播放</p>
             </div>
+            <video id="video-player" class="video-player" controls playsinline style="display: none;"></video>
             <iframe id="web-frame" style="display: none;"></iframe>
+            <div id="player-error" class="player-error">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p id="player-error-msg">视频加载失败</p>
+                <a id="player-error-link" href="#" target="_blank" rel="noopener">在新窗口打开播放 ↗</a>
+            </div>
         </div>
     </div>
     
