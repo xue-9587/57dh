@@ -1,384 +1,819 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>支持泽诚工作室 - 捐赠打赏</title>
-  <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具,林熙资源网,林熙blog,林熙影院,林熙在线工具,林熙图库,林熙音乐试听网,林熙博客"/>
-  <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
-  <link href="/favicon.ico" rel="icon">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
-  <!-- 配置Tailwind自定义颜色和字体（适配拟态风格） -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            neumo: {
-              bg: '#2d3139', // 拟态主背景色
-              darkBg: '#262a31', // 深色拟态背景
-              shadow: '#1f2228', // 拟态阴影色
-              highlight: '#3b4049', // 拟态高光色
-              primary: '#165DFF', // 主色保留
-              secondary: '#FF7D9C', // 辅助色保留
-            },
-            neutral: {
-              100: '#cbd2dc',
-              200: '#3b4049',
-              300: '#aeb6c2',
-              400: '#8b95a3',
-              500: '#aeb6c2',
-              600: '#e2e8f0',
-              700: '#cbd2dc',
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>⎛⎝ 林熙导航网 ⎠⎞ - 捐赠打赏</title>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 暗色拟态核心背景：深灰基调，统一暗色拟态视觉基础 */
+        body {
+            background: #2b2f36;
+            color: #c8cdd6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 暗色拟态风格 */
+        .navbar {
+            background: #2b2f36;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #c8cdd6;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* 暗色拟态文字轻微阴影 */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
+                        -1px -1px 2px rgba(255, 255, 255, 0.05);
+        }
+        
+        .logo i {
+            color: #9aa1ad;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #c8cdd6;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            position: relative;
+            /* 暗色拟态基础按钮样式 */
+            border-radius: 8px;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-links a:hover {
+            color: #eef1f6;
+            /* 暗色拟态按压效果 */
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-links a.active {
+            color: #eef1f6;
+            /* 激活态暗色拟态按压 */
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* 汉堡菜单按钮 - 暗色拟态（核心修复：默认隐藏） */
+        .menu-toggle {
+            display: none; /* 电脑端默认隐藏，仅移动端显示 */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #c8cdd6;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 网址分类说明 - 暗色拟态卡片 */
+        .url-category-info {
+            background: #2b2f36;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            width: 100%;
+            /* 暗色拟态外阴影 */
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+        
+        .url-category-info h2 {
+            color: #eef1f6;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        
+        .url-category-info p {
+            color: #8b92a0;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 暗色拟态 */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 15px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #2b2f36;
+            border-radius: 12px;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 15px;
+            width: 100%;
+        }
+        
+        /* 暗色拟态按钮核心样式 */
+        .url-button {
+            display: inline-block;
+            background: #2b2f36;
+            border-radius: 10px;
+            color: #c8cdd6;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            /* 暗色拟态外阴影 */
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            /* 暗色拟态按压效果（内阴影） */
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+            color: #eef1f6;
+            transform: translateY(0); /* 取消原有位移，适配拟态风格 */
+        }
+        
+        /* 返回顶部按钮 - 暗色拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2b2f36;
+            color: #c8cdd6;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            /* 暗色拟态外阴影 */
+            box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.55),
+                        -5px -5px 11px rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top:hover {
+            /* 暗色拟态按压 */
+            box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.55),
+                        inset -5px -5px 11px rgba(255, 255, 255, 0.05);
+            color: #eef1f6;
+            transform: translateY(0);
+        }
+        
+        /* 底部版权信息 - 暗色拟态 */
+        footer {
+            background: #2b2f36;
+            margin-top: auto;
+            padding: 20px 0;
+            /* 暗色拟态上阴影 */
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.35);
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #8b92a0;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #c8cdd6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.55),
+                        -2px -2px 4px rgba(255, 255, 255, 0.05);
+        }
+        
+        .copyright a:hover {
+            color: #eef1f6;
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.55),
+                        inset -2px -2px 4px rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+        }
+        
+        /* 打赏组件 - 暗色拟态 */
+        .reward-section {
+            max-width: 1600px;
+            margin: 20px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .reward-card {
+            background: #2b2f36;
+            border-radius: 16px;
+            padding: 28px 28px;
+            width: 100%;
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.55),
+                        -8px -8px 16px rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .reward-left {
+            width: 100%;
+            text-align: center;
+        }
+
+        .reward-title {
+            color: #eef1f6;
+            font-size: 1.45rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .reward-title i {
+            color: #e8a87c;
+        }
+
+        .reward-desc {
+            color: #8b92a0;
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+        }
+
+        .reward-amounts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .reward-amount {
+            background: #2b2f36;
+            color: #c8cdd6;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 22px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-amount:hover {
+            color: #eef1f6;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-amount.active {
+            color: #e8a87c;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-custom {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reward-custom input {
+            background: #2b2f36;
+            color: #eef1f6;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 14px;
+            width: 130px;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-custom input::placeholder {
+            color: #8b92a0;
+        }
+
+        /* 打赏主按钮 - 透明背景 + 渐变边框（主操作按钮约定） */
+        .reward-pay-btn {
+            margin-top: 18px;
+            background: linear-gradient(#2b2f36, #2b2f36) padding-box,
+                        linear-gradient(135deg, #a86ad4, #5fd6d6) border-box;
+            border: 2px solid transparent;
+            color: #eef1f6;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 12px 38px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-pay-btn:hover {
+            box-shadow: 0 0 16px rgba(168, 106, 212, 0.45),
+                        inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-hint {
+            flex: 0 0 auto;
+            color: #8b92a0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .reward-hint i {
+            color: #9aa1ad;
+        }
+
+        /* 打赏弹窗 - 暗色拟态 */
+        .reward-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+
+        .reward-modal.show {
+            display: flex;
+        }
+
+        .reward-modal-mask {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .reward-modal-box {
+            position: relative;
+            background: #2b2f36;
+            border-radius: 18px;
+            padding: 30px 28px 34px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.6),
+                        -8px -8px 18px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: #2b2f36;
+            color: #c8cdd6;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-modal-close:hover {
+            color: #eef1f6;
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
+                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-modal-title {
+            color: #eef1f6;
+            font-size: 1.25rem;
+            margin-bottom: 18px;
+        }
+
+        .reward-modal-title span {
+            color: #e8a87c;
+        }
+
+        .reward-tabs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .reward-tab {
+            background: #2b2f36;
+            color: #c8cdd6;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 26px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .reward-tab.active {
+            color: #eef1f6;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .reward-tab[data-pay="wechat"].active {
+            color: #4cd964;
+        }
+
+        .reward-tab[data-pay="alipay"].active {
+            color: #2a9df4;
+        }
+
+        .reward-qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reward-qr-box {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            background: #1f2329;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .reward-qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .reward-qr-label {
+            color: #c8cdd6;
+            font-size: 0.95rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
             }
-          },
-          fontFamily: {
-            inter: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      }
-    }
-  </script>
-  
-  <!-- 自定义工具类（核心拟态样式） -->
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .content-auto {
-        content-visibility: auto;
-      }
-      /* 拟态基础样式 - 凸起效果 */
-      .neumo {
-        background: #2d3139;
-        box-shadow:  8px 8px 16px #1f2228,
-                     -8px -8px 16px #3b4049;
-      }
-      /* 拟态凹陷效果 */
-      .neumo-inset {
-        background: #2d3139;
-        box-shadow: inset 5px 5px 10px #1f2228,
-                    inset -5px -5px 10px #3b4049;
-      }
-      /* 拟态按钮 - 凸起 */
-      .neumo-btn {
-        background: #2d3139;
-        box-shadow:  5px 5px 10px #1f2228,
-                     -5px -5px 10px #3b4049;
-        transition: all 0.3s ease;
-      }
-      .neumo-btn:hover {
-        box-shadow:  7px 7px 14px #1f2228,
-                     -7px -7px 14px #3b4049;
-        transform: translateY(-2px);
-      }
-      .neumo-btn:active {
-        box-shadow: inset 5px 5px 10px #1f2228,
-                    inset -5px -5px 10px #3b4049;
-        transform: translateY(0);
-      }
-      /* 拟态卡片 */
-      .neumo-card {
-        background: #2d3139;
-        box-shadow:  10px 10px 20px #1f2228,
-                     -10px -10px 20px #3b4049;
-      }
-      /* 拟态圆形 */
-      .neumo-circle {
-        background: #2d3139;
-        box-shadow:  6px 6px 12px #1f2228,
-                     -6px -6px 12px #3b4049;
-      }
-      /* 拟态输入/容器 - 凹陷 */
-      .neumo-container {
-        background: #2d3139;
-        box-shadow: inset 4px 4px 8px #1f2228,
-                    inset -4px -4px 8px #3b4049;
-      }
-      /* 选中状态 */
-      .neumo-active {
-        box-shadow: inset 5px 5px 10px #1f2228,
-                    inset -5px -5px 10px #3b4049 !important;
-        color: #165DFF;
-      }
-      .text-shadow {
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
-      .hover-scale {
-        transition: transform 0.3s ease;
-      }
-      .hover-scale:hover {
-        transform: scale(1.02);
-      }
-    }
-  </style>
-  
-  <!-- 基础样式 -->
-  <style>       
-    body {
-      background-color: #2d3139; /* 拟态主背景 */
-      min-height: 100vh;
-      font-family: 'Inter', system-ui, sans-serif;
-      color: #aeb6c2; /* 拟态风格文字主色 */
-    }
-    
-    /* 动画效果 */
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    .floating {
-      animation: float 4s ease-in-out infinite;
-    }
-    
-    .floating-delay {
-      animation: float 4s ease-in-out 1s infinite;
-    }
-    
-    /* 自定义滚动条（适配拟态） */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: #2d3139;
-      box-shadow: inset 2px 2px 4px #1f2228,
-                  inset -2px -2px 4px #3b4049;
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: #262a31;
-      box-shadow:  2px 2px 4px #1f2228,
-                   -2px -2px 4px #3b4049;
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: #c9cdd4;
-    }
-  </style>
-    <meta name="color-scheme" content="dark">
-</head>
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端仅在这里显示汉堡菜单 */
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #2b2f36;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 20px 0;
+                box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            /* 移动端网址按钮 - 每行两个 */
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能（增加容错，避免电脑端报错）
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
 
-<body class="bg-neumo text-neutral-500">
-  <!-- 背景装饰（适配拟态） -->
-  <div class="fixed inset-0 overflow-hidden -z-10">
-    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5"></div>
-    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/8 rounded-full blur-3xl opacity-10"></div>
-    <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-secondary/8 rounded-full blur-3xl opacity-10"></div>
-  </div>
+            // 打赏金额选择
+            const rewardAmounts = document.querySelectorAll('.reward-amount[data-amount]');
+            const rewardInput = document.querySelector('.reward-custom input');
+            rewardAmounts.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    rewardAmounts.forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    if (btn.dataset.amount !== 'custom' && rewardInput) {
+                        rewardInput.value = '';
+                    }
+                });
+            });
+            if (rewardInput) {
+                rewardInput.addEventListener('input', function() {
+                    rewardAmounts.forEach(function(b) {
+                        if (b.dataset.amount === 'custom') {
+                            b.classList.add('active');
+                        } else {
+                            b.classList.remove('active');
+                        }
+                    });
+                });
+            }
 
-  <!-- 主容器 -->
-  <div class="container mx-auto px-4 py-12 max-w-4xl">
-    <!-- 页面标题（拟态卡片） -->
-    <header class="text-center mb-16 neumo-card rounded-2xl p-8">
-      <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-4 text-shadow">
-        <span style="color:#E53333;">支持我的创作</span>
-      </h1>
-      <p class="text-neutral-500 text-lg max-w-2xl mx-auto">
-        您的支持是我持续创作的动力！选择下方任意方式进行打赏，感谢您的慷慨与鼓励。
-      </p>
-    </header>
+            // 打赏弹窗
+            const rewardModal = document.getElementById('rewardModal');
+            const rewardPayBtn = document.getElementById('rewardPayBtn');
+            const rewardModalClose = document.getElementById('rewardModalClose');
+            const rewardModalMask = document.getElementById('rewardModalMask');
+            const rewardModalAmount = document.getElementById('rewardModalAmount');
+            const rewardQrBox = document.getElementById('rewardQrBox');
+            const rewardQrLabel = document.getElementById('rewardQrLabel');
+            const rewardTabs = document.querySelectorAll('.reward-tab');
 
-    <!-- 打赏选项 - 只保留奶茶打赏（拟态卡片） -->
-    <main class="grid grid-cols-1 gap-8 mb-16">
-      <!-- 奶茶打赏 -->
-      <div id="item-milk-tea" class="neumo-card rounded-2xl p-6 hover-scale cursor-pointer relative overflow-hidden group">
-        <div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary/10 rounded-full blur-2xl group-hover:scale-150 transition-all duration-500"></div>
-        <div class="flex items-center mb-4 relative z-10">
-          <div class="w-16 h-16 rounded-full neumo-circle flex items-center justify-center mr-4 floating">
-            <i class="fa fa-coffee text-3xl text-secondary"></i>
-          </div>
-          <div>
-            <h2 class="text-2xl font-bold text-neutral-600">请我喝奶茶</h2>
-            <p class="text-neutral-500">温暖我的编程时光</p>
-          </div>
-        </div>
-        <div class="relative z-10">
-          <div class="grid grid-cols-3 gap-3 mb-4">
-            <button class="amount-btn neumo-btn rounded-lg py-2 transition-colors" data-amount="5">
-              <span class="block text-sm">5元</span>
-              <span class="text-xs text-neutral-400">小杯</span>
-            </button>
-            <button class="amount-btn neumo-btn rounded-lg py-2 transition-colors" data-amount="10">
-              <span class="block text-sm">10元</span>
-              <span class="text-xs text-neutral-400">中杯</span>
-            </button>
-            <button class="amount-btn neumo-btn rounded-lg py-2 transition-colors" data-amount="15">
-              <span class="block text-sm">15元</span>
-              <span class="text-xs text-neutral-400">大杯</span>
-            </button>
-          </div>
-          
-          <!-- 修改部分：按钮居中展示并加大加宽（拟态按钮） -->
-          <div class="flex flex-col items-center gap-3 mt-6">
-            <span class="text-sm text-neutral-500 w-full text-center mb-2">已收到 <span class="font-semibold">128</span> 杯奶茶</span>
-            <div class="flex gap-4 w-full max-w-xs">
-              <button class="open-modal-btn neumo-btn rounded-full px-6 py-3 text-base flex-1 flex items-center justify-center">
-                <i class="fa fa-qrcode mr-2 text-primary"></i> 点击打赏
-              </button>
-              <a href="./" class="neumo-btn rounded-full px-6 py-3 text-base flex-1 flex items-center justify-center hover:shadow-lg transition-all" target="_blank">
-                <i class="fa fa-link mr-2 text-primary"></i> 返回主站
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+            function getSelectedAmount() {
+                const active = document.querySelector('.reward-amount.active');
+                if (active && active.dataset.amount !== 'custom') {
+                    return active.dataset.amount;
+                }
+                if (rewardInput && rewardInput.value.trim() !== '') {
+                    return rewardInput.value.trim();
+                }
+                return '';
+            }
 
-    <!-- 捐赠说明（拟态卡片） -->
-    <section class="neumo-card rounded-2xl p-6 mb-12">
-      <h2 class="text-xl font-bold mb-4 text-neutral-600">捐赠说明</h2>
-      <div class="space-y-3 text-neutral-500">
-        <p>您的每一份支持都将用于：</p>
-        <ul class="list-disc pl-5 space-y-1">
-          <li>持续创作高质量技术内容</li>
-          <li>购买开发所需的软件和服务</li>
-          <li>参加技术社区和培训课程</li>
-          <li>改善创作环境和设备</li>
-        </ul>
-        <p class="text-sm text-neutral-400 mt-2">所有捐赠将用于技术创作相关支出，感谢您的慷慨支持！</p>
-      </div>
-    </section>
+            function openRewardModal() {
+                rewardModalAmount.textContent = '¥' + (getSelectedAmount() || '0');
+                rewardModal.classList.add('show');
+            }
 
-  <!-- 打赏弹窗（拟态风格） -->
-  <div id="donation-modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-    <!-- 遮罩层（适配拟态） -->
-    <div class="absolute inset-0 bg-black/20 backdrop-blur-sm" id="modal-overlay"></div>
-    
-    <!-- 弹窗内容（拟态卡片） -->
-    <div class="neumo-card rounded-2xl p-8 max-w-md w-full mx-4 relative z-10 transform transition-all duration-300 scale-95 opacity-0" id="modal-content">
-      <button id="close-modal" class="absolute top-4 right-4 text-neutral-400 hover:text-neutral-600 transition-colors">
-        <i class="fa fa-times text-xl"></i>
-      </button>
-      
-      <div class="text-center mb-6">
-        <h2 class="text-2xl font-bold text-neutral-600 mb-2" id="modal-title">请我喝奶茶</h2>
-        <p class="text-neutral-500" id="modal-amount">金额: ¥5</p>
-      </div>
-      
-      <div class="flex justify-center mb-6">
-        <div class="w-48 h-48 neumo-container rounded-lg p-2">
-          <img src="http://57zy.sylu.cc/img/wx.jpg" alt="微信收款二维码" id="qrcode-image" class="w-full h-full object-cover rounded">
-        </div>
-      </div>
-      
-      <div class="text-center mb-6">
-        <p class="text-sm text-neutral-500 mb-2">请选择支付方式并扫码支付</p>
-        <div class="flex justify-center space-x-4">
-          <button id="wechat-pay" class="pay-btn neumo-btn rounded-full px-4 py-2 text-sm neumo-active">
-            <i class="fa fa-weixin mr-1 text-green-600"></i> 微信
-          </button>
-          <button id="alipay-pay" class="pay-btn neumo-btn rounded-full px-4 py-2 text-sm">
-            <i class="fa fa-credit-card mr-1 text-blue-600"></i> 支付宝
-          </button>
-        </div>
-      </div>
-      
-      <div class="border-t border-neutral-200 pt-4">
-        <p class="text-sm text-neutral-500">
-          <i class="fa fa-info-circle mr-1 text-primary"></i> 
-          <span id="modal-description">
-            您的支持是我持续创作的动力，感谢您的慷慨！
-          </span>
-        </p>
-      </div>
-    </div>
-  </div>
+            function closeRewardModal() {
+                rewardModal.classList.remove('show');
+            }
 
-  <script>
-    // 模态框操作
-    const modal = document.getElementById('donation-modal');
-    const modalContent = document.getElementById('modal-content');
-    const modalOverlay = document.getElementById('modal-overlay');
-    const closeModalBtn = document.getElementById('close-modal');
-    const openModalBtns = document.querySelectorAll('.open-modal-btn');
-    const modalTitle = document.getElementById('modal-title');
-    const modalAmount = document.getElementById('modal-amount');
-    const modalDescription = document.getElementById('modal-description');
-    const qrcodeImage = document.getElementById('qrcode-image');
-    const wechatPayBtn = document.getElementById('wechat-pay');
-    const alipayPayBtn = document.getElementById('alipay-pay');
-    
-    // 记录当前选择的金额和支付方式
-    let selectedAmount = 5;
-    let selectedPayment = 'wechat';
-    
-    // 金额选择按钮（拟态选中效果）
-    document.querySelectorAll('.amount-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        // 移除同一组中其他按钮的选中状态
-        const buttonGroup = this.closest('.grid');
-        buttonGroup.querySelectorAll('.amount-btn').forEach(b => {
-          b.classList.remove('neumo-active');
+            if (rewardPayBtn) {
+                rewardPayBtn.addEventListener('click', openRewardModal);
+            }
+            if (rewardModalClose) {
+                rewardModalClose.addEventListener('click', closeRewardModal);
+            }
+            if (rewardModalMask) {
+                rewardModalMask.addEventListener('click', closeRewardModal);
+            }
+
+            rewardTabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    rewardTabs.forEach(function(t) { t.classList.remove('active'); });
+                    tab.classList.add('active');
+                    if (tab.dataset.pay === 'wechat') {
+                        rewardQrBox.innerHTML = '<img src="/img/wx.png" alt="微信收款二维码">';
+                        rewardQrLabel.textContent = '微信扫码支付';
+                    } else {
+                        rewardQrBox.innerHTML = '<img src="/img/zfb.png" alt="支付宝收款二维码">';
+                        rewardQrLabel.textContent = '支付宝扫码支付';
+                    }
+                });
+            });
+            
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
         });
-        
-        // 添加当前按钮的选中状态
-        this.classList.add('neumo-active');
-        
-        // 更新选中金额
-        selectedAmount = parseInt(this.getAttribute('data-amount'));
-      });
-    });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="./" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="./"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i> 赞助打赏</a></li>
+                <li><a href="/ds.html" class="active"><i class="fa-solid fa-mug-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
     
-    // 支付方式选择（拟态选中效果）
-    wechatPayBtn.addEventListener('click', function() {
-      wechatPayBtn.classList.add('neumo-active');
-      alipayPayBtn.classList.remove('neumo-active');
-      selectedPayment = 'wechat';
-      qrcodeImage.src = 'http://57zy.sylu.cc/img/wx.jpg';
-      qrcodeImage.alt = '微信收款二维码';
-    });
+    <!-- 打赏组件 -->
+    <div class="reward-section">
+        <div class="reward-card">
+            <div class="reward-left">
+                <div class="reward-title"><i class="fa-solid fa-mug-hot"></i> 请作者喝杯咖啡</div>
+                <p class="reward-desc">如果本站对你有帮助，选择金额后点击打赏，扫码完成支付 ☕</p>
+                <div class="reward-amounts">
+                    <button class="reward-amount" data-amount="6">¥6</button>
+                    <button class="reward-amount" data-amount="18">¥18</button>
+                    <button class="reward-amount" data-amount="36">¥36</button>
+                    <button class="reward-amount" data-amount="66">¥66</button>
+                    <div class="reward-custom">
+                        <input type="number" min="1" step="1" placeholder="自定义金额">
+                    </div>
+                </div>
+                <button class="reward-pay-btn" id="rewardPayBtn">打赏 TA</button>
+            </div>
+            <div class="reward-hint">
+                <i class="fa-solid fa-qrcode"></i> 选择金额后点击「打赏 TA」弹出二维码
+            </div>
+        </div>
+    </div>
+
+    <!-- 打赏弹窗 -->
+    <div class="reward-modal" id="rewardModal">
+        <div class="reward-modal-mask" id="rewardModalMask"></div>
+        <div class="reward-modal-box">
+            <button class="reward-modal-close" id="rewardModalClose"><i class="fa-solid fa-xmark"></i></button>
+            <div class="reward-modal-title">扫码打赏 <span id="rewardModalAmount">¥0</span></div>
+            <div class="reward-tabs">
+                <button class="reward-tab active" data-pay="wechat">微信</button>
+                <button class="reward-tab" data-pay="alipay">支付宝</button>
+            </div>
+            <div class="reward-qr">
+                <div class="reward-qr-box" id="rewardQrBox"><img src="/img/wx.png" alt="收款二维码"></div>
+            </div>
+            <div class="reward-qr-label" id="rewardQrLabel">微信扫码支付</div>
+        </div>
+    </div>
     
-    alipayPayBtn.addEventListener('click', function() {
-      alipayPayBtn.classList.add('neumo-active');
-      wechatPayBtn.classList.remove('neumo-active');
-      selectedPayment = 'alipay';
-      qrcodeImage.src = 'http://57zy.sylu.cc/img/zfb.jpg';
-      qrcodeImage.alt = '支付宝收款二维码';
-    });
-    
-    // 打开模态框
-    openModalBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        modalTitle.textContent = '请我喝奶茶';
-        modalDescription.textContent = '一杯温暖的奶茶，一份持续创作的动力！感谢您的支持！';
-        modalAmount.textContent = `金额: ¥${selectedAmount}`;
-        
-        wechatPayBtn.click();
-        
-        modal.classList.remove('hidden');
-        setTimeout(() => {
-          modalContent.classList.remove('scale-95', 'opacity-0');
-          modalContent.classList.add('scale-100', 'opacity-100');
-        }, 10);
-      });
-    });
-    
-    // 关闭模态框
-    function closeModal() {
-      modalContent.classList.remove('scale-100', 'opacity-100');
-      modalContent.classList.add('scale-95', 'opacity-0');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-      }, 300);
-    }
-    
-    closeModalBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
-    
-    // 键盘ESC关闭
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        closeModal();
-      }
-    });
-    
-    // 初始选中第一个金额
-    document.querySelectorAll('.amount-btn')[0].click();
-  </script>
+<!--PC和WAP自适应版-->
+
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="fa-brands fa-themeisle"></i>   <i class="fa-solid fa-2"></i><i class="fa-solid fa-0"></i><i class="fa-solid fa-2"></i><i class="fa-solid fa-6"></i> <a href="./" target="_blank">赞助打赏</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="fa-solid fa-shield-dog" style="color: #9aa1ad;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
 </body>
 </html>
