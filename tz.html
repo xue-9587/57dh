@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在跳转… ⎛⎝ 林熙导航网 ⎠⎞ </title>
+    <link href="/favicon.ico" rel="icon">
+    <body oncontextmenu=self.event.returnValue=false>
+    <style>
+        :root{
+            --bg:#2d3139;
+            --shadow-dark:#1f2228;
+            --shadow-light:#3b4049;
+            --accent:#4299e1;
+            --txt:#aeb6c2;
+            --txt-bright:#e2e8f0;
+        }
+        *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+        body{
+            background:var(--bg);
+            color:var(--txt);
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        }
+        .card{
+            background:var(--bg);
+            border-radius:20px;
+            padding:40px 36px;
+            max-width:440px;
+            width:100%;
+            text-align:center;
+            box-shadow:8px 8px 16px var(--shadow-dark),-8px -8px 16px var(--shadow-light);
+        }
+        .icon{font-size:40px;margin-bottom:14px;}
+        h1{color:var(--txt-bright);font-size:1.4rem;margin-bottom:8px;font-weight:600;}
+        .url{
+            word-break:break-all;
+            font-size:.85rem;
+            color:var(--accent);
+            background:var(--bg);
+            padding:12px 14px;
+            border-radius:12px;
+            margin:16px 0;
+            box-shadow:inset 4px 4px 8px var(--shadow-dark),inset -4px -4px 8px var(--shadow-light);
+        }
+        .ring{position:relative;width:120px;height:120px;margin:10px auto 18px;}
+        .ring svg{transform:rotate(-90deg);}
+        .ring .track{fill:none;stroke:var(--shadow-dark);stroke-width:10;}
+        .ring .prog{
+            fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;
+            transition:stroke-dashoffset 1s linear;
+        }
+        .count{
+            position:absolute;inset:0;
+            display:flex;align-items:center;justify-content:center;
+            font-size:2.6rem;font-weight:700;color:var(--txt-bright);
+        }
+        .btns{display:flex;gap:12px;justify-content:center;margin-top:6px;}
+        .btn{
+            flex:1;padding:12px;border:none;border-radius:12px;font-size:.95rem;cursor:pointer;
+            color:var(--txt);background:var(--bg);text-decoration:none;
+            box-shadow:5px 5px 10px var(--shadow-dark),-5px -5px 10px var(--shadow-light);
+            transition:.2s;
+        }
+        .btn:hover{color:var(--accent);}
+        .btn.primary{color:#2d3139;background:var(--accent);box-shadow:5px 5px 10px var(--shadow-dark);}
+        .note{margin-top:16px;font-size:.78rem;color:#8b95a3;}
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <div class="icon">🚀</div>
+        <h1 id="title">正在为您跳转…</h1>
+        <div class="ring">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+                <circle class="track" cx="60" cy="60" r="52"></circle>
+                <circle class="prog" id="prog" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="count" id="count">3</div>
+        </div>
+        <div class="url" id="url">—</div>
+        <div class="btns">
+            <a href="#" class="btn primary" id="go">立即跳转</a>
+            <a href="#" class="btn" id="cancel">取消</a>
+        </div>
+        <div class="note">若未自动跳转，请点击「立即跳转」</div>
+    </div>
+
+    <script>
+    (function(){
+        var params = new URLSearchParams(location.search);
+        var to = params.get('to');
+        var urlEl = document.getElementById('url');
+        var prog = document.getElementById('prog');
+        var countEl = document.getElementById('count');
+        var goBtn = document.getElementById('go');
+        var cancelBtn = document.getElementById('cancel');
+        var title = document.getElementById('title');
+
+        // 仅允许 http/https，避免非法跳转
+        var ok = to && /^https?:\/\//i.test(to);
+        var C = 2 * Math.PI * 52;
+        prog.style.strokeDasharray = C;
+        prog.style.strokeDashoffset = 0;
+
+        if(!ok){
+            title.textContent = '链接无效';
+            urlEl.textContent = '未提供有效的跳转地址';
+            countEl.textContent = '!';
+            goBtn.style.display = 'none';
+            return;
+        }
+
+        urlEl.textContent = to;
+
+        var total = 3, n = total, timer = null, redirected = false;
+
+        function finish(){
+            if(redirected) return;
+            redirected = true;
+            clearInterval(timer);
+            location.href = to;
+        }
+        function tick(){
+            n--;
+            if(n <= 0){
+                countEl.textContent = '0';
+                prog.style.strokeDashoffset = C;
+                finish();
+                return;
+            }
+            countEl.textContent = n;
+            prog.style.strokeDashoffset = C * (1 - n/total);
+        }
+
+        // 初始化圆环（满环，随倒计时消减）
+        prog.style.strokeDashoffset = C * (1 - n/total);
+        timer = setInterval(tick, 1000);
+
+        goBtn.addEventListener('click', function(e){ e.preventDefault(); finish(); });
+        cancelBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            clearInterval(timer);
+            if (window.opener) { window.close(); } else { history.back(); }
+        });
+    })();
+    </script>
+</body>
+</html>
