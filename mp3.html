@@ -8,7 +8,8 @@
     <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
     <title>⎛⎝ 林熙音乐馆 ⎠⎞丨精选DJ舞曲串烧大全！</title>
     <link href="/favicon.ico" rel="icon">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <body oncontextmenu=self.event.returnValue=false>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
 @font-face {
     font-family: 'MyCustomFont';
@@ -532,23 +533,12 @@
             // 修复汉堡菜单点击事件
             menuToggle?.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
-                // 切换汉堡/关闭图标
-                const icon = this.querySelector('i');
-                if (icon) {
-                    if (icon.classList.contains('fa-bars')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
             });
             
             // 返回顶部功能增强
             const backToTopButton = document.createElement('div');
             backToTopButton.className = 'back-to-top hide';
-            backToTopButton.innerHTML = '<i class="fa fa-arrow-circle-up"></i>';
+            backToTopButton.innerHTML = '<i class="bi bi-rocket-fill"></i>';
             document.body.appendChild(backToTopButton);
             
             // 滚动事件监听
@@ -745,10 +735,10 @@
             function togglePlayPause() {
                 if (audio.paused) {
                     audio.play();
-                    playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+                    playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
                 } else {
                     audio.pause();
-                    playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
+                    playPauseBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
                 }
             }
             
@@ -784,7 +774,7 @@
                 currentMusicIndex = (currentMusicIndex - 1 + musicList.length) % musicList.length;
                 updatePlayerInfo(musicList[currentMusicIndex]);
                 audio.play();
-                playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+                playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
                 updateMusicButtons();
             }
             
@@ -793,7 +783,7 @@
                 currentMusicIndex = (currentMusicIndex + 1) % musicList.length;
                 updatePlayerInfo(musicList[currentMusicIndex]);
                 audio.play();
-                playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+                playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
                 updateMusicButtons();
             }
             
@@ -833,11 +823,11 @@
             // 更新音量图标
             function updateVolumeIcon() {
                 if (audio.volume === 0) {
-                    volumeIcon.innerHTML = '<i class="fa fa-volume-off"></i>';
+                    volumeIcon.innerHTML = '<i class="bi bi-volume-mute"></i>';
                 } else if (audio.volume < 0.5) {
-                    volumeIcon.innerHTML = '<i class="fa fa-volume-down"></i>';
+                    volumeIcon.innerHTML = '<i class="bi bi-volume-down"></i>';
                 } else {
-                    volumeIcon.innerHTML = '<i class="fa fa-volume-up"></i>';
+                    volumeIcon.innerHTML = '<i class="bi bi-volume-up"></i>';
                 }
             }
             
@@ -874,7 +864,7 @@
                         currentMusicIndex = index;
                         updatePlayerInfo(musicList[currentMusicIndex]);
                         audio.play();
-                        playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+                        playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
                         updateMusicButtons();
                     });
                     musicGrid.appendChild(button);
@@ -894,21 +884,21 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <i class="fas fa-music"></i>
+                <i class="bi bi-music-note-beamed"></i>
                 林熙音乐馆
             </a>
             <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+                <i class="bi bi-filter-circle-fill"></i>
             </div>
             <ul class="nav-links">
-                <li><a href="/index.html"><i class="fa-solid fa-splotch"></i> 网站首页</a></li>
-                <li><a href="/blog.html"><i class="fa-solid fa-blog fa-beat"></i> 个人博客</a></li>
-                <li><a href="/image.html"><i class="fa-solid fa-images"></i> 图片画廊</a></li>
-                <li><a href="/mp3.html" class="active"><i class="fa-solid fa-headphones"></i> 音乐试听</a></li>
-                <li><a href="/video.html"><i class="fa-solid fa-video"></i> 电影推荐</a></li>
-                <li><a href="/tool.html"><i class="fa-solid fa-gift"></i> 在线工具</a></li>
-                <li><a href="/ly.html"><i class="fa-solid fa-comment"></i></i> 在线留言</a></li>
-                <li><a href="/ds.html"><i class="fa-solid fa-mug-hot"></i></i> 赞助打赏</a></li>
+                <li><a href="/index.html"><i class="bi bi-browser-firefox"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="bi bi-reddit"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="bi bi-card-image"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html" class="active"><i class="bi bi-earbuds"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="bi bi-camera-reels"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="bi bi-tools"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="bi bi-chat-dots"></i> 在线留言</a></li>
+                <li><a href="/ds.html"><i class="bi bi-cup-hot"></i> 赞助打赏</a></li>
             </ul>
         </div>
     </nav>
@@ -923,13 +913,13 @@
             </div>
             <div class="nav-buttons">
                 <button class="nav-button prev-button">
-                    <i class="fas fa-step-backward"></i>
+                    <i class="bi bi-caret-left-square"></i>
                 </button>
                 <button class="nav-button play-pause-button">
-                    <i class="fas fa-play"></i>
+                    <i class="bi bi-play-fill"></i>
                 </button>
                 <button class="nav-button next-button">
-                    <i class="fas fa-step-forward"></i>
+                    <i class="bi bi-caret-right-square"></i>
                 </button>
             </div>
             <div class="progress-container">
@@ -943,7 +933,7 @@
             </div>
             <div class="volume-control">
                 <div class="volume-icon">
-                    <i class="fas fa-volume-up"></i>
+                    <i class="bi bi-volume-up"></i>
                 </div>
                 <input type="range" min="0" max="100" value="70" class="volume-slider">
             </div>
