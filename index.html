@@ -15,16 +15,7 @@
  text-decoration: none;
  }
 
-    @font-face {
-    font-family: 'MyCustomFont';
-    src:url('/kl.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-* {
-    font-family: 'MyCustomFont', sans-serif;
-}
+    /* 已移除自定义字体 @font-face 调用，改用系统默认字体 */
     
         * {
             box-sizing: border-box;
@@ -500,7 +491,7 @@
             <img src="/logo.png" width="250" height="50" alt="" />
             </a>
             <ul class="nav-links">
-                <li><a href="./" class="active"><i class="bi bi-browser-firefox"></i> 网站首页</a></li>
+                <li><a href="/index.html" class="active"><i class="bi bi-browser-firefox"></i> 网站首页</a></li>
                 <li><a href="/blog.html"><i class="bi bi-reddit"></i> 个人博客</a></li>
                 <li><a href="/image.html"><i class="bi bi-card-image"></i> 图片画廊</a></li>
                 <li><a href="/mp3.html"><i class="bi bi-earbuds"></i> 音乐试听</a></li>
@@ -667,7 +658,7 @@
         <div class="url-buttons">
             <div class="url-grid">
                 <a href="https://57dh.sylu.cc/" target="_blank" class="url-button"><i class="bi bi-balloon-heart" style="color: #FFA07A;"></i> 主域名：57dh.sylu.cc</a>
-                <a href="https://57dh.ccwu.cc/" target="_blank" class="url-button"><i class="bi bi-balloon-heart" style="color: #FFA07A;"></i> 备用一：57dh.ccwu.cc</a>
+                <a href="http://57dh.ccwu.cc/" target="_blank" class="url-button"><i class="bi bi-balloon-heart" style="color: #FFA07A;"></i> 备用一：57dh.ccwu.cc</a>
                 <a href="http://57dh.web3v.vip/" target="_blank" class="url-button"><i class="bi bi-balloon-heart" style="color: #FFA07A;"></i> 备用二：57dh.web3v.vip</a>
             </div>
         </div>
@@ -679,8 +670,23 @@
             <p> <i class="bi bi-cc-circle-fill"></i> <a href="./" target="_blank">林熙导航网</a> 版权所有 <a href="https://github.com/xue-9587/57dh" target="_blank" rel="noopener"><i class="bi-github" role="img" aria-label="GitHub"></i></a> </p>
             <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
             <p><i class="bi bi-tencent-qq"></i> <i class="bi bi-1-square-fill"></i> <i class="bi bi-8-square-fill"></i> <i class="bi bi-4-square-fill"></i> <i class="bi bi-5-square-fill"></i> <i class="bi bi-6-square-fill"></i> <i class="bi bi-3-square-fill"></i> <i class="bi bi-7-square-fill"></i> <i class="bi bi-7-square-fill"></i> <i class="bi bi-4-square-fill"></i> <i class="bi bi-5-square-fill"></i> </p>
-            <p><a href="/icp" target="_blank"><i class="bi bi-browser-firefox"></i> 萌ICP备 10000000号-1 </a></p>
+            <p><a href="/icp" target="_blank"><i class="bi bi-browser-firefox" style="color: #a79552;"></i> 萌ICP备10000000号-1</a></p>
         </div>
     </footer>
+
+    <!-- 网址按钮：点击先进入独立倒计时跳转页，3 秒后自动跳转目标站 -->
+    <script>
+        document.querySelectorAll('.url-button').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var href = btn.getAttribute('href');
+                if (href && /^https?:\/\//i.test(href)) {
+                    window.open('tz.html?to=' + encodeURIComponent(href), '_blank');
+                } else {
+                    window.location.href = href;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
