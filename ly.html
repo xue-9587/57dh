@@ -41,12 +41,16 @@
             overflow-x: hidden;
         }
         
-        /* 导航菜单样式 - 暗色拟态风格 */
+        /* 导航菜单样式 - 新拟态 */
         .navbar {
-            background: #2b2f36;
+            background: #2d3139;
             padding: 0 20px;
             position: relative;
             z-index: 100;
+            box-shadow: 
+                8px 8px 16px #1f2228,
+                -8px -8px 16px #3b4049;
+            border-radius: 0 0 20px 20px;
         }
         
         .nav-container {
@@ -59,20 +63,17 @@
         }
         
         .logo {
-            color: #c8cdd6;
+            color: #cbd2dc;
             font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
-            /* 暗色拟态文字轻微阴影 */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
-                        -1px -1px 2px rgba(255, 255, 255, 0.05);
         }
         
         .logo i {
-            color: #9aa1ad;
+            color: #8b95a3;
         }
         
         .nav-links {
@@ -82,45 +83,44 @@
         }
         
         .nav-links a {
-            color: #c8cdd6;
+            color: #aeb6c2;
             text-decoration: none;
             font-size: 1rem;
             transition: all 0.3s ease;
-            padding: 8px 12px;
+            padding: 8px 15px;
+            border-radius: 10px;
             position: relative;
-            /* 暗色拟态基础按钮样式 */
-            border-radius: 8px;
-            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
-                        -3px -3px 6px rgba(255, 255, 255, 0.05);
         }
         
         .nav-links a:hover {
-            color: #eef1f6;
-            /* 暗色拟态按压效果 */
-            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
-                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+            color: #4299e1;
+            box-shadow: 
+                inset 4px 4px 8px #1f2228,
+                inset -4px -4px 8px #3b4049;
         }
         
         .nav-links a.active {
-            color: #eef1f6;
-            /* 激活态暗色拟态按压 */
-            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
-                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+            color: #4299e1;
+            box-shadow: 
+                inset 4px 4px 8px #1f2228,
+                inset -4px -4px 8px #3b4049;
         }
         
-        /* 汉堡菜单按钮 - 暗色拟态（核心修复：默认隐藏） */
+        /* 汉堡菜单按钮 - 新拟态 
+           修复：电脑端默认隐藏，移动端显示 */
         .menu-toggle {
-            display: none; /* 电脑端默认隐藏，仅移动端显示 */
             cursor: pointer;
             font-size: 1.5rem;
-            color: #c8cdd6;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            color: #aeb6c2;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none; /* 电脑端默认隐藏 */
             align-items: center;
             justify-content: center;
-            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
-                        -3px -3px 6px rgba(255, 255, 255, 0.05);
+            box-shadow: 
+                4px 4px 8px #1f2228,
+                -4px -4px 8px #3b4049;
         }
         
         .container {
@@ -282,6 +282,140 @@
             text-decoration: none;
         }
         
+        /* 在线留言板 - 暗色拟态 */
+        .message-board {
+            background: #2b2f36;
+            border-radius: 12px;
+            padding: 20px 22px;
+            margin: 10px auto 15px;
+            width: 100%;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+
+        .msg-form {
+            display: block;
+        }
+
+        .msg-row {
+            margin-bottom: 12px;
+        }
+
+        .msg-input, .msg-textarea {
+            background: #2b2f36;
+            border: none;
+            border-radius: 10px;
+            color: #c8cdd6;
+            padding: 12px 15px;
+            width: 100%;
+            font-size: 1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* 暗色拟态内阴影（凹陷输入框） */
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .msg-input:focus, .msg-textarea:focus {
+            outline: none;
+            color: #eef1f6;
+            box-shadow: inset 6px 6px 12px rgba(0, 0, 0, 0.6),
+                        inset -6px -6px 12px rgba(255, 255, 255, 0.06);
+        }
+
+        .msg-textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .msg-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .msg-count {
+            color: #8b92a0;
+            font-size: 0.85rem;
+        }
+
+        .msg-submit {
+            width: auto;
+            cursor: pointer;
+            color: #4299e1;
+            flex: 0 0 auto;
+        }
+
+        .msg-submit:hover {
+            color: #eef1f6;
+        }
+
+        .msg-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .msg-status {
+            font-size: 0.9rem;
+            min-height: 1.2em;
+            color: #8b92a0;
+        }
+
+        .msg-status.ok {
+            color: #48bb78;
+        }
+
+        .msg-status.err {
+            color: #f56565;
+        }
+
+        .msg-list {
+            margin-top: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .msg-item {
+            background: #2b2f36;
+            border-radius: 12px;
+            padding: 14px 18px;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+
+        .msg-item-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            gap: 10px;
+        }
+
+        .msg-item-name {
+            color: #4299e1;
+            font-weight: 600;
+        }
+
+        .msg-item-time {
+            color: #8b92a0;
+            font-size: 0.8rem;
+            flex: 0 0 auto;
+        }
+
+        .msg-item-body {
+            color: #c8cdd6;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .msg-empty, .msg-loading {
+            color: #8b92a0;
+            text-align: center;
+            padding: 24px 0;
+        }
+
         /* 响应式适配 */
         @media (max-width: 1200px) {
             .container, .nav-container, .copyright {
@@ -300,16 +434,19 @@
                 top: 70px;
                 left: 0;
                 right: 0;
-                background: #2b2f36;
+                background: #2d3139;
                 flex-direction: column;
                 align-items: center;
-                gap: 15px;
+                gap: 0;
                 padding: 20px 0;
-                box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55);
+                box-shadow: 
+                    8px 8px 16px #1f2228,
+                    -8px -8px 16px #3b4049;
                 transform: translateY(-100%);
                 opacity: 0;
                 transition: all 0.3s ease;
                 pointer-events: none;
+                border-radius: 0 0 20px 20px;
             }
             
             .nav-links.active {
@@ -319,7 +456,7 @@
             }
             
             .nav-links li {
-                margin: 0;
+                margin: 10px 0;
             }
             
             /* 移动端网址按钮 - 每行两个 */
@@ -399,8 +536,8 @@
     <!-- 导航菜单 -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="./" class="logo">
-<img src="/logo.png" width="250" height="50" alt="" />
+            <a href="/index.html" class="logo">
+            <img src="/logo.png" width="250" height="50" alt="" />
             </a>
             <ul class="nav-links">
                 <li><a href="./"><i class="bi bi-browser-firefox"></i> 网站首页</a></li>
@@ -418,23 +555,32 @@
         </div>
     </nav>
     
-<!--PC和WAP自适应版-->
-<div id="SOHUCS" ></div> 
-<script type="text/javascript"> 
-(function(){ 
-var appid = 'cytsD2A7H'; 
-var conf = 'prod_918ad2e2092ba6ee3ee329449770a839'; 
-var width = window.innerWidth || document.documentElement.clientWidth; 
-if (width < 1000) {
-var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
-var script = document.createElement('script');
-script.type = 'text/javascript';
-script.charset = 'utf-8';
-script.id = 'changyan_mobile_js';
-script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
-head.appendChild(script);
-} else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
-        
+<!-- 留言代码：在线留言板（数据写服务端 ly_api.php，不存本地/浏览器） -->
+<div class="container">
+    <div class="url-category-info">
+        <h2><i class="bi bi-chat-dots"></i> 在线留言板</h2>
+        <p>欢迎在这里留下你的足迹，留言会实时保存到网站服务器（不会存到你的浏览器或本机）。</p>
+    </div>
+    <div class="message-board">
+        <form id="msgForm" class="msg-form" autocomplete="off">
+            <div class="msg-row">
+                <input type="text" id="msgName" class="msg-input" maxlength="20" placeholder="你的昵称（必填）" required>
+            </div>
+            <div class="msg-row">
+                <textarea id="msgContent" class="msg-textarea" maxlength="500" placeholder="想说点什么…（必填，最多 500 字）" required></textarea>
+            </div>
+            <div class="msg-row msg-actions">
+                <span id="msgCount" class="msg-count">0/500</span>
+                <button type="submit" id="msgSubmit" class="url-button msg-submit"><i class="bi bi-send"></i> 提交留言</button>
+            </div>
+            <div id="msgStatus" class="msg-status"></div>
+        </form>
+        <div id="msgList" class="msg-list">
+            <div class="msg-loading">加载留言中…</div>
+        </div>
+    </div>
+</div>
+
     <!-- 底部版权信息 -->
     <footer>
         <div class="copyright">
@@ -443,5 +589,108 @@ head.appendChild(script);
             <p><a href="/icp" target="_blank"><i class="bi bi-browser-firefox" style="color: #a79552;"></i> 萌ICP备10000000号-1</a></p>
         </div>
     </footer>
+
+    <!-- 留言板交互逻辑：数据只走服务端 ly_api.php，不写 localStorage / 不写本机 -->
+    <script type="text/javascript">
+        (function () {
+            var API = 'https://linxi.ccccocccc.cc/api/ly_api.php';
+            var form    = document.getElementById('msgForm');
+            var nameEl  = document.getElementById('msgName');
+            var contentEl = document.getElementById('msgContent');
+            var countEl = document.getElementById('msgCount');
+            var statusEl = document.getElementById('msgStatus');
+            var listEl  = document.getElementById('msgList');
+            var submitEl = document.getElementById('msgSubmit');
+
+            if (!form) return; // 容错
+
+            // HTML 转义，防止 XSS
+            function escapeHtml(str) {
+                return String(str).replace(/[&<>"']/g, function (c) {
+                    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+                });
+            }
+
+            function setStatus(text, type) {
+                statusEl.textContent = text || '';
+                statusEl.className = 'msg-status' + (type ? ' ' + type : '');
+            }
+
+            // 字数统计
+            contentEl.addEventListener('input', function () {
+                countEl.textContent = contentEl.value.length + '/500';
+            });
+
+            // 渲染留言列表
+            function renderMessages(list) {
+                if (!list || !list.length) {
+                    listEl.innerHTML = '<div class="msg-empty">暂无留言，来抢沙发吧～</div>';
+                    return;
+                }
+                listEl.innerHTML = list.map(function (m) {
+                    return '<div class="msg-item">' +
+                        '<div class="msg-item-head">' +
+                            '<span class="msg-item-name">' + escapeHtml(m.name) + '</span>' +
+                            '<span class="msg-item-time">' + escapeHtml(m.time) + '</span>' +
+                        '</div>' +
+                        '<div class="msg-item-body">' + escapeHtml(m.content) + '</div>' +
+                    '</div>';
+                }).join('');
+            }
+
+            // 拉取留言（服务端）
+            function loadMessages() {
+                fetch(API, { cache: 'no-store' })
+                    .then(function (r) { return r.json(); })
+                    .then(function (data) {
+                        if (data && data.ok && Array.isArray(data.list)) {
+                            renderMessages(data.list);
+                        } else {
+                            listEl.innerHTML = '<div class="msg-empty">暂无留言，来抢沙发吧～</div>';
+                        }
+                    })
+                    .catch(function () {
+                        listEl.innerHTML = '<div class="msg-empty">留言加载失败，请确认 ly_api.php 已部署到服务器</div>';
+                    });
+            }
+
+            // 提交留言
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var name = nameEl.value.trim();
+                var content = contentEl.value.trim();
+                if (!name || !content) {
+                    setStatus('昵称和留言内容都不能为空', 'err');
+                    return;
+                }
+                submitEl.disabled = true;
+                setStatus('提交中…', '');
+                fetch(API, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, content: content })
+                })
+                .then(function (r) { return r.json(); })
+                .then(function (data) {
+                    submitEl.disabled = false;
+                    if (data && data.ok) {
+                        form.reset();
+                        countEl.textContent = '0/500';
+                        setStatus('留言成功，感谢你的留言！', 'ok');
+                        loadMessages();
+                    } else {
+                        setStatus((data && data.msg) ? data.msg : '提交失败，请重试', 'err');
+                    }
+                })
+                .catch(function () {
+                    submitEl.disabled = false;
+                    setStatus('网络错误，提交失败', 'err');
+                });
+            });
+
+            // 首次加载
+            loadMessages();
+        })();
+    </script>
 </body>
 </html>
