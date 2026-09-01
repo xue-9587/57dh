@@ -41,12 +41,16 @@
             overflow-x: hidden;
         }
         
-        /* 导航菜单样式 - 暗色拟态风格 */
+        /* 导航菜单样式 - 新拟态 */
         .navbar {
-            background: #2b2f36;
+            background: #2d3139;
             padding: 0 20px;
             position: relative;
             z-index: 100;
+            box-shadow: 
+                8px 8px 16px #1f2228,
+                -8px -8px 16px #3b4049;
+            border-radius: 0 0 20px 20px;
         }
         
         .nav-container {
@@ -59,20 +63,17 @@
         }
         
         .logo {
-            color: #c8cdd6;
+            color: #cbd2dc;
             font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
-            /* 暗色拟态文字轻微阴影 */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
-                        -1px -1px 2px rgba(255, 255, 255, 0.05);
         }
         
         .logo i {
-            color: #9aa1ad;
+            color: #8b95a3;
         }
         
         .nav-links {
@@ -82,45 +83,44 @@
         }
         
         .nav-links a {
-            color: #c8cdd6;
+            color: #aeb6c2;
             text-decoration: none;
             font-size: 1rem;
             transition: all 0.3s ease;
-            padding: 8px 12px;
+            padding: 8px 15px;
+            border-radius: 10px;
             position: relative;
-            /* 暗色拟态基础按钮样式 */
-            border-radius: 8px;
-            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
-                        -3px -3px 6px rgba(255, 255, 255, 0.05);
         }
         
         .nav-links a:hover {
-            color: #eef1f6;
-            /* 暗色拟态按压效果 */
-            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
-                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+            color: #4299e1;
+            box-shadow: 
+                inset 4px 4px 8px #1f2228,
+                inset -4px -4px 8px #3b4049;
         }
         
         .nav-links a.active {
-            color: #eef1f6;
-            /* 激活态暗色拟态按压 */
-            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.55),
-                        inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+            color: #4299e1;
+            box-shadow: 
+                inset 4px 4px 8px #1f2228,
+                inset -4px -4px 8px #3b4049;
         }
         
-        /* 汉堡菜单按钮 - 暗色拟态（核心修复：默认隐藏） */
+        /* 汉堡菜单按钮 - 新拟态 
+           修复：电脑端默认隐藏，移动端显示 */
         .menu-toggle {
-            display: none; /* 电脑端默认隐藏，仅移动端显示 */
             cursor: pointer;
             font-size: 1.5rem;
-            color: #c8cdd6;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            color: #aeb6c2;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none; /* 电脑端默认隐藏 */
             align-items: center;
             justify-content: center;
-            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.55),
-                        -3px -3px 6px rgba(255, 255, 255, 0.05);
+            box-shadow: 
+                4px 4px 8px #1f2228,
+                -4px -4px 8px #3b4049;
         }
         
         .container {
