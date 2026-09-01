@@ -416,6 +416,173 @@
             padding: 24px 0;
         }
 
+        /* 内嵌浏览器 / 剧集播放 - 暗色拟态 */
+        .embed-section {
+            background: #2b2f36;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 10px auto 15px;
+            width: 100%;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+
+        .embed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .embed-header h2 {
+            color: #eef1f6;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .embed-header .embed-sub {
+            color: #8b92a0;
+            font-size: 0.85rem;
+        }
+
+        .embed-body {
+            display: flex;
+            gap: 14px;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .embed-player-col {
+            flex: 0 0 1080px;
+            max-width: 100%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .embed-player-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #1c1f24;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.04);
+        }
+
+        .embed-player-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: #fff;
+        }
+
+        .embed-player-wrap .embed-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b92a0;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .embed-episodes {
+            flex: 0 0 420px;
+            max-width: 420px;
+            background: #2b2f36;
+            border-radius: 10px;
+            padding: 14px;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.45),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .embed-episodes .ep-title {
+            color: #eef1f6;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .embed-ep-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1 1 auto;
+            min-height: 0;
+            max-height: none;
+            padding-right: 4px;
+        }
+
+        .embed-ep {
+            background: #2b2f36;
+            border: none;
+            border-radius: 9px;
+            color: #c8cdd6;
+            padding: 11px 8px;
+            font-size: 0.92rem;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+            transition: all 0.25s ease;
+        }
+
+        .embed-ep:hover {
+            color: #eef1f6;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .embed-ep.active {
+            color: #4299e1;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        /* 内嵌浏览器响应式 */
+        @media (max-width: 980px) {
+            .embed-body {
+                flex-direction: column;
+                align-items: center;
+            }
+            .embed-player-col {
+                flex: 1 1 auto;
+                width: 100%;
+            }
+            .embed-episodes {
+                flex: 1 1 auto;
+                max-width: 100%;
+                width: 100%;
+            }
+            .embed-ep-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .embed-ep-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         /* 响应式适配 */
         @media (max-width: 1200px) {
             .container, .nav-container, .copyright {
@@ -554,121 +721,102 @@
             </div>
         </div>
     </nav>
-    
-<!-- 留言代码：在线留言板（数据写服务端 ly_api.php，不存本地/浏览器） -->
-<iframe src="https://57dh.cc.cd/index.php?act=widget&target=linxi"
-        style="width:100%;border:0;min-height:460px" title="云评"></iframe>
+
+    <!-- 内嵌浏览器 / 剧集播放 -->
+    <section class="embed-section">
+        <div class="embed-body">
+            <div class="embed-player-col">
+                <div class="embed-player-wrap">
+                    <div id="embedPlaceholder" class="embed-placeholder">请选择右侧剧集加载</div>
+                    <iframe id="embedFrame" style="display:none" referrerpolicy="no-referrer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <aside class="embed-episodes">
+                <div class="ep-title">🏮 历届春晚直播在线观看 - 林熙导航网</div>
+                <div id="embedEpGrid" class="embed-ep-grid"></div>
+            </aside>
+        </div>
+    </section>
 
     <!-- 底部版权信息 -->
     <footer>
         <div class="copyright">
-            <p><i class="bi bi-cc-circle-fill"></i> <a href="./" target="_blank">林熙导航网 - 在线留言</a> 版权所有</p>
+            <p><i class="bi bi-cc-circle-fill"></i> <a href="./" target="_blank">林熙导航网 - 历届春晚在线看</a> 版权所有</p>
             <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
             <p><a href="/icp" target="_blank"><i class="bi bi-browser-firefox" style="color: #a79552;"></i> 萌ICP备10000000号-1</a></p>
         </div>
     </footer>
 
-    <!-- 留言板交互逻辑：数据只走服务端 ly_api.php，不写 localStorage / 不写本机 -->
     <script type="text/javascript">
-        (function () {
-            var API = 'https://57dh.cc.cd/ly_api.php';
-            var form    = document.getElementById('msgForm');
-            var nameEl  = document.getElementById('msgName');
-            var contentEl = document.getElementById('msgContent');
-            var countEl = document.getElementById('msgCount');
-            var statusEl = document.getElementById('msgStatus');
-            var listEl  = document.getElementById('msgList');
-            var submitEl = document.getElementById('msgSubmit');
+    (function () {
+        // ===== 剧集配置：在此编辑你的剧集 =====
+        // name = 右侧按钮显示的文字；url = 点击后左侧内嵌浏览器加载的地址
+        // 注意：部分网站设置了 X-Frame-Options 会禁止被 iframe 嵌入（内嵌显示空白），
+        // 此时可改用该站的「嵌入播放页」地址，或用你自己的后端代理返回同源页面。
+        var EPISODE_CONFIG = {
+            defaultIndex: 0,   // 默认加载第几个剧集（0 = 第一个）
+            episodes: [
+                { name: '1987年春晚', url: 'https://txmov2.a.kwimgs.com/bs3/video-hls/5195746663405928031_hlsb.m3u8' },
+                { name: '1988年春晚', url: 'https://txmov2.a.kwimgs.com/bs3/video-hls/5216575810935394655_hlsb.m3u8' },
+                { name: '1989年春晚', url: 'https://txmov2.a.kwimgs.com/bs3/video-hls/5194620763762726260_hlsb.m3u8' },
+                { name: '1993年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/22/BMjAyMzAxMTMyMjEwMDNfNDAzMDAxOTlfOTM1MTIzMzYwODJfMF8z_b_B647d10e431b4cc5e48e6c77347d69021.mp4' },
+                { name: '1994年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/22/BMjAyMzAxMTMyMjEwMDNfNDAzMDAxOTlfOTM1MTIzMzYxMjNfMF8z_b_B3dde97f36273f04403d4dc5eec611a35.mp4' },
+                { name: '1995年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQwNzVfMF8z_b_B811c0dec6b9a3d3074a18522c185010a.mp4' },
+                { name: '1996年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/22/BMjAyMzAxMTMyMjEwMDNfNDAzMDAxOTlfOTM1MTIzMzYxNTJfMF8z_b_Bd841eae10ab1c9955ef55fbedfae6c45.mp4' },
+                { name: '2000年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxMTNfMF8z_b_Bdddf4e7ef0ff6cfd477857bb40e78419.mp4' },
+                { name: '2001年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQyMDFfMF8z_b_B70592cb7c4054e9cabb675e849bbf4bd.mp4' },
+                { name: '2002年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxNDdfMF8z_b_Ba6271d10b7e6cfae83759033a091f257.mp4' },
+                { name: '2003年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/14/23/BMjAyMzAxMTQyMzQxNDdfNDAzMDAxOTlfOTM2MTU0MTk1NDFfMF8z_b_B182749d2cd2ea9323639254af385f24b.mp4' },
+                { name: '2004年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/21/BMjAyMzAxMTMyMTE4MzRfNDAzMDAxOTlfOTM1MDY4ODIxOTVfMF8z_b_B86c4430b82ff5a7f4e8132f6ee558536.mp4' },
+                { name: '2005年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQyMzhfMF8z_b_B35ad7cc86aec8fc9e5ddfb31fc7bed63.mp4' },
+                { name: '2006年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQyNzlfMF8z_b_Bbc3703fc331dc994c50859c19aad28ff.mp4' },
+                { name: '2007年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQzMjNfMF8z_b_B00b069c7899976459ceeaa99353dfefe.mp4' },
+                { name: '2009年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQzOTBfMF8z_b_B29a36a85e0277f6c2a1f033ef7c10708.mp4' },
+                { name: '2010年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQ0MjlfMF8z_b_B8818807a00eed329a69fb494f405bd43.mp4' },
+                { name: '2013年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/13/20/BMjAyMzAxMTMyMDA5MjJfNDAzMDAxOTlfOTM0OTkwNDQ1NjNfMF8z_b_B4fea55408dca4471a68a963ae096be59.mp4' },
+                { name: '2014年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/06/16/BMjAyMzAxMDYxNjMxMTNfNDAzMDAxOTlfOTI4OTY2ODAzNjlfMF8z_b_Bdee65c77f9e7b2120a185c919dad81d2.mp4' },
+                { name: '2018年春晚', url: 'https://alimov2.a.kwimgs.com/upic/2023/01/06/16/BMjAyMzAxMDYxNjMxMTRfNDAzMDAxOTlfOTI4OTY2ODE2MTBfMF8z_b_B11a778e34390a21de42d407e94f45b91.mp4' },
+                { name: '2024年春晚', url: 'https://p2.bdstatic.com/rtmp.liveshow.lss-user.baidubce.com/live/stream_bduid_6488563992_8982723413/merged_1707497046297_88536_25144_41936.m3u8' },
+                { name: '2025年春晚', url: 'https://svip.high24-playback.com/20250129/17159_7bca93c4/2000k/hls/mixed.m3u8' }
+            ]
+        };
 
-            if (!form) return; // 容错
+        var frame = document.getElementById('embedFrame');
+        var placeholder = document.getElementById('embedPlaceholder');
+        var grid = document.getElementById('embedEpGrid');
 
-            // HTML 转义，防止 XSS
-            function escapeHtml(str) {
-                return String(str).replace(/[&<>"']/g, function (c) {
-                    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-                });
-            }
+        function load(url) {
+            if (!url) return;
+            frame.src = url;
+            frame.style.display = 'block';
+            placeholder.style.display = 'none';
+        }
 
-            function setStatus(text, type) {
-                statusEl.textContent = text || '';
-                statusEl.className = 'msg-status' + (type ? ' ' + type : '');
-            }
+        function selectEp(ep, btn) {
+            load(ep.url);
+            var btns = grid.querySelectorAll('.embed-ep');
+            for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+            if (btn) btn.classList.add('active');
+        }
 
-            // 字数统计
-            contentEl.addEventListener('input', function () {
-                countEl.textContent = contentEl.value.length + '/500';
-            });
+        EPISODE_CONFIG.episodes.forEach(function (ep) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'embed-ep';
+            b.textContent = ep.name;
+            b.addEventListener('click', function () { selectEp(ep, b); });
+            grid.appendChild(b);
+        });
 
-            // 渲染留言列表
-            function renderMessages(list) {
-                if (!list || !list.length) {
-                    listEl.innerHTML = '<div class="msg-empty">暂无留言，来抢沙发吧～</div>';
-                    return;
-                }
-                listEl.innerHTML = list.map(function (m) {
-                    return '<div class="msg-item">' +
-                        '<div class="msg-item-head">' +
-                            '<span class="msg-item-name">' + escapeHtml(m.name) + '</span>' +
-                            '<span class="msg-item-time">' + escapeHtml(m.time) + '</span>' +
-                        '</div>' +
-                        '<div class="msg-item-body">' + escapeHtml(m.content) + '</div>' +
-                    '</div>';
-                }).join('');
-            }
-
-            // 拉取留言（服务端）
-            function loadMessages() {
-                fetch(API, { cache: 'no-store' })
-                    .then(function (r) { return r.json(); })
-                    .then(function (data) {
-                        if (data && data.ok && Array.isArray(data.list)) {
-                            renderMessages(data.list);
-                        } else {
-                            listEl.innerHTML = '<div class="msg-empty">暂无留言，来抢沙发吧～</div>';
-                        }
-                    })
-                    .catch(function () {
-                        listEl.innerHTML = '<div class="msg-empty">留言加载失败，请确认 ly_api.php 已部署到服务器</div>';
-                    });
-            }
-
-            // 提交留言
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                var name = nameEl.value.trim();
-                var content = contentEl.value.trim();
-                if (!name || !content) {
-                    setStatus('昵称和留言内容都不能为空', 'err');
-                    return;
-                }
-                submitEl.disabled = true;
-                setStatus('提交中…', '');
-                fetch(API, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: name, content: content })
-                })
-                .then(function (r) { return r.json(); })
-                .then(function (data) {
-                    submitEl.disabled = false;
-                    if (data && data.ok) {
-                        form.reset();
-                        countEl.textContent = '0/500';
-                        setStatus('留言成功，感谢你的留言！', 'ok');
-                        loadMessages();
-                    } else {
-                        setStatus((data && data.msg) ? data.msg : '提交失败，请重试', 'err');
-                    }
-                })
-                .catch(function () {
-                    submitEl.disabled = false;
-                    setStatus('网络错误，提交失败', 'err');
-                });
-            });
-
-            // 首次加载
-            loadMessages();
-        })();
+        // 默认加载第一个（或指定索引）剧集
+        var di = EPISODE_CONFIG.defaultIndex || 0;
+        var all = grid.querySelectorAll('.embed-ep');
+        if (EPISODE_CONFIG.episodes[di] && all[di]) {
+            load(EPISODE_CONFIG.episodes[di].url);
+            all[di].classList.add('active');
+        }
+    })();
     </script>
+
 </body>
 </html>
