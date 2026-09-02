@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="林熙导航网,林熙网址收录,在线工具，林熙资源网，林熙blog"/>
+    <meta name="description" content="林熙导航网，免费收录实用网址大全！"/>
+    <title>⎛⎝ 林熙导航网 ⎠⎞ - 捐赠打赏</title>
+    <link href="/favicon.ico" rel="icon">
+    <body oncontextmenu=self.event.returnValue=false>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+@font-face {
+    font-family: 'MyCustomFont';
+    src:url('/kl.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'MyCustomFont', sans-serif;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 暗色拟态核心背景：深灰基调，统一暗色拟态视觉基础 */
+        body {
+            background: #2b2f36;
+            color: #c8cdd6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* 导航菜单样式 - 新拟态 */
+        .navbar {
+            background: #2d3139;
+            padding: 0 20px;
+            position: relative;
+            z-index: 100;
+            box-shadow: 
+                8px 8px 16px #1f2228,
+                -8px -8px 16px #3b4049;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            color: #cbd2dc;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: #8b95a3;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #aeb6c2;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #4299e1;
+            box-shadow: 
+                inset 4px 4px 8px #1f2228,
+                inset -4px -4px 8px #3b4049;
+        }
+        
+        .nav-links a.active {
+            color: #4299e1;
+            box-shadow: 
+                inset 4px 4px 8px #1f2228,
+                inset -4px -4px 8px #3b4049;
+        }
+        
+        /* 汉堡菜单按钮 - 新拟态 
+           修复：电脑端默认隐藏，移动端显示 */
+        .menu-toggle {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #aeb6c2;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none; /* 电脑端默认隐藏 */
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                4px 4px 8px #1f2228,
+                -4px -4px 8px #3b4049;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+            width: 100%;
+        }
+        
+        /* 网址分类说明 - 暗色拟态卡片 */
+        .url-category-info {
+            background: #2b2f36;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            width: 100%;
+            /* 暗色拟态外阴影 */
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+        
+        .url-category-info h2 {
+            color: #eef1f6;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        
+        .url-category-info p {
+            color: #8b92a0;
+            margin-bottom: 0;
+        }
+        
+        /* 网址按钮区域 - 暗色拟态 */
+        .url-buttons {
+            margin: 10px auto 15px;
+            padding: 15px 20px;
+            max-width: 100%;
+            width: 100%;
+            background: #2b2f36;
+            border-radius: 12px;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55),
+                        -6px -6px 12px rgba(255, 255, 255, 0.05);
+        }
+        
+        .url-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 网页端固定4列 */
+            gap: 15px;
+            width: 100%;
+        }
+        
+        /* 暗色拟态按钮核心样式 */
+        .url-button {
+            display: inline-block;
+            background: #2b2f36;
+            border-radius: 10px;
+            color: #c8cdd6;
+            padding: 12px 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            /* 暗色拟态外阴影 */
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            width: 100%;
+            border: none;
+        }
+        
+        .url-button:hover {
+            /* 暗色拟态按压效果（内阴影） */
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+            color: #eef1f6;
+            transform: translateY(0); /* 取消原有位移，适配拟态风格 */
+        }
+        
+        /* 返回顶部按钮 - 暗色拟态 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2b2f36;
+            color: #c8cdd6;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            /* 暗色拟态外阴影 */
+            box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.55),
+                        -5px -5px 11px rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            border: none;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top:hover {
+            /* 暗色拟态按压 */
+            box-shadow: inset 5px 5px 11px rgba(0, 0, 0, 0.55),
+                        inset -5px -5px 11px rgba(255, 255, 255, 0.05);
+            color: #eef1f6;
+            transform: translateY(0);
+        }
+        
+        /* 底部版权信息 - 暗色拟态 */
+        footer {
+            background: #2b2f36;
+            margin-top: auto;
+            padding: 20px 0;
+            /* 暗色拟态上阴影 */
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.35);
+        }
+        
+        .copyright {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #8b92a0;
+            font-size: 0.9rem;
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .copyright a {
+            color: #c8cdd6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.55),
+                        -2px -2px 4px rgba(255, 255, 255, 0.05);
+        }
+        
+        .copyright a:hover {
+            color: #eef1f6;
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.55),
+                        inset -2px -2px 4px rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+        }
+        
+        /* 最新限免游戏 - 暗色拟态 */
+        .free-games-section {
+            max-width: 1600px;
+            margin: 20px auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .free-games-card {
+            background: #2b2f36;
+            border-radius: 16px;
+            padding: 24px 28px;
+            width: 100%;
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.55),
+                        -8px -8px 16px rgba(255, 255, 255, 0.05);
+        }
+
+        .free-games-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .free-games-title {
+            color: #eef1f6;
+            font-size: 1.35rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .free-games-title i {
+            color: #5fd6d6;
+        }
+
+        .free-games-refresh {
+            background: #2b2f36;
+            color: #c8cdd6;
+            border: none;
+            border-radius: 10px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .free-games-refresh:hover {
+            color: #eef1f6;
+            box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.55),
+                        inset -4px -4px 9px rgba(255, 255, 255, 0.05);
+        }
+
+        .free-games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .fg-item {
+            background: #2b2f36;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.55),
+                        -5px -5px 11px rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .fg-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.6),
+                        -7px -7px 15px rgba(255, 255, 255, 0.06);
+        }
+
+        .fg-cover {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #1f2329;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .fg-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .fg-cover .fg-noimg {
+            color: #5b626e;
+            font-size: 0.85rem;
+        }
+
+        .fg-info {
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .fg-title {
+            color: #eef1f6;
+            font-size: 1.02rem;
+            font-weight: 600;
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .fg-period {
+            color: #8b92a0;
+            font-size: 0.82rem;
+            line-height: 1.4;
+        }
+
+        .fg-bottom {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .fg-badge {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .fg-badge.free {
+            color: #4cd964;
+            background: rgba(76, 217, 100, 0.12);
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.45),
+                        inset -2px -2px 5px rgba(255, 255, 255, 0.05);
+        }
+
+        .fg-badge.soon {
+            color: #a86ad4;
+            background: rgba(168, 106, 212, 0.12);
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.45),
+                        inset -2px -2px 5px rgba(255, 255, 255, 0.05);
+        }
+
+        .fg-link {
+            color: #eef1f6;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 7px 16px;
+            border-radius: 10px;
+            background: linear-gradient(#2b2f36, #2b2f36) padding-box,
+                        linear-gradient(135deg, #a86ad4, #5fd6d6) border-box;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.55),
+                        -3px -3px 7px rgba(255, 255, 255, 0.05);
+        }
+
+        .fg-link:hover {
+            box-shadow: 0 0 14px rgba(95, 214, 214, 0.4),
+                        inset 3px 3px 7px rgba(0, 0, 0, 0.55),
+                        inset -3px -3px 7px rgba(255, 255, 255, 0.05);
+        }
+
+        .fg-loading,
+        .fg-error {
+            color: #8b92a0;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 30px 10px;
+            width: 100%;
+        }
+
+        .fg-error {
+            color: #e07a7a;
+        }
+
+        @media (max-width: 1200px) {
+            .free-games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .free-games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 1200px) {
+            .container, .nav-container, .copyright {
+                max-width: 1000px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* 移动端仅在这里显示汉堡菜单 */
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #2b2f36;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 20px 0;
+                box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.55);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            /* 移动端网址按钮 - 每行两个 */
+            .url-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            /* 移动端版权信息 */
+            .copyright {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .container, .nav-container, .copyright {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航菜单切换功能（增加容错，避免电脑端报错）
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // 最新限免游戏（Epic 接口，经代理 https://57dh.cc.cd/epic_free_games.php 获取，已带 CORS 头）
+            (function initFreeGames() {
+                const grid = document.getElementById('fgGrid');
+                const refreshBtn = document.getElementById('fgRefresh');
+                if (!grid) return;
+
+                function esc(s) {
+                    return String(s == null ? '' : s)
+                        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                }
+
+                function fmtDate(iso) {
+                    if (!iso) return '';
+                    const d = new Date(iso);
+                    if (isNaN(d.getTime())) return '';
+                    const p = function (n) { return (n < 10 ? '0' : '') + n; };
+                    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) +
+                           ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+                }
+
+                const IMG_ORDER = ['Thumbnail', 'OfferImageWide', 'DieselStoreFrontWide',
+                    'VaultOpened', 'TakeoverVaultWide', 'ProductPageImage'];
+                function pickImage(images) {
+                    if (!images || !images.length) return '';
+                    for (let i = 0; i < IMG_ORDER.length; i++) {
+                        const m = images.find(function (x) { return x.type === IMG_ORDER[i]; });
+                        if (m && m.url) return m.url;
+                    }
+                    return images[0].url || '';
+                }
+
+                function getOffer(el, kind) {
+                    const promos = el.promotions;
+                    if (!promos) return null;
+                    const list = kind === 'now' ? promos.promotionalOffers : promos.upcomingPromotionalOffers;
+                    if (!list || !list.length) return null;
+                    const inner = list[0].promotionalOffers;
+                    if (!inner || !inner.length) return null;
+                    const setting = inner[0].discountSetting;
+                    // 限免 = 折扣百分比为 0（即 100% off，价格归零）
+                    if (!setting || setting.discountPercentage !== 0) return null;
+                    return inner[0];
+                }
+
+                function gameUrl(el) {
+                    if (el.url) return el.url;
+                    try {
+                        const m = el.catalogNs && el.catalogNs.mappings && el.catalogNs.mappings[0];
+                        if (m && m.pageSlug) return 'https://store.epicgames.com/zh-CN/p/' + m.pageSlug;
+                    } catch (e) {}
+                    if (el.productSlug) return 'https://store.epicgames.com/zh-CN/p/' + el.productSlug;
+                    return '';
+                }
+
+                function renderItem(el, kind) {
+                    const offer = getOffer(el, kind);
+                    if (!offer) return '';
+                    const img = pickImage(el.keyImages);
+                    const cover = img
+                        ? '<div class="fg-cover"><img src="' + esc(img) + '" loading="lazy" alt="' + esc(el.title) + '"></div>'
+                        : '<div class="fg-cover"><span class="fg-noimg">无封面</span></div>';
+                    const badge = kind === 'now'
+                        ? '<span class="fg-badge free">限免中</span>'
+                        : '<span class="fg-badge soon">即将限免</span>';
+                    const period = '限免时间：' + fmtDate(offer.startDate) + ' ~ ' + fmtDate(offer.endDate);
+                    const url = gameUrl(el);
+                    const link = url
+                        ? '<a class="fg-link" href="' + esc(url) + '" target="_blank" rel="noopener">前往领取</a>'
+                        : '';
+                    return '' +
+                        '<div class="fg-item">' +
+                            cover +
+                            '<div class="fg-info">' +
+                                '<div class="fg-title">' + esc(el.title) + '</div>' +
+                                '<div class="fg-period">' + esc(period) + '</div>' +
+                                '<div class="fg-bottom">' + badge + link + '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                function render(data) {
+                    try {
+                        const els = data.data.Catalog.searchStore.elements;
+                        const now = [];
+                        const soon = [];
+                        els.forEach(function (el) {
+                            if (getOffer(el, 'now')) now.push(el);
+                            else if (getOffer(el, 'soon')) soon.push(el);
+                        });
+                        const ordered = now.concat(soon);
+                        if (!ordered.length) {
+                            grid.innerHTML = '<div class="fg-loading">当前没有正在限免或即将限免的游戏 🙂</div>';
+                            return;
+                        }
+                        grid.innerHTML = ordered.map(function (el) {
+                            return renderItem(el, getOffer(el, 'now') ? 'now' : 'soon');
+                        }).join('');
+                    } catch (e) {
+                        grid.innerHTML = '<div class="fg-error">数据解析失败：' + esc(e.message) + '</div>';
+                    }
+                }
+
+                function load() {
+                    grid.innerHTML = '<div class="fg-loading"><i class="bi bi-hourglass-split"></i> 正在获取 Epic 限免游戏…</div>';
+                    fetch('https://57dh.cc.cd/api/epic.php', { cache: 'no-store' })
+                        .then(function (r) {
+                            if (!r.ok) throw new Error('HTTP ' + r.status);
+                            return r.json();
+                        })
+                        .then(render)
+                        .catch(function (err) {
+                            grid.innerHTML = '<div class="fg-error">' +
+                                '<i class="bi bi-exclamation-triangle"></i> 获取失败：' + esc(err.message) +
+                                '<br>请确认代理 https://57dh.cc.cd/epic_free_games.php 可访问。</div>';
+                        });
+                }
+
+                if (refreshBtn) refreshBtn.addEventListener('click', load);
+                load();
+            })();
+
+            // 返回顶部功能增强
+            const backToTopButton = document.createElement('div');
+            backToTopButton.className = 'back-to-top hide';
+            backToTopButton.innerHTML = '<i class="bi bi-rocket-fill"></i>';
+            document.body.appendChild(backToTopButton);
+            
+            // 滚动事件监听
+            let lastScrollTop = 0;
+            const scrollThreshold = 200;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > scrollThreshold && scrollTop > lastScrollTop) {
+                    backToTopButton.classList.remove('hide');
+                    backToTopButton.classList.add('show');
+                } else if (scrollTop <= scrollThreshold || scrollTop < lastScrollTop - 50) {
+                    backToTopButton.classList.remove('show');
+                    backToTopButton.classList.add('hide');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+            
+            // 点击返回顶部
+            backToTopButton.addEventListener('click', function() {
+                const scrollToTop = () => {
+                    const position = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (position > 0) {
+                        window.requestAnimationFrame(scrollToTop);
+                        window.scrollTo(0, position - Math.max(20, position / 10));
+                    }
+                };
+                
+                scrollToTop();
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="./" class="logo">
+<img src="/logo.png" width="250" height="50" alt="" />
+            </a>
+            <ul class="nav-links">
+                <li><a href="./"><i class="bi bi-browser-firefox"></i> 网站首页</a></li>
+                <li><a href="/blog.html"><i class="bi bi-reddit"></i> 个人博客</a></li>
+                <li><a href="/image.html"><i class="bi bi-card-image"></i> 图片画廊</a></li>
+                <li><a href="/mp3.html"><i class="bi bi-earbuds"></i> 音乐试听</a></li>
+                <li><a href="/video.html"><i class="bi bi-camera-reels"></i> 电影推荐</a></li>
+                <li><a href="/tool.html"><i class="bi bi-tools"></i> 在线工具</a></li>
+                <li><a href="/ly.html"><i class="bi bi-easel2"></i> 春晚直播</a></li>
+                <li><a href="/ds.html" class="active"><i class="bi bi-cup-hot"></i> 赞助打赏</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="bi bi-filter-circle-fill"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 最新限免游戏（Epic 接口） -->
+    <section class="free-games-section">
+        <div class="free-games-card">
+            <div class="free-games-head">
+                <div class="free-games-title"><i class="bi bi-controller"></i> 最新限免游戏</div>
+                <button class="free-games-refresh" id="fgRefresh"><i class="bi bi-arrow-clockwise"></i> 刷新</button>
+            </div>
+            <div class="free-games-grid" id="fgGrid">
+                <div class="fg-loading"><i class="bi bi-hourglass-split"></i> 正在获取 Epic 限免游戏…</div>
+            </div>
+        </div>
+    </section>
+    
+<!--PC和WAP自适应版-->
+
+    <!-- 底部版权信息 -->
+    <footer>
+        <div class="copyright">
+            <p><i class="bi bi-cc-circle-fill"></i> <a href="./" target="_blank">林熙导航网 - 赞助打赏</a> 版权所有</p>
+            <p>本站提供的工具仅供学习交流使用，请勿用于商业用途</p>
+            <p><a href="/icp" target="_blank"><i class="bi bi-browser-firefox" style="color: #a79552;"></i> 萌ICP备10000000号-1</a></p>
+        </div>
+    </footer>
+</body>
+</html>
