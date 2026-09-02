@@ -666,7 +666,7 @@
 
                 function load() {
                     grid.innerHTML = '<div class="fg-loading"><i class="bi bi-hourglass-split"></i> 正在获取 Epic 限免游戏…</div>';
-                    fetch('https://57dh.cc.cd/api/epic.php', { cache: 'no-store' })
+                    fetch('https://57dh.cc.cd/epic.php', { cache: 'no-store' })
                         .then(function (r) {
                             if (!r.ok) throw new Error('HTTP ' + r.status);
                             return r.json();
