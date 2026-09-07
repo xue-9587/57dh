@@ -561,7 +561,7 @@
                 });
             }
 
-            // 最新限免游戏（Epic 接口，经代理 https://57dh.cc.cd/epic_free_games.php 获取，已带 CORS 头）
+            // 最新限免游戏（Epic 官方限免接口：https://uapis.cn/api/v1/game/epic-free，自带 CORS 头）
             (function initFreeGames() {
                 const grid = document.getElementById('fgGrid');
                 const refreshBtn = document.getElementById('fgRefresh');
@@ -573,61 +573,18 @@
                         .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
                 }
 
-                function fmtDate(iso) {
-                    if (!iso) return '';
-                    const d = new Date(iso);
-                    if (isNaN(d.getTime())) return '';
-                    const p = function (n) { return (n < 10 ? '0' : '') + n; };
-                    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) +
-                           ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
-                }
-
-                const IMG_ORDER = ['Thumbnail', 'OfferImageWide', 'DieselStoreFrontWide',
-                    'VaultOpened', 'TakeoverVaultWide', 'ProductPageImage'];
-                function pickImage(images) {
-                    if (!images || !images.length) return '';
-                    for (let i = 0; i < IMG_ORDER.length; i++) {
-                        const m = images.find(function (x) { return x.type === IMG_ORDER[i]; });
-                        if (m && m.url) return m.url;
-                    }
-                    return images[0].url || '';
-                }
-
-                function getOffer(el, kind) {
-                    const promos = el.promotions;
-                    if (!promos) return null;
-                    const list = kind === 'now' ? promos.promotionalOffers : promos.upcomingPromotionalOffers;
-                    if (!list || !list.length) return null;
-                    const inner = list[0].promotionalOffers;
-                    if (!inner || !inner.length) return null;
-                    const setting = inner[0].discountSetting;
-                    // 限免 = 折扣百分比为 0（即 100% off，价格归零）
-                    if (!setting || setting.discountPercentage !== 0) return null;
-                    return inner[0];
-                }
-
-                function gameUrl(el) {
-                    if (el.url) return el.url;
-                    try {
-                        const m = el.catalogNs && el.catalogNs.mappings && el.catalogNs.mappings[0];
-                        if (m && m.pageSlug) return 'https://store.epicgames.com/zh-CN/p/' + m.pageSlug;
-                    } catch (e) {}
-                    if (el.productSlug) return 'https://store.epicgames.com/zh-CN/p/' + el.productSlug;
-                    return '';
-                }
-
-                function renderItem(el, kind) {
-                    const offer = getOffer(el, kind);
-                    if (!offer) return '';
-                    const img = pickImage(el.keyImages);
+                function renderItem(el) {
+                    const img = el.cover;
                     const cover = img
                         ? '<div class="fg-cover"><img src="' + esc(img) + '" loading="lazy" alt="' + esc(el.title) + '"></div>'
                         : '<div class="fg-cover"><span class="fg-noimg">无封面</span></div>';
-                    const badge = kind === 'now'
+                    const now = !!el.is_free_now;
+                    const badge = now
                         ? '<span class="fg-badge free">限免中</span>'
                         : '<span class="fg-badge soon">即将限免</span>';
-                    const period = '限免时间：' + fmtDate(offer.startDate) + ' ~ ' + fmtDate(offer.endDate);
-                    const url = gameUrl(el);
+                    const price = el.original_price_desc ? '原价 ' + esc(el.original_price_desc) : '';
+                    const period = '限免时间：' + esc(el.free_start) + ' ~ ' + esc(el.free_end);
+                    const url = el.link || '';
                     const link = url
                         ? '<a class="fg-link" href="' + esc(url) + '" target="_blank" rel="noopener">前往领取</a>'
                         : '';
@@ -636,6 +593,7 @@
                             cover +
                             '<div class="fg-info">' +
                                 '<div class="fg-title">' + esc(el.title) + '</div>' +
+                                (price ? '<div class="fg-period">' + esc(price) + '</div>' : '') +
                                 '<div class="fg-period">' + esc(period) + '</div>' +
                                 '<div class="fg-bottom">' + badge + link + '</div>' +
                             '</div>' +
@@ -644,21 +602,15 @@
 
                 function render(data) {
                     try {
-                        const els = data.data.Catalog.searchStore.elements;
-                        const now = [];
-                        const soon = [];
-                        els.forEach(function (el) {
-                            if (getOffer(el, 'now')) now.push(el);
-                            else if (getOffer(el, 'soon')) soon.push(el);
-                        });
-                        const ordered = now.concat(soon);
-                        if (!ordered.length) {
+                        const list = data && data.data;
+                        if (!Array.isArray(list) || !list.length) {
                             grid.innerHTML = '<div class="fg-loading">当前没有正在限免或即将限免的游戏 🙂</div>';
                             return;
                         }
-                        grid.innerHTML = ordered.map(function (el) {
-                            return renderItem(el, getOffer(el, 'now') ? 'now' : 'soon');
-                        }).join('');
+                        // 正在限免的排前面，即将限免排后面
+                        const now = list.filter(function (el) { return el.is_free_now; });
+                        const soon = list.filter(function (el) { return !el.is_free_now; });
+                        grid.innerHTML = now.concat(soon).map(renderItem).join('');
                     } catch (e) {
                         grid.innerHTML = '<div class="fg-error">数据解析失败：' + esc(e.message) + '</div>';
                     }
@@ -666,7 +618,7 @@
 
                 function load() {
                     grid.innerHTML = '<div class="fg-loading"><i class="bi bi-hourglass-split"></i> 正在获取 Epic 限免游戏…</div>';
-                    fetch('https://57dh.cc.cd/epic.php', { cache: 'no-store' })
+                    fetch('https://uapis.cn/api/v1/game/epic-free', { cache: 'no-store' })
                         .then(function (r) {
                             if (!r.ok) throw new Error('HTTP ' + r.status);
                             return r.json();
@@ -675,7 +627,7 @@
                         .catch(function (err) {
                             grid.innerHTML = '<div class="fg-error">' +
                                 '<i class="bi bi-exclamation-triangle"></i> 获取失败：' + esc(err.message) +
-                                '<br>请确认代理 https://57dh.cc.cd/epic_free_games.php 可访问。</div>';
+                                '<br>请检查网络，或确认接口 https://uapis.cn/api/v1/game/epic-free 可访问。</div>';
                         });
                 }
 
